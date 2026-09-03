@@ -19,16 +19,30 @@
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'phase-2.css' | asset_url | stylesheet_tag }}
     {{ 'phase-2-footer.css' | asset_url | stylesheet_tag }}
-    {{ 'phase-3-home.css' | asset_url | stylesheet_tag }}
-    {{ 'phase-3-product.css' | asset_url | stylesheet_tag }}
-    {{ 'phase-3-cart.css' | asset_url | stylesheet_tag }}
-    {{ 'phase-3-collection.css' | asset_url | stylesheet_tag }}
     {{ 'phase-4.css' | asset_url | stylesheet_tag }}
-    {{ 'phase-4-search.css' | asset_url | stylesheet_tag }}
+
+    {% case request.page_type %}
+      {% when 'index' %}
+        {{ 'phase-3-home.css' | asset_url | stylesheet_tag }}
+      {% when 'product' %}
+        {{ 'phase-3-product.css' | asset_url | stylesheet_tag }}
+        {{ 'phase-4-mobile-buy.css' | asset_url | stylesheet_tag }}
+      {% when 'cart' %}
+        {{ 'phase-3-cart.css' | asset_url | stylesheet_tag }}
+      {% when 'collection' %}
+        {{ 'phase-3-collection.css' | asset_url | stylesheet_tag }}
+      {% when 'search' %}
+        {{ 'phase-4-search.css' | asset_url | stylesheet_tag }}
+    {% endcase %}
+
     <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
-    <script src="{{ 'ralen.js' | asset_url }}" defer></script>
-    <script src="{{ 'phase-3.js' | asset_url }}" defer></script>
+    {% if request.page_type == 'index' %}
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+      <script src="{{ 'ralen.js' | asset_url }}" defer></script>
+    {% endif %}
+    {% if request.page_type == 'product' %}
+      <script src="{{ 'phase-3.js' | asset_url }}" defer></script>
+    {% endif %}
     <script src="{{ 'phase-4.js' | asset_url }}" defer></script>
   </head>
 
