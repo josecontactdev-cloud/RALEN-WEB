@@ -1,0 +1,33 @@
+<section
+  class="ralen-recommendations"
+  data-ralen-recommendations
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.products_to_show }}&intent=related"
+  {% unless recommendations.performed and recommendations.products_count > 0 %}hidden{% endunless %}
+>
+  {% if recommendations.performed and recommendations.products_count > 0 %}
+    <div class="ralen-shell">
+      <div class="ralen-recommendations__head">
+        <span>{{ section.settings.index_label }}</span>
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+      <div class="ralen-recommendations__grid">
+        {% for product in recommendations.products limit: section.settings.products_to_show %}
+          {% render 'ralen-product-card', product: product, index: forloop.index, heading_tag: 'h3', show_vendor: false, show_quick_add: section.settings.show_quick_add %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "RALEN Recomendaciones",
+  "settings": [
+    { "type": "text", "id": "index_label", "label": "Índice", "default": "04 / CONTINÚA" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "TAMBIÉN PUEDE SERVIRTE." },
+    { "type": "range", "id": "products_to_show", "min": 2, "max": 4, "step": 1, "default": 4, "label": "Productos" },
+    { "type": "checkbox", "id": "show_quick_add", "label": "Mostrar compra rápida", "default": true }
+  ],
+  "presets": [{ "name": "RALEN Recomendaciones" }]
+}
+{% endschema %}

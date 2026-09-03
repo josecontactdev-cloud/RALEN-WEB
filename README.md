@@ -33,9 +33,20 @@ Custom Shopify theme for RALEN.
 - Page-specific asset loading for better performance
 - Safe-area, touch-target and iOS form handling
 
+## Phase 5 — Conversion & merchandising
+- Reusable product-card system
+- Quick add for products without variant selection
+- AJAX cart drawer with quantity and remove controls
+- Live cart count and subtotal updates
+- Native Shopify product recommendations
+- Newsletter capture using Shopify customer forms
+- Desktop and full-screen mobile cart-drawer layouts
+- Shopify Theme Check CI on pull requests and main
+
 ## Shopify setup notes
 - Assign a navigation menu to **RALEN Header**.
 - Select a collection in **RALEN Productos**.
 - Create a Shopify page and assign the `contact` template to use the RALEN contact form.
 - Configure shipping, refund, privacy and terms policies in Shopify; configured policies appear automatically in the footer.
+- Quick add automatically sends products with variants to the product page instead of guessing a variant.
 - The hero remains data-driven so a future trend-selection system can replace the featured product/image without redesigning the page.

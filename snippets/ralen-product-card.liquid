@@ -1,0 +1,60 @@
+{% liquid
+  assign card_index = index | default: 1
+  assign card_heading = heading_tag | default: 'h3'
+  assign variant = product.selected_or_first_available_variant
+%}
+
+<article class="ralen-card" data-ralen-card>
+  <div class="ralen-card__media">
+    <a class="ralen-card__media-link" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+      {% if product.featured_image != blank %}
+        {{ product.featured_image
+          | image_url: width: 1200
+          | image_tag:
+            widths: '360, 540, 720, 900, 1200',
+            sizes: '(min-width: 990px) 25vw, (min-width: 640px) 50vw, 100vw',
+            loading: 'lazy',
+            class: 'ralen-card__image',
+            alt: product.featured_image.alt | default: product.title
+        }}
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'ralen-card__placeholder' }}
+      {% endif %}
+
+      <span class="ralen-card__number">{{ card_index | prepend: '0' }}</span>
+      {% unless product.available %}<span class="ralen-card__status">AGOTADO</span>{% endunless %}
+      <span class="ralen-card__view">VER OBJETO <span aria-hidden="true">↗</span></span>
+    </a>
+
+    {% if show_quick_add %}
+      <div class="ralen-card__quick">
+        {% if product.available and product.has_only_default_variant %}
+          <form method="post" action="{{ routes.cart_add_url }}" data-ralen-quick-add>
+            <input type="hidden" name="id" value="{{ variant.id }}">
+            <input type="hidden" name="quantity" value="1">
+            <button type="submit" data-ralen-quick-add-button>
+              <span data-ralen-quick-add-label>AÑADIR</span><span aria-hidden="true">＋</span>
+            </button>
+          </form>
+        {% elsif product.available %}
+          <a href="{{ product.url }}" class="ralen-card__options">VER OPCIONES <span aria-hidden="true">→</span></a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="ralen-card__meta">
+    <div>
+      <{{ card_heading }}><a href="{{ product.url }}">{{ product.title }}</a></{{ card_heading }}>
+      {% if show_vendor and product.vendor != blank %}
+        <span>{{ product.vendor }}</span>
+      {% else %}
+        <span>SELECCIÓN RALEN</span>
+      {% endif %}
+    </div>
+    <div class="ralen-card__price">
+      {% if product.compare_at_price > product.price %}<s>{{ product.compare_at_price | money }}</s>{% endif %}
+      <strong>{{ product.price | money }}</strong>
+    </div>
+  </div>
+</article>
