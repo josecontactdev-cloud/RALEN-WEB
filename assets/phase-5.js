@@ -30,6 +30,8 @@
     }
   };
 
+  const emit = (name, detail) => document.dispatchEvent(new CustomEvent(name, { detail }));
+
   function updateCartCounts(count) {
     document.querySelectorAll('[data-ralen-cart-count]').forEach((badge) => {
       badge.textContent = count;
@@ -69,22 +71,24 @@
 
   function renderCart(cart) {
     updateCartCounts(cart.item_count || 0);
-    if (!drawerItems || !drawerFooter || !drawerSubtotal) return;
 
-    if (!cart.item_count) {
-      drawerItems.innerHTML = `
-        <div class="ralen-cart-drawer__empty" data-ralen-cart-empty>
-          <span>00</span>
-          <p>Nada aquí, todavía.</p>
-          <a href="${root}collections/all">EXPLORAR OBJETOS →</a>
-        </div>`;
-      drawerFooter.hidden = true;
-      return;
+    if (drawerItems && drawerFooter && drawerSubtotal) {
+      if (!cart.item_count) {
+        drawerItems.innerHTML = `
+          <div class="ralen-cart-drawer__empty" data-ralen-cart-empty>
+            <span>00</span>
+            <p>Nada aquí, todavía.</p>
+            <a href="${root}collections/all">EXPLORAR OBJETOS →</a>
+          </div>`;
+        drawerFooter.hidden = true;
+      } else {
+        drawerItems.innerHTML = cart.items.map(itemMarkup).join('');
+        drawerSubtotal.textContent = money(cart.total_price);
+        drawerFooter.hidden = false;
+      }
     }
 
-    drawerItems.innerHTML = cart.items.map(itemMarkup).join('');
-    drawerSubtotal.textContent = money(cart.total_price);
-    drawerFooter.hidden = false;
+    emit('ralen:cart-updated', { cart });
   }
 
   async function getCart() {
@@ -130,6 +134,8 @@
         body: new FormData(form)
       });
       if (!response.ok) throw new Error('No se pudo añadir el producto');
+      const item = await response.json();
+      emit('ralen:item-added', { item });
       if (label) label.textContent = 'AÑADIDO';
       button?.classList.add('is-added');
       await openDrawer();
@@ -182,10 +188,11 @@
       const key = item.dataset.cartKey;
       const current = Number(item.dataset.cartQuantity || 1);
       let quantity = null;
+      let action = null;
 
-      if (event.target.closest('[data-cart-remove]')) quantity = 0;
-      if (event.target.closest('[data-cart-change="minus"]')) quantity = Math.max(0, current - 1);
-      if (event.target.closest('[data-cart-change="plus"]')) quantity = current + 1;
+      if (event.target.closest('[data-cart-remove]')) { quantity = 0; action = 'remove'; }
+      if (event.target.closest('[data-cart-change="minus"]')) { quantity = Math.max(0, current - 1); action = 'minus'; }
+      if (event.target.closest('[data-cart-change="plus"]')) { quantity = current + 1; action = 'plus'; }
       if (quantity === null) return;
 
       item.style.pointerEvents = 'none';
@@ -197,7 +204,9 @@
           body: JSON.stringify({ id: key, quantity })
         });
         if (!response.ok) throw new Error('No se pudo actualizar el carrito');
-        renderCart(await response.json());
+        const cart = await response.json();
+        renderCart(cart);
+        emit('ralen:cart-change', { key, previousQuantity: current, quantity, action, cart });
       } catch (_) {
         item.style.pointerEvents = '';
         item.style.opacity = '';
@@ -244,6 +253,7 @@
     initQuickAdd();
     initCartDrawer();
     initRecommendations();
+    getCart().catch(() => {});
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
