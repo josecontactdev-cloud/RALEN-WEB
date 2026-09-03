@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "ralen-main-404",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}
