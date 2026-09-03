@@ -1,0 +1,37 @@
+<footer class="ralen-footer" data-ralen-reveal>
+  <div class="ralen-shell ralen-footer__top">
+    <div>
+      <a class="ralen-footer__brand" href="{{ routes.root_url }}">{{ section.settings.logo_text | default: shop.name }}</a>
+      <p>{{ section.settings.tagline }}</p>
+    </div>
+
+    <div class="ralen-footer__links">
+      {% if section.settings.menu != blank %}
+        <nav aria-label="Enlaces del pie">
+          {% for link in section.settings.menu.links %}
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          {% endfor %}
+        </nav>
+      {% endif %}
+
+      <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+    </div>
+  </div>
+
+  <div class="ralen-shell ralen-footer__bottom">
+    <span>© {{ 'now' | date: '%Y' }} RALEN</span>
+    <span>MÉXICO</span>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "RALEN Footer",
+  "settings": [
+    { "type": "text", "id": "logo_text", "label": "Logo", "default": "RALEN" },
+    { "type": "text", "id": "tagline", "label": "Frase", "default": "Objetos para hacer mejor lo cotidiano." },
+    { "type": "link_list", "id": "menu", "label": "Menú" },
+    { "type": "text", "id": "email", "label": "Email", "default": "hola@ralen.mx" }
+  ]
+}
+{% endschema %}

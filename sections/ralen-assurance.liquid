@@ -1,0 +1,40 @@
+<section class="ralen-assurance" data-ralen-reveal>
+  <div class="ralen-shell ralen-assurance__grid">
+    {% for block in section.blocks %}
+      <div class="ralen-assurance__item" {{ block.shopify_attributes }}>
+        <span>{{ forloop.index | prepend: '0' }}</span>
+        <div>
+          <strong>{{ block.settings.heading }}</strong>
+          <p>{{ block.settings.copy }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RALEN Confianza",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Punto de confianza",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Título", "default": "PAGO SEGURO" },
+        { "type": "text", "id": "copy", "label": "Texto", "default": "Procesado por Shopify." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "RALEN Confianza",
+      "blocks": [
+        { "type": "item", "settings": { "heading": "PAGO SEGURO", "copy": "Procesado por Shopify." } },
+        { "type": "item", "settings": { "heading": "ENVÍOS EN MÉXICO", "copy": "Seguimiento disponible." } },
+        { "type": "item", "settings": { "heading": "SOPORTE REAL", "copy": "Atención antes y después de comprar." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
