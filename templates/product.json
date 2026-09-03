@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "main": {
+      "type": "ralen-main-product",
+      "settings": {
+        "eyebrow": "RALEN / OBJETO SELECCIONADO",
+        "show_dynamic_checkout": false,
+        "assurance_1": "Pago protegido y procesado de forma segura.",
+        "assurance_2": "Seguimiento disponible después del envío.",
+        "assurance_3": "Soporte directo si algo no sale como esperabas."
+      }
+    },
+    "assurance": {
+      "type": "ralen-assurance",
+      "settings": {
+        "item_1_title": "PAGO SEGURO",
+        "item_1_copy": "Tus datos se procesan de forma protegida.",
+        "item_2_title": "SEGUIMIENTO",
+        "item_2_copy": "Mantente al tanto del estado de tu pedido.",
+        "item_3_title": "SOPORTE DIRECTO",
+        "item_3_copy": "Estamos para ayudarte antes y después de comprar."
+      }
+    }
+  },
+  "order": ["main", "assurance"]
+}
