@@ -1,0 +1,31 @@
+<section class="ralen-manifesto" data-ralen-reveal>
+  <div class="ralen-shell ralen-manifesto__grid">
+    <div class="ralen-manifesto__aside">
+      <span>{{ section.settings.index_label }}</span>
+      <i></i>
+    </div>
+
+    <div class="ralen-manifesto__content">
+      <p class="ralen-section-kicker">{{ section.settings.kicker }}</p>
+      <h2>{{ section.settings.heading }}</h2>
+      {% if section.settings.copy != blank %}
+        <div class="ralen-manifesto__copy">{{ section.settings.copy }}</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RALEN Manifiesto",
+  "settings": [
+    { "type": "text", "id": "index_label", "label": "Índice", "default": "03" },
+    { "type": "text", "id": "kicker", "label": "Etiqueta", "default": "NUESTRO CRITERIO" },
+    { "type": "textarea", "id": "heading", "label": "Título", "default": "NO NECESITAS MÁS COSAS. NECESITAS ELEGIR MEJOR." },
+    { "type": "richtext", "id": "copy", "label": "Texto", "default": "<p>RALEN selecciona objetos útiles, bien resueltos y visualmente honestos. Lo demás se queda fuera.</p>" }
+  ],
+  "presets": [
+    { "name": "RALEN Manifiesto" }
+  ]
+}
+{% endschema %}
