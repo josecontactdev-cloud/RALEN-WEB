@@ -1,0 +1,304 @@
+.ralen-products,
+.ralen-manifesto,
+.ralen-assurance {
+  background: #050505;
+  color: var(--ralen-fg);
+}
+
+.ralen-products {
+  padding: clamp(96px, 12vw, 180px) 0 clamp(88px, 10vw, 150px);
+  border-bottom: 1px solid var(--ralen-line);
+}
+
+.ralen-section-head {
+  display: grid;
+  grid-template-columns: minmax(180px, .55fr) minmax(0, 1.45fr);
+  gap: clamp(48px, 9vw, 160px);
+  align-items: start;
+  margin-bottom: clamp(56px, 8vw, 110px);
+}
+
+.ralen-section-head > div:first-child {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.ralen-section-index {
+  color: #666662;
+  font-size: 8px;
+  letter-spacing: .22em;
+  white-space: nowrap;
+}
+
+.ralen-section-kicker {
+  margin: 0;
+  color: #7f7f7b;
+  font-size: 8px;
+  letter-spacing: .28em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.ralen-section-head__copy h2,
+.ralen-manifesto__content h2 {
+  margin: 0;
+  max-width: 900px;
+  font-size: clamp(38px, 6vw, 92px);
+  font-weight: 400;
+  line-height: .95;
+  letter-spacing: -.055em;
+  text-transform: uppercase;
+}
+
+.ralen-section-head__copy > p {
+  max-width: 430px;
+  margin: 28px 0 0;
+  color: #8f8f8b;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.ralen-product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--ralen-line);
+  border-left: 1px solid var(--ralen-line);
+}
+
+.ralen-card {
+  min-width: 0;
+  border-right: 1px solid var(--ralen-line);
+  border-bottom: 1px solid var(--ralen-line);
+}
+
+.ralen-card__media {
+  position: relative;
+  display: block;
+  aspect-ratio: .84;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 46%, #1a1a1a 0, #0d0d0d 35%, #070707 72%),
+    #080808;
+}
+
+.ralen-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.16), transparent 42%);
+  pointer-events: none;
+}
+
+.ralen-card__image,
+.ralen-card__placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .5s ease;
+}
+
+.ralen-card__image {
+  filter: saturate(.36) brightness(.84) contrast(1.06);
+}
+
+.ralen-card:hover .ralen-card__image {
+  transform: scale(1.035);
+  filter: saturate(.5) brightness(.9) contrast(1.06);
+}
+
+.ralen-card__placeholder {
+  fill: #171717;
+  background: #0a0a0a;
+}
+
+.ralen-card__number,
+.ralen-card__status {
+  position: absolute;
+  z-index: 2;
+  top: 16px;
+  color: #8b8b87;
+  font-size: 7px;
+  letter-spacing: .22em;
+}
+
+.ralen-card__number { left: 16px; }
+.ralen-card__status { right: 16px; }
+
+.ralen-card__meta {
+  min-height: 90px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 16px 20px;
+}
+
+.ralen-card__meta h3 {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.ralen-card__meta > div:first-child > span {
+  display: block;
+  margin-top: 6px;
+  color: #686865;
+  font-size: 7px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.ralen-card__price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.ralen-card__price strong,
+.ralen-card__meta > strong {
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.ralen-card__price s {
+  color: #62625e;
+  font-size: 8px;
+}
+
+.ralen-products__footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 34px;
+}
+
+.ralen-manifesto {
+  padding: clamp(110px, 15vw, 230px) 0;
+  border-bottom: 1px solid var(--ralen-line);
+}
+
+.ralen-manifesto__grid {
+  display: grid;
+  grid-template-columns: minmax(150px, .42fr) minmax(0, 1.58fr);
+  gap: clamp(56px, 9vw, 150px);
+}
+
+.ralen-manifesto__aside {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  color: #666662;
+  font-size: 8px;
+  letter-spacing: .22em;
+}
+
+.ralen-manifesto__aside i {
+  width: min(90px, 8vw);
+  height: 1px;
+  margin-top: 4px;
+  background: var(--ralen-line-strong);
+}
+
+.ralen-manifesto__content .ralen-section-kicker {
+  margin-bottom: 28px;
+}
+
+.ralen-manifesto__copy {
+  max-width: 480px;
+  margin: 42px 0 0 auto;
+  color: #8f8f8b;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.ralen-manifesto__copy p { margin: 0; }
+
+.ralen-assurance {
+  border-bottom: 1px solid var(--ralen-line);
+}
+
+.ralen-assurance__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding-inline: 0;
+  max-width: var(--ralen-shell);
+}
+
+.ralen-assurance__item {
+  min-height: 150px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  align-items: start;
+  padding: 34px var(--ralen-gutter);
+  border-right: 1px solid var(--ralen-line);
+}
+
+.ralen-assurance__item:first-child { border-left: 1px solid var(--ralen-line); }
+
+.ralen-assurance__item > span {
+  color: #62625f;
+  font-size: 7px;
+  letter-spacing: .2em;
+}
+
+.ralen-assurance__item strong {
+  display: block;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .19em;
+  text-transform: uppercase;
+}
+
+.ralen-assurance__item p {
+  margin: 12px 0 0;
+  color: #777773;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.js [data-ralen-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.js [data-ralen-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 989px) {
+  .ralen-section-head,
+  .ralen-manifesto__grid {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .ralen-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ralen-manifesto__copy { margin-left: 0; }
+  .ralen-assurance__grid { grid-template-columns: 1fr; padding-inline: var(--ralen-gutter); }
+  .ralen-assurance__item,
+  .ralen-assurance__item:first-child {
+    min-height: 0;
+    border-left: 1px solid var(--ralen-line);
+    border-right: 1px solid var(--ralen-line);
+    border-bottom: 1px solid var(--ralen-line);
+  }
+}
+
+@media (max-width: 640px) {
+  .ralen-products { padding-top: 88px; }
+  .ralen-product-grid { grid-template-columns: 1fr; }
+  .ralen-card__media { aspect-ratio: 1 / 1.08; }
+  .ralen-section-head__copy h2,
+  .ralen-manifesto__content h2 { font-size: clamp(42px, 13vw, 66px); }
+  .ralen-assurance__grid { padding-inline: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-ralen-reveal] { opacity: 1; transform: none; }
+}
