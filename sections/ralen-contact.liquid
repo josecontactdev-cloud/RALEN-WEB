@@ -1,0 +1,65 @@
+<section class="ralen-contact">
+  <div class="ralen-shell">
+    <div class="ralen-contact__head">
+      <span>06 / CONTACTO</span>
+      <div>
+        <h1>HABLEMOS.</h1>
+        <p>{{ section.settings.intro }}</p>
+      </div>
+    </div>
+
+    <div class="ralen-contact__layout">
+      <aside>
+        {% if section.settings.email != blank %}
+          <span>EMAIL</span>
+          <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+        {% endif %}
+        <p>{{ section.settings.response_time }}</p>
+      </aside>
+
+      {% form 'contact', class: 'ralen-contact-form' %}
+        {% if form.posted_successfully? %}
+          <div class="ralen-contact-form__success" role="status">Recibimos tu mensaje. Te responderemos pronto.</div>
+        {% endif %}
+
+        {% if form.errors %}
+          <div class="ralen-contact-form__errors" role="alert">{{ form.errors | default_errors }}</div>
+        {% endif %}
+
+        <div class="ralen-contact-form__row">
+          <div>
+            <label for="ContactName-{{ section.id }}">NOMBRE</label>
+            <input id="ContactName-{{ section.id }}" type="text" name="contact[name]" value="{% if form.name %}{{ form.name }}{% endif %}" autocomplete="name">
+          </div>
+          <div>
+            <label for="ContactEmail-{{ section.id }}">EMAIL *</label>
+            <input id="ContactEmail-{{ section.id }}" type="email" name="contact[email]" value="{% if form.email %}{{ form.email }}{% endif %}" autocomplete="email" required>
+          </div>
+        </div>
+
+        <div>
+          <label for="ContactPhone-{{ section.id }}">TELÉFONO</label>
+          <input id="ContactPhone-{{ section.id }}" type="tel" name="contact[phone]" value="{% if form.phone %}{{ form.phone }}{% endif %}" autocomplete="tel">
+        </div>
+
+        <div>
+          <label for="ContactBody-{{ section.id }}">MENSAJE *</label>
+          <textarea id="ContactBody-{{ section.id }}" name="contact[body]" rows="7" required>{% if form.body %}{{ form.body }}{% endif %}</textarea>
+        </div>
+
+        <button type="submit">ENVIAR MENSAJE <span aria-hidden="true">→</span></button>
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RALEN Contacto",
+  "settings": [
+    { "type": "textarea", "id": "intro", "label": "Introducción", "default": "Preguntas sobre un pedido, un producto o RALEN. Escríbenos directamente." },
+    { "type": "text", "id": "email", "label": "Email visible", "default": "hola@ralen.mx" },
+    { "type": "text", "id": "response_time", "label": "Tiempo de respuesta", "default": "Respondemos normalmente dentro de 1 a 2 días hábiles." }
+  ]
+}
+{% endschema %}
