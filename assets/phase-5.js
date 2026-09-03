@@ -118,7 +118,7 @@
   }
 
   async function addForm(form, button) {
-    const label = button?.querySelector('[data-ralen-quick-add-label]');
+    const label = button?.querySelector('[data-ralen-quick-add-label], [data-ralen-add-label]');
     const initialLabel = label?.textContent;
     if (button) button.disabled = true;
     if (label) label.textContent = 'AÑADIENDO…';
@@ -132,7 +132,6 @@
       if (!response.ok) throw new Error('No se pudo añadir el producto');
       if (label) label.textContent = 'AÑADIDO';
       button?.classList.add('is-added');
-      await getCart();
       await openDrawer();
     } catch (_) {
       if (label) label.textContent = 'INTENTA DE NUEVO';
@@ -245,7 +244,6 @@
     initQuickAdd();
     initCartDrawer();
     initRecommendations();
-    getCart().catch(() => {});
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
