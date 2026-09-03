@@ -1,0 +1,88 @@
+.ralen-contact {
+  min-height: 100svh;
+  padding: 150px 0 110px;
+  background: #050505;
+  color: var(--ralen-fg);
+}
+.ralen-contact__head {
+  display: grid;
+  grid-template-columns: minmax(150px, .4fr) minmax(0, 1.6fr);
+  gap: clamp(40px, 8vw, 140px);
+  padding-bottom: clamp(64px, 9vw, 120px);
+}
+.ralen-contact__head > span,
+.ralen-contact-form label,
+.ralen-contact__layout aside > span {
+  color: #686865;
+  font-size: 8px;
+  letter-spacing: .22em;
+}
+.ralen-contact__head h1 {
+  margin: 0;
+  font-size: clamp(58px, 10vw, 142px);
+  font-weight: 400;
+  line-height: .84;
+  letter-spacing: -.065em;
+}
+.ralen-contact__head p {
+  max-width: 480px;
+  margin: 32px 0 0;
+  color: #858581;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.ralen-contact__layout {
+  display: grid;
+  grid-template-columns: minmax(230px, .55fr) minmax(0, 1.45fr);
+  gap: clamp(48px, 9vw, 150px);
+  padding-top: 44px;
+  border-top: 1px solid var(--ralen-line);
+}
+.ralen-contact__layout aside { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.ralen-contact__layout aside a { font-size: 12px; }
+.ralen-contact__layout aside p { max-width: 260px; margin: 34px 0 0; color: #6f6f6b; font-size: 10px; line-height: 1.6; }
+.ralen-contact-form { display: grid; gap: 28px; }
+.ralen-contact-form__row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.ralen-contact-form label { display: block; margin-bottom: 10px; }
+.ralen-contact-form input,
+.ralen-contact-form textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--ralen-line-strong);
+  border-radius: 0;
+  padding: 14px 0;
+  background: transparent;
+  color: #fff;
+  outline: none;
+  resize: vertical;
+}
+.ralen-contact-form input:focus,
+.ralen-contact-form textarea:focus { border-color: #f2f2ef; }
+.ralen-contact-form button {
+  min-height: 58px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #f2f2ef;
+  padding: 0 18px;
+  background: #f2f2ef;
+  color: #050505;
+  cursor: pointer;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: .2em;
+}
+.ralen-contact-form__success,
+.ralen-contact-form__errors { padding: 18px; border: 1px solid var(--ralen-line-strong); color: #aaa9a4; font-size: 11px; line-height: 1.6; }
+
+@media (max-width: 989px) {
+  .ralen-contact { padding-top: 112px; }
+  .ralen-contact__head,
+  .ralen-contact__layout { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 640px) {
+  .ralen-contact__head h1 { font-size: clamp(58px, 19vw, 86px); }
+  .ralen-contact-form__row { grid-template-columns: 1fr; }
+  .ralen-contact-form input,
+  .ralen-contact-form textarea { font-size: 16px; }
+}
