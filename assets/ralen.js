@@ -116,9 +116,47 @@
     });
   }
 
+  function initScrollReveals() {
+    const sections = [...document.querySelectorAll('[data-ralen-reveal]')];
+    if (!sections.length) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+      sections.forEach((section) => section.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const section = entry.target;
+        section.classList.add('is-visible');
+
+        if (window.gsap) {
+          const cards = section.querySelectorAll('[data-ralen-card]');
+          if (cards.length) {
+            window.gsap.from(cards, {
+              y: 24,
+              opacity: 0,
+              duration: 0.7,
+              stagger: 0.07,
+              ease: 'power3.out'
+            });
+          }
+        }
+
+        observer.unobserve(section);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+    sections.forEach((section) => observer.observe(section));
+  }
+
   function init() {
     initIntro();
     initHeroReveal();
+    initScrollReveals();
   }
 
   if (document.readyState === 'loading') {
