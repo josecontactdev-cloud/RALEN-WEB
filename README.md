@@ -52,6 +52,14 @@ Custom Shopify theme for RALEN.
 - Product, cart and checkout lifecycle events prepared for a future analytics stack
 - Mobile-first styling for all new trust and conversion components
 
+## Phase 7 — Dynamic merchandising
+- Hero can stay manual, follow the first available product in a Shopify collection, or rotate daily through a candidate collection
+- Dynamic modes use the collection order already managed by Shopify
+- Manual product remains a safe fallback
+- Selected merchandising state is exposed for future analytics and automation integrations
+- Dynamic hero remains visually identical, so product selection can change without redesigning the storefront
+- Operating and future-automation contract documented in `docs/TREND_ENGINE.md`
+
 ## Shopify setup notes
 - Assign a navigation menu to **RALEN Header**.
 - Select a collection in **RALEN Productos**.
@@ -60,4 +68,4 @@ Custom Shopify theme for RALEN.
 - Enable **RALEN Aviso** only when you have a real message worth showing.
 - Leave the cart drawer free-shipping target at `0` unless your actual shipping policy includes free shipping above a defined amount.
 - Quick add automatically sends products with variants to the product page instead of guessing a variant.
-- The hero remains data-driven so Phase 7 can automate featured product/image selection without redesigning the page.
+- For dynamic hero merchandising, create a source collection and choose how Shopify should order it: best-selling, newest, or manual. See `docs/TREND_ENGINE.md`.
