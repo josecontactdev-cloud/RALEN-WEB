@@ -1,6 +1,16 @@
 {% liquid
   assign selected_collection = section.settings.collection
   assign products_to_show = section.settings.products_to_show | default: 4
+  assign visible_count = 4
+  if selected_collection != blank
+    assign visible_count = selected_collection.products_count
+    if visible_count > products_to_show
+      assign visible_count = products_to_show
+    endif
+    if visible_count < 1
+      assign visible_count = 4
+    endif
+  endif
 %}
 
 <section class="ralen-products" data-ralen-reveal>
@@ -18,16 +28,16 @@
       </div>
     </div>
 
-    <div class="ralen-product-grid">
+    <div class="ralen-product-grid ralen-product-grid--count-{{ visible_count }}">
       {% if selected_collection != blank and selected_collection.products_count > 0 %}
         {% for product in selected_collection.products limit: products_to_show %}
           <article class="ralen-card" data-ralen-card>
             <a class="ralen-card__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
               {% if product.featured_image != blank %}
                 {{ product.featured_image
-                  | image_url: width: 1000
+                  | image_url: width: 1200
                   | image_tag:
-                    widths: '360, 540, 720, 900, 1000',
+                    widths: '360, 540, 720, 900, 1200',
                     sizes: '(min-width: 990px) 25vw, (min-width: 640px) 50vw, 100vw',
                     loading: 'lazy',
                     class: 'ralen-card__image',
@@ -41,6 +51,7 @@
               {% unless product.available %}
                 <span class="ralen-card__status">AGOTADO</span>
               {% endunless %}
+              <span class="ralen-card__view">VER OBJETO <span aria-hidden="true">↗</span></span>
             </a>
 
             <div class="ralen-card__meta">
@@ -48,6 +59,8 @@
                 <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
                 {% if section.settings.show_vendor and product.vendor != blank %}
                   <span>{{ product.vendor }}</span>
+                {% else %}
+                  <span>SELECCIÓN RALEN</span>
                 {% endif %}
               </div>
               <div class="ralen-card__price">
