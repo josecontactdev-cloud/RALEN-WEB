@@ -3,14 +3,34 @@
     <div>
       <a class="ralen-footer__brand" href="{{ routes.root_url }}">{{ section.settings.logo_text | default: shop.name }}</a>
       <p>{{ section.settings.tagline }}</p>
+
+      {% if section.settings.show_newsletter %}
+        <div class="ralen-newsletter-wrap">
+          <span>{{ section.settings.newsletter_heading }}</span>
+          {% form 'customer', id: 'RalenNewsletter', class: 'ralen-newsletter' %}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <label class="visually-hidden" for="RalenNewsletterEmail">Correo electrónico</label>
+            <input
+              id="RalenNewsletterEmail"
+              type="email"
+              name="contact[email]"
+              value="{% if customer %}{{ customer.email }}{% endif %}"
+              placeholder="TU CORREO"
+              autocomplete="email"
+              required
+            >
+            <button type="submit" aria-label="Suscribirme">UNIRME <span aria-hidden="true">→</span></button>
+            {% if form.posted_successfully? %}<p class="ralen-newsletter__status" role="status">LISTO. ESTÁS DENTRO.</p>{% endif %}
+            {% if form.errors %}<div class="ralen-newsletter__status" role="alert">{{ form.errors | default_errors }}</div>{% endif %}
+          {% endform %}
+        </div>
+      {% endif %}
     </div>
 
     <div class="ralen-footer__links">
       {% if section.settings.menu != blank %}
         <nav aria-label="Enlaces del pie">
-          {% for link in section.settings.menu.links %}
-            <a href="{{ link.url }}">{{ link.title }}</a>
-          {% endfor %}
+          {% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
         </nav>
       {% endif %}
 
@@ -39,6 +59,8 @@
   "settings": [
     { "type": "text", "id": "logo_text", "label": "Logo", "default": "RALEN" },
     { "type": "text", "id": "tagline", "label": "Frase", "default": "Objetos para hacer mejor lo cotidiano." },
+    { "type": "checkbox", "id": "show_newsletter", "label": "Mostrar newsletter", "default": true },
+    { "type": "text", "id": "newsletter_heading", "label": "Título newsletter", "default": "NUEVOS OBJETOS. SIN RUIDO." },
     { "type": "link_list", "id": "menu", "label": "Menú" },
     { "type": "text", "id": "email", "label": "Email" }
   ]
