@@ -20,6 +20,44 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>
         {% if cart.item_count > 0 %}<span class="ralen-cart-count">{{ cart.item_count }}</span>{% endif %}
       </a>
+      <button
+        type="button"
+        class="ralen-menu-toggle"
+        data-ralen-menu-toggle
+        aria-expanded="false"
+        aria-controls="RalenMobileMenu"
+        aria-label="Abrir menú"
+      >
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div id="RalenMobileMenu" class="ralen-mobile-menu" data-ralen-mobile-menu hidden>
+    <div class="ralen-mobile-menu__top ralen-shell">
+      <span class="ralen-mobile-menu__label">NAVEGACIÓN</span>
+      <button type="button" class="ralen-mobile-menu__close" data-ralen-menu-close aria-label="Cerrar menú">CERRAR</button>
+    </div>
+
+    <nav class="ralen-mobile-menu__nav ralen-shell" aria-label="Navegación móvil">
+      {% if section.settings.menu != blank %}
+        {% for link in section.settings.menu.links %}
+          <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>
+            <span>{{ forloop.index | prepend: '0' }}</span>
+            <strong>{{ link.title }}</strong>
+            <i aria-hidden="true">→</i>
+          </a>
+        {% endfor %}
+      {% else %}
+        <a href="{{ routes.root_url }}"><span>01</span><strong>INICIO</strong><i aria-hidden="true">→</i></a>
+        <a href="{{ routes.all_products_collection_url }}"><span>02</span><strong>CATÁLOGO</strong><i aria-hidden="true">→</i></a>
+      {% endif %}
+    </nav>
+
+    <div class="ralen-mobile-menu__footer ralen-shell">
+      <a href="{{ routes.search_url }}">BUSCAR</a>
+      <a href="{{ routes.cart_url }}">CARRITO ({{ cart.item_count }})</a>
+      <span>RALEN / MX</span>
     </div>
   </div>
 </header>
