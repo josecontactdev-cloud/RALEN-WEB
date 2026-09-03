@@ -1,0 +1,31 @@
+/* Phase 7 — dynamic merchandising */
+
+.ralen-product-chip span:nth-child(2) { min-width: 0; }
+.ralen-product-chip em {
+  display: block;
+  margin-top: 2px;
+  color: #8b8b87;
+  font-size: 8px;
+  font-style: normal;
+  letter-spacing: .08em;
+}
+
+.ralen-hero[data-merchandising-mode="collection_first"] .ralen-product-chip,
+.ralen-hero[data-merchandising-mode="daily_rotation"] .ralen-product-chip {
+  border-color: rgba(255,255,255,.2);
+}
+
+@media (max-width: 640px) {
+  .ralen-product-chip {
+    grid-template-columns: 58px minmax(0, 1fr) auto;
+    min-height: 80px;
+  }
+  .ralen-product-chip img { width: 58px; height: 58px; }
+  .ralen-product-chip strong {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
