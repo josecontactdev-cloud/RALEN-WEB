@@ -1,0 +1,73 @@
+<section class="ralen-cart">
+  <div class="ralen-shell">
+    <div class="ralen-cart__header">
+      <span>04 / CARRITO</span>
+      <h1>TU SELECCIÓN.</h1>
+      <p>{{ cart.item_count }} {% if cart.item_count == 1 %}OBJETO{% else %}OBJETOS{% endif %}</p>
+    </div>
+
+    {% if cart.item_count > 0 %}
+      <form action="{{ routes.cart_url }}" method="post" class="ralen-cart__form">
+        <div class="ralen-cart__items">
+          {% for item in cart.items %}
+            <article class="ralen-cart-item">
+              <a class="ralen-cart-item__media" href="{{ item.url }}">
+                {% if item.image != blank %}
+                  {{ item.image | image_url: width: 600 | image_tag: widths: '180, 300, 450, 600', sizes: '180px', loading: 'lazy', alt: item.product.title }}
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag }}
+                {% endif %}
+              </a>
+
+              <div class="ralen-cart-item__info">
+                <div>
+                  <span>{{ forloop.index | prepend: '0' }}</span>
+                  <h2><a href="{{ item.url }}">{{ item.product.title }}</a></h2>
+                  {% unless item.product.has_only_default_variant %}<p>{{ item.variant.title }}</p>{% endunless %}
+                </div>
+
+                <div class="ralen-cart-item__controls">
+                  <label for="CartQty-{{ forloop.index }}">CANT.</label>
+                  <input id="CartQty-{{ forloop.index }}" type="number" name="updates[{{ item.key }}]" value="{{ item.quantity }}" min="0" inputmode="numeric">
+                  <a href="{{ item.url_to_remove }}">ELIMINAR</a>
+                </div>
+
+                <strong>{{ item.final_line_price | money }}</strong>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+
+        <aside class="ralen-cart__summary">
+          <div class="ralen-cart__summary-top">
+            <span>RESUMEN</span>
+            <span>{{ cart.item_count | prepend: '0' }}</span>
+          </div>
+          <div class="ralen-cart__subtotal">
+            <span>SUBTOTAL</span>
+            <strong>{{ cart.total_price | money }}</strong>
+          </div>
+          <p>Envíos, descuentos e impuestos se calculan en el checkout.</p>
+          <button type="submit" name="checkout" class="ralen-checkout-button">
+            FINALIZAR COMPRA <span aria-hidden="true">→</span>
+          </button>
+          <button type="submit" name="update" class="ralen-cart__update">ACTUALIZAR CARRITO</button>
+          <a class="ralen-cart__continue" href="{{ routes.all_products_collection_url }}">← SEGUIR EXPLORANDO</a>
+        </aside>
+      </form>
+    {% else %}
+      <div class="ralen-cart-empty">
+        <span>00</span>
+        <h2>NADA AQUÍ, TODAVÍA.</h2>
+        <a class="ralen-text-link" href="{{ routes.all_products_collection_url }}">EXPLORAR OBJETOS <span aria-hidden="true">→</span></a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RALEN Carrito",
+  "settings": []
+}
+{% endschema %}

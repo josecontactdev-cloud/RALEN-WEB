@@ -1,0 +1,72 @@
+<section class="ralen-collection">
+  <div class="ralen-shell">
+    <header class="ralen-collection__header">
+      <div>
+        <span>03 / CATÁLOGO</span>
+        <span>{{ collection.products_count }} OBJETOS</span>
+      </div>
+      <h1>{{ collection.title }}</h1>
+      {% if collection.description != blank %}
+        <div class="ralen-collection__description">{{ collection.description }}</div>
+      {% else %}
+        <p>Una selección corta de objetos elegidos por utilidad, diseño y función.</p>
+      {% endif %}
+    </header>
+
+    {% paginate collection.products by section.settings.products_per_page %}
+      <div class="ralen-product-grid ralen-collection__grid">
+        {% for product in collection.products %}
+          <article class="ralen-card" data-ralen-card>
+            <a class="ralen-card__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+              {% if product.featured_image != blank %}
+                {{ product.featured_image
+                  | image_url: width: 1200
+                  | image_tag:
+                    widths: '360, 540, 720, 900, 1200',
+                    sizes: '(min-width: 990px) 25vw, (min-width: 640px) 50vw, 100vw',
+                    loading: 'lazy',
+                    class: 'ralen-card__image',
+                    alt: product.featured_image.alt | default: product.title
+                }}
+              {% else %}
+                {{ 'product-1' | placeholder_svg_tag: 'ralen-card__placeholder' }}
+              {% endif %}
+              <span class="ralen-card__number">{{ forloop.index | prepend: '0' }}</span>
+              {% unless product.available %}<span class="ralen-card__status">AGOTADO</span>{% endunless %}
+              <span class="ralen-card__view">VER OBJETO <span aria-hidden="true">↗</span></span>
+            </a>
+            <div class="ralen-card__meta">
+              <div>
+                <h2><a href="{{ product.url }}">{{ product.title }}</a></h2>
+                <span>SELECCIÓN RALEN</span>
+              </div>
+              <div class="ralen-card__price">
+                {% if product.compare_at_price > product.price %}<s>{{ product.compare_at_price | money }}</s>{% endif %}
+                <strong>{{ product.price | money }}</strong>
+              </div>
+            </div>
+          </article>
+        {% else %}
+          <p class="ralen-collection__empty">Todavía no hay objetos en esta colección.</p>
+        {% endfor %}
+      </div>
+
+      {% if paginate.pages > 1 %}
+        <nav class="ralen-pagination" aria-label="Paginación">
+          {% if paginate.previous %}<a href="{{ paginate.previous.url }}">← ANTERIOR</a>{% else %}<span></span>{% endif %}
+          <span>{{ paginate.current_page | prepend: '0' }} / {{ paginate.pages | prepend: '0' }}</span>
+          {% if paginate.next %}<a href="{{ paginate.next.url }}">SIGUIENTE →</a>{% endif %}
+        </nav>
+      {% endif %}
+    {% endpaginate %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RALEN Colección",
+  "settings": [
+    { "type": "range", "id": "products_per_page", "min": 4, "max": 24, "step": 4, "default": 12, "label": "Productos por página" }
+  ]
+}
+{% endschema %}

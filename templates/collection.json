@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "ralen-main-collection",
+      "settings": {
+        "products_per_page": 12
+      }
+    }
+  },
+  "order": ["main"]
+}

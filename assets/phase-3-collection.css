@@ -1,0 +1,87 @@
+/* Phase 3 — collection */
+
+.ralen-collection {
+  min-height: 100svh;
+  padding: 150px 0 110px;
+  background: #050505;
+  color: var(--ralen-fg);
+}
+
+.ralen-collection__header {
+  display: grid;
+  grid-template-columns: minmax(180px, .45fr) minmax(0, 1.2fr) minmax(220px, .35fr);
+  gap: clamp(36px, 7vw, 120px);
+  align-items: end;
+  padding-bottom: clamp(56px, 8vw, 110px);
+}
+
+.ralen-collection__header > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  color: #666662;
+  font-size: 7px;
+  letter-spacing: .22em;
+}
+
+.ralen-collection__header h1 {
+  margin: 0;
+  font-size: clamp(56px, 9vw, 130px);
+  font-weight: 400;
+  line-height: .86;
+  letter-spacing: -.06em;
+  text-transform: uppercase;
+}
+
+.ralen-collection__header > p,
+.ralen-collection__description {
+  margin: 0;
+  color: #858581;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.ralen-collection__description p { margin: 0; }
+
+.ralen-collection__grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.ralen-collection__grid .ralen-card__meta h2 {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+.ralen-collection__grid .ralen-card__meta > div:first-child > span {
+  display: block;
+  margin-top: 6px;
+  color: #686865;
+  font-size: 7px;
+  letter-spacing: .18em;
+}
+
+.ralen-pagination {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  align-items: center;
+  padding-top: 34px;
+  color: #747470;
+  font-size: 7px;
+  letter-spacing: .2em;
+}
+.ralen-pagination a:last-child { justify-self: end; }
+.ralen-pagination > span { justify-self: center; }
+.ralen-collection__empty { grid-column: 1 / -1; padding: 100px 0; color: #777773; }
+
+@media (max-width: 989px) {
+  .ralen-collection { padding-top: 112px; }
+  .ralen-collection__header { grid-template-columns: 1fr; gap: 34px; }
+  .ralen-collection__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .ralen-collection__header h1 { font-size: clamp(52px, 15vw, 80px); }
+  .ralen-collection__grid { grid-template-columns: 1fr; }
+}

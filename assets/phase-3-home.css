@@ -1,0 +1,126 @@
+/* Phase 3 — home polish */
+
+.ralen-hero__content {
+  padding-right: clamp(40px, 6vw, 96px);
+}
+
+.ralen-hero__title {
+  max-width: 540px;
+  font-size: clamp(52px, 6.2vw, 104px);
+  line-height: .94;
+  letter-spacing: -.05em;
+}
+
+.ralen-hero__copy {
+  margin-top: 28px;
+}
+
+.ralen-hero__image {
+  object-position: center;
+  filter: saturate(.18) contrast(1.12) brightness(.64);
+  transform: scale(1.01);
+}
+
+.ralen-hero__media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 58% 48%, transparent 0 24%, rgba(0,0,0,.08) 58%, rgba(0,0,0,.38) 100%),
+    linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.2));
+  pointer-events: none;
+}
+
+.ralen-product-grid--count-1 {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.ralen-product-grid--count-1 .ralen-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(260px, .45fr);
+}
+
+.ralen-product-grid--count-1 .ralen-card__media {
+  aspect-ratio: 16 / 8.4;
+}
+
+.ralen-product-grid--count-1 .ralen-card__meta {
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: clamp(24px, 4vw, 56px);
+  border-left: 1px solid var(--ralen-line);
+}
+
+.ralen-product-grid--count-1 .ralen-card__price {
+  align-items: flex-start;
+  margin-top: 18px;
+}
+
+.ralen-product-grid--count-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ralen-product-grid--count-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ralen-card__view {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(5,5,5,.78);
+  color: #efefec;
+  backdrop-filter: blur(14px);
+  font-size: 7px;
+  letter-spacing: .22em;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .3s ease, transform .3s ease, border-color .3s ease;
+}
+
+.ralen-card:hover .ralen-card__view,
+.ralen-card:focus-within .ralen-card__view {
+  opacity: 1;
+  transform: none;
+}
+
+.ralen-card:hover .ralen-card__media {
+  background: #0b0b0b;
+}
+
+.ralen-card__meta {
+  transition: background .3s ease;
+}
+
+.ralen-card:hover .ralen-card__meta {
+  background: #080808;
+}
+
+@media (max-width: 989px) {
+  .ralen-product-grid--count-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ralen-product-grid--count-1 .ralen-card { grid-template-columns: 1fr; }
+  .ralen-product-grid--count-1 .ralen-card__media { aspect-ratio: 1.2 / 1; }
+  .ralen-product-grid--count-1 .ralen-card__meta {
+    min-height: 120px;
+    border-left: 0;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 22px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ralen-product-grid--count-2,
+  .ralen-product-grid--count-3 { grid-template-columns: 1fr; }
+  .ralen-card__view { opacity: 1; transform: none; }
+  .ralen-hero__title { font-size: clamp(50px, 15vw, 72px); }
+}
