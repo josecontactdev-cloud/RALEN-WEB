@@ -19,6 +19,39 @@
         "show_quick_add": true
       }
     },
+    "faq": {
+      "type": "ralen-faq",
+      "blocks": {
+        "shipping": {
+          "type": "question",
+          "settings": {
+            "question": "¿Cómo sé cuándo llegará mi pedido?",
+            "answer": "<p>Cuando tu pedido sea enviado recibirás la información de seguimiento disponible para tu envío.</p>"
+          }
+        },
+        "support": {
+          "type": "question",
+          "settings": {
+            "question": "¿Qué hago si tengo un problema con mi compra?",
+            "answer": "<p>Contáctanos desde la página de contacto con tu número de pedido y revisaremos tu caso.</p>"
+          }
+        },
+        "returns": {
+          "type": "question",
+          "settings": {
+            "question": "¿Dónde consulto cambios o devoluciones?",
+            "answer": "<p>Consulta la política de devoluciones publicada en la tienda antes de finalizar tu compra.</p>"
+          }
+        }
+      },
+      "block_order": ["shipping", "support", "returns"],
+      "settings": {
+        "index_label": "05 / INFORMACIÓN",
+        "kicker": "ANTES DE COMPRAR",
+        "heading": "LO IMPORTANTE, CLARO.",
+        "copy": "<p>Respuestas directas sobre pedidos, envíos y soporte.</p>"
+      }
+    },
     "assurance": {
       "type": "ralen-assurance",
       "settings": {
@@ -31,5 +64,5 @@
       }
     }
   },
-  "order": ["main", "recommendations", "assurance"]
+  "order": ["main", "recommendations", "faq", "assurance"]
 }

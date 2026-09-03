@@ -43,10 +43,21 @@ Custom Shopify theme for RALEN.
 - Desktop and full-screen mobile cart-drawer layouts
 - Shopify Theme Check CI on pull requests and main
 
+## Phase 6 — Launch polish & trust
+- Optional configurable announcement bar
+- Product FAQ system with editable blocks
+- Real Shopify policy links near purchase actions
+- Active payment-method icons from Shopify
+- Optional free-shipping progress bar with an honest merchant-defined threshold
+- Product, cart and checkout lifecycle events prepared for a future analytics stack
+- Mobile-first styling for all new trust and conversion components
+
 ## Shopify setup notes
 - Assign a navigation menu to **RALEN Header**.
 - Select a collection in **RALEN Productos**.
 - Create a Shopify page and assign the `contact` template to use the RALEN contact form.
-- Configure shipping, refund, privacy and terms policies in Shopify; configured policies appear automatically in the footer.
+- Configure shipping, refund, privacy and terms policies in Shopify; configured policies appear automatically in the footer and relevant purchase surfaces.
+- Enable **RALEN Aviso** only when you have a real message worth showing.
+- Leave the cart drawer free-shipping target at `0` unless your actual shipping policy includes free shipping above a defined amount.
 - Quick add automatically sends products with variants to the product page instead of guessing a variant.
-- The hero remains data-driven so a future trend-selection system can replace the featured product/image without redesigning the page.
+- The hero remains data-driven so Phase 7 can automate featured product/image selection without redesigning the page.

@@ -1,3 +1,7 @@
+{% liquid
+  assign free_shipping_threshold_cents = section.settings.free_shipping_threshold | times: 100
+%}
+
 <div
   class="ralen-cart-drawer"
   data-ralen-cart-drawer
@@ -25,7 +29,7 @@
         </div>
       {% else %}
         {% for item in cart.items %}
-          <article class="ralen-drawer-item" data-cart-key="{{ item.key }}">
+          <article class="ralen-drawer-item" data-cart-key="{{ item.key }}" data-cart-quantity="{{ item.quantity }}">
             <a href="{{ item.url }}" class="ralen-drawer-item__media">
               {% if item.image != blank %}
                 {{ item.image | image_url: width: 360 | image_tag: widths: '120, 180, 240, 360', sizes: '96px', loading: 'lazy', alt: item.product.title }}
@@ -50,6 +54,16 @@
     </div>
 
     <footer class="ralen-cart-drawer__footer" data-ralen-cart-drawer-footer{% if cart.item_count == 0 %} hidden{% endif %}>
+      {% if section.settings.free_shipping_threshold > 0 %}
+        <div class="ralen-cart-progress" data-ralen-shipping-progress data-threshold="{{ free_shipping_threshold_cents }}">
+          <div class="ralen-cart-progress__meta">
+            <span data-ralen-shipping-message>CALCULANDO ENVÍO…</span>
+            <span>{{ section.settings.free_shipping_threshold | times: 100 | money }}</span>
+          </div>
+          <div class="ralen-cart-progress__track" aria-hidden="true"><i data-ralen-shipping-bar></i></div>
+        </div>
+      {% endif %}
+
       <div class="ralen-cart-drawer__subtotal">
         <span>SUBTOTAL</span>
         <strong data-ralen-cart-drawer-subtotal>{{ cart.total_price | money }}</strong>
@@ -58,6 +72,22 @@
       <form action="{{ routes.cart_url }}" method="post">
         <button class="ralen-cart-drawer__checkout" type="submit" name="checkout">FINALIZAR COMPRA <span aria-hidden="true">→</span></button>
       </form>
+
+      {% if section.settings.show_payment_icons and shop.enabled_payment_types.size > 0 %}
+        <ul class="ralen-cart-drawer__payments" aria-label="Métodos de pago disponibles">
+          {% for type in shop.enabled_payment_types %}
+            <li>{{ type | payment_type_svg_tag }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if shop.shipping_policy != blank or shop.refund_policy != blank %}
+        <div class="ralen-cart-drawer__policies">
+          {% if shop.shipping_policy != blank %}<a href="{{ shop.shipping_policy.url }}">POLÍTICA DE ENVÍOS</a>{% endif %}
+          {% if shop.refund_policy != blank %}<a href="{{ shop.refund_policy.url }}">DEVOLUCIONES</a>{% endif %}
+        </div>
+      {% endif %}
+
       <a class="ralen-cart-drawer__cart-link" href="{{ routes.cart_url }}">VER CARRITO COMPLETO</a>
     </footer>
   </aside>
@@ -66,6 +96,24 @@
 {% schema %}
 {
   "name": "RALEN Carrito lateral",
-  "settings": []
+  "settings": [
+    {
+      "type": "range",
+      "id": "free_shipping_threshold",
+      "min": 0,
+      "max": 5000,
+      "step": 100,
+      "unit": "$",
+      "label": "Meta de envío gratis",
+      "info": "Déjalo en 0 para ocultar la barra. Actívalo solo si tu política real ofrece envío gratis a partir de ese monto.",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Mostrar métodos de pago activos",
+      "default": true
+    }
+  ]
 }
 {% endschema %}

@@ -3,7 +3,14 @@
   assign product_form_id = 'ProductForm-' | append: section.id
 %}
 
-<section class="ralen-product" data-ralen-product>
+<section
+  class="ralen-product"
+  data-ralen-product
+  data-product-id="{{ product.id }}"
+  data-product-title="{{ product.title | escape }}"
+  data-product-vendor="{{ product.vendor | escape }}"
+  data-product-price="{{ current_variant.price }}"
+>
   <div class="ralen-shell ralen-product__layout">
     <div class="ralen-product__gallery">
       <div class="ralen-product__stage">
@@ -74,6 +81,7 @@
                   <option
                     value="{{ variant.id }}"
                     data-price="{{ variant.price | money | escape }}"
+                    data-price-cents="{{ variant.price }}"
                     data-compare="{% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money | escape }}{% endif %}"
                     data-available="{{ variant.available }}"
                     {% if variant == current_variant %}selected{% endif %}
@@ -110,6 +118,14 @@
             <div class="ralen-dynamic-checkout">{{ form | payment_button }}</div>
           {% endif %}
         {% endform %}
+
+        {% if shop.shipping_policy != blank or shop.refund_policy != blank %}
+          <div class="ralen-product__launch-note">
+            <span>COMPRA CON INFORMACIÓN CLARA.</span>
+            {% if shop.shipping_policy != blank %}<a href="{{ shop.shipping_policy.url }}">ENVÍOS</a>{% endif %}
+            {% if shop.refund_policy != blank %}<a href="{{ shop.refund_policy.url }}">DEVOLUCIONES</a>{% endif %}
+          </div>
+        {% endif %}
 
         <div class="ralen-product__assurance">
           <div><span>01</span><p>{{ section.settings.assurance_1 }}</p></div>

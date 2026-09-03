@@ -1,0 +1,22 @@
+{% if section.settings.enabled and section.settings.text != blank %}
+  <div class="ralen-announcement" role="region" aria-label="Aviso de la tienda">
+    <div class="ralen-shell ralen-announcement__inner">
+      <span>{{ section.settings.text }}</span>
+      {% if section.settings.link_label != blank and section.settings.link != blank %}
+        <a href="{{ section.settings.link }}">{{ section.settings.link_label }} <span aria-hidden="true">→</span></a>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "RALEN Aviso",
+  "settings": [
+    { "type": "checkbox", "id": "enabled", "label": "Mostrar aviso", "default": false },
+    { "type": "text", "id": "text", "label": "Texto", "default": "ENVÍOS DISPONIBLES EN MÉXICO" },
+    { "type": "text", "id": "link_label", "label": "Texto del enlace" },
+    { "type": "url", "id": "link", "label": "Enlace" }
+  ]
+}
+{% endschema %}

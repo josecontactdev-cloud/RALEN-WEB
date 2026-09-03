@@ -2,6 +2,13 @@
   "type": "header",
   "name": "Header group",
   "sections": {
+    "announcement": {
+      "type": "ralen-announcement",
+      "settings": {
+        "enabled": false,
+        "text": "ENVÍOS DISPONIBLES EN MÉXICO"
+      }
+    },
     "header": {
       "type": "ralen-header",
       "settings": {
@@ -10,5 +17,5 @@
       }
     }
   },
-  "order": ["header"]
+  "order": ["announcement", "header"]
 }
