@@ -51,6 +51,22 @@
           <button type="submit" name="checkout" class="ralen-checkout-button">
             FINALIZAR COMPRA <span aria-hidden="true">→</span>
           </button>
+
+          {% if section.settings.show_payment_icons and shop.enabled_payment_types.size > 0 %}
+            <ul class="ralen-cart__payments" aria-label="Métodos de pago disponibles">
+              {% for type in shop.enabled_payment_types %}
+                <li>{{ type | payment_type_svg_tag }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+
+          {% if shop.shipping_policy != blank or shop.refund_policy != blank %}
+            <div class="ralen-cart__policies">
+              {% if shop.shipping_policy != blank %}<a href="{{ shop.shipping_policy.url }}">ENVÍOS</a>{% endif %}
+              {% if shop.refund_policy != blank %}<a href="{{ shop.refund_policy.url }}">DEVOLUCIONES</a>{% endif %}
+            </div>
+          {% endif %}
+
           <button type="submit" name="update" class="ralen-cart__update">ACTUALIZAR CARRITO</button>
           <a class="ralen-cart__continue" href="{{ routes.all_products_collection_url }}">← SEGUIR EXPLORANDO</a>
         </aside>
@@ -68,6 +84,8 @@
 {% schema %}
 {
   "name": "RALEN Carrito",
-  "settings": []
+  "settings": [
+    { "type": "checkbox", "id": "show_payment_icons", "label": "Mostrar métodos de pago activos", "default": true }
+  ]
 }
 {% endschema %}
