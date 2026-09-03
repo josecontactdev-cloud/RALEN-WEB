@@ -23,6 +23,7 @@
     {{ 'phase-4-a11y.css' | asset_url | stylesheet_tag }}
     {{ 'phase-5.css' | asset_url | stylesheet_tag }}
     {{ 'phase-5-newsletter.css' | asset_url | stylesheet_tag }}
+    {{ 'phase-6.css' | asset_url | stylesheet_tag }}
 
     {% case request.page_type %}
       {% when 'index' %}
@@ -51,6 +52,7 @@
     {% endif %}
     <script src="{{ 'phase-4.js' | asset_url }}" defer></script>
     <script src="{{ 'phase-5.js' | asset_url }}" defer></script>
+    <script src="{{ 'phase-6.js' | asset_url }}" defer></script>
   </head>
 
   <body class="ralen-theme">
