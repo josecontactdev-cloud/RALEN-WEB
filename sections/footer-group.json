@@ -1,0 +1,15 @@
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "ralen_footer": {
+      "type": "ralen-footer",
+      "settings": {
+        "logo_text": "RALEN",
+        "tagline": "Objetos para hacer mejor lo cotidiano.",
+        "email": "hola@ralen.mx"
+      }
+    }
+  },
+  "order": ["ralen_footer"]
+}
