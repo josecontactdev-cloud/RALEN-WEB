@@ -10,6 +10,15 @@
         "assurance_3": "Soporte directo si algo no sale como esperabas."
       }
     },
+    "recommendations": {
+      "type": "ralen-product-recommendations",
+      "settings": {
+        "index_label": "04 / CONTINÚA",
+        "heading": "TAMBIÉN PUEDE SERVIRTE.",
+        "products_to_show": 4,
+        "show_quick_add": true
+      }
+    },
     "assurance": {
       "type": "ralen-assurance",
       "settings": {
@@ -22,5 +31,5 @@
       }
     }
   },
-  "order": ["main", "assurance"]
+  "order": ["main", "recommendations", "assurance"]
 }
