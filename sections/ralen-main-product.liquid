@@ -1,0 +1,135 @@
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign product_form_id = 'ProductForm-' | append: section.id
+%}
+
+<section class="ralen-product" data-ralen-product>
+  <div class="ralen-shell ralen-product__layout">
+    <div class="ralen-product__gallery">
+      <div class="ralen-product__stage">
+        {% if product.featured_image != blank %}
+          {{ product.featured_image
+            | image_url: width: 1800
+            | image_tag:
+              widths: '640, 900, 1200, 1500, 1800',
+              sizes: '(min-width: 990px) 58vw, 100vw',
+              loading: 'eager',
+              fetchpriority: 'high',
+              class: 'ralen-product__main-image',
+              id: 'RalenProductMainImage',
+              alt: product.featured_image.alt | default: product.title
+          }}
+        {% else %}
+          {{ 'product-1' | placeholder_svg_tag: 'ralen-product__placeholder' }}
+        {% endif %}
+        <span class="ralen-product__stage-index">01 / {{ product.images.size | at_least: 1 | prepend: '0' }}</span>
+      </div>
+
+      {% if product.images.size > 1 %}
+        <div class="ralen-product__thumbs" aria-label="Galería del producto">
+          {% for image in product.images limit: 6 %}
+            <button
+              type="button"
+              class="ralen-product__thumb{% if forloop.first %} is-active{% endif %}"
+              data-ralen-thumb
+              data-image-url="{{ image | image_url: width: 1800 }}"
+              data-image-alt="{{ image.alt | default: product.title | escape }}"
+              aria-label="Ver imagen {{ forloop.index }}"
+            >
+              {{ image | image_url: width: 220 | image_tag: loading: 'lazy', alt: image.alt | default: product.title }}
+            </button>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="ralen-product__info">
+      <div class="ralen-product__sticky">
+        <div class="ralen-product__topline">
+          <span>{{ section.settings.eyebrow }}</span>
+          {% if product.available %}<span>DISPONIBLE</span>{% else %}<span>AGOTADO</span>{% endif %}
+        </div>
+
+        <h1>{{ product.title }}</h1>
+
+        <div class="ralen-product__price" data-ralen-product-price>
+          {% if current_variant.compare_at_price > current_variant.price %}
+            <s data-ralen-product-compare>{{ current_variant.compare_at_price | money }}</s>
+          {% else %}
+            <s data-ralen-product-compare hidden></s>
+          {% endif %}
+          <strong data-ralen-product-current-price>{{ current_variant.price | money }}</strong>
+        </div>
+
+        {% if product.description != blank %}
+          <div class="ralen-product__description">{{ product.description }}</div>
+        {% endif %}
+
+        {% form 'product', product, id: product_form_id, class: 'ralen-product-form', data-ralen-product-form: '' %}
+          {% if product.variants.size > 1 %}
+            <label class="ralen-field-label" for="RalenVariant-{{ section.id }}">VARIANTE</label>
+            <div class="ralen-select-wrap">
+              <select id="RalenVariant-{{ section.id }}" name="id" data-ralen-variant-select>
+                {% for variant in product.variants %}
+                  <option
+                    value="{{ variant.id }}"
+                    data-price="{{ variant.price | money | escape }}"
+                    data-compare="{% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money | escape }}{% endif %}"
+                    data-available="{{ variant.available }}"
+                    {% if variant == current_variant %}selected{% endif %}
+                  >
+                    {{ variant.title }}{% unless variant.available %} — Agotado{% endunless %}
+                  </option>
+                {% endfor %}
+              </select>
+              <span aria-hidden="true">⌄</span>
+            </div>
+          {% else %}
+            <input type="hidden" name="id" value="{{ current_variant.id }}">
+          {% endif %}
+
+          <div class="ralen-product__buy-row">
+            <div class="ralen-quantity">
+              <label for="RalenQuantity-{{ section.id }}">CANT.</label>
+              <input id="RalenQuantity-{{ section.id }}" type="number" name="quantity" value="1" min="1" inputmode="numeric">
+            </div>
+
+            <button
+              class="ralen-buy-button"
+              type="submit"
+              name="add"
+              data-ralen-add-button
+              {% unless current_variant.available %}disabled{% endunless %}
+            >
+              <span data-ralen-add-label>{% if current_variant.available %}AGREGAR AL CARRITO{% else %}AGOTADO{% endif %}</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+
+          {% if section.settings.show_dynamic_checkout and current_variant.available %}
+            <div class="ralen-dynamic-checkout">{{ form | payment_button }}</div>
+          {% endif %}
+        {% endform %}
+
+        <div class="ralen-product__assurance">
+          <div><span>01</span><p>{{ section.settings.assurance_1 }}</p></div>
+          <div><span>02</span><p>{{ section.settings.assurance_2 }}</p></div>
+          <div><span>03</span><p>{{ section.settings.assurance_3 }}</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RALEN Producto",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "RALEN / OBJETO SELECCIONADO" },
+    { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Mostrar compra rápida", "default": false },
+    { "type": "text", "id": "assurance_1", "label": "Confianza 1", "default": "Pago protegido y procesado de forma segura." },
+    { "type": "text", "id": "assurance_2", "label": "Confianza 2", "default": "Seguimiento disponible después del envío." },
+    { "type": "text", "id": "assurance_3", "label": "Confianza 3", "default": "Soporte directo si algo no sale como esperabas." }
+  ]
+}
+{% endschema %}
