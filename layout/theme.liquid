@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#050505">
 
     <title>
-      {{ page_title }}{% if current_tags %} — {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} — {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}
+      {{ page_title }}{% if current_tags %} — {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} — Página {{ current_page }}{% endif %}{% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}
     </title>
 
     {% if page_description %}
