@@ -1,5 +1,9 @@
 {% liquid
   assign hero_link = section.settings.cta_link
+  assign hero_alt = section.settings.heading
+  if section.settings.image != blank and section.settings.image.alt != blank
+    assign hero_alt = section.settings.image.alt
+  endif
   if section.settings.featured_product != blank
     assign hero_link = section.settings.featured_product.url
   endif
@@ -42,7 +46,7 @@
               loading: 'eager',
               fetchpriority: 'high',
               class: 'ralen-hero__image',
-              alt: section.settings.image.alt | default: section.settings.heading
+              alt: hero_alt
           }}
         {% elsif section.settings.featured_product != blank and section.settings.featured_product.featured_image != blank %}
           {{ section.settings.featured_product.featured_image
