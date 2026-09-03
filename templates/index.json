@@ -22,7 +22,56 @@
         "badge": "ELEGIDO CON CRITERIO",
         "footer_note": "OBJETOS PARA HACER MEJOR LO COTIDIANO"
       }
+    },
+    "ralen_products": {
+      "type": "ralen-featured-collection",
+      "settings": {
+        "index_label": "02 / SELECCIÓN",
+        "kicker": "OBJETOS ACTUALES",
+        "heading": "LO QUE SÍ SE QUEDA.",
+        "description": "Una selección corta. Menos ruido, mejores decisiones.",
+        "products_to_show": 4,
+        "show_vendor": false,
+        "cta_label": "VER TODA LA SELECCIÓN"
+      }
+    },
+    "ralen_manifesto": {
+      "type": "ralen-manifesto",
+      "settings": {
+        "index_label": "03",
+        "kicker": "NUESTRO CRITERIO",
+        "heading": "NO NECESITAS MÁS COSAS. NECESITAS ELEGIR MEJOR.",
+        "copy": "<p>RALEN selecciona objetos útiles, bien resueltos y visualmente honestos. Lo demás se queda fuera.</p>"
+      }
+    },
+    "ralen_assurance": {
+      "type": "ralen-assurance",
+      "blocks": {
+        "payment": {
+          "type": "item",
+          "settings": {
+            "heading": "PAGO SEGURO",
+            "copy": "Procesado por Shopify."
+          }
+        },
+        "shipping": {
+          "type": "item",
+          "settings": {
+            "heading": "ENVÍOS EN MÉXICO",
+            "copy": "Seguimiento disponible."
+          }
+        },
+        "support": {
+          "type": "item",
+          "settings": {
+            "heading": "SOPORTE REAL",
+            "copy": "Atención antes y después de comprar."
+          }
+        }
+      },
+      "block_order": ["payment", "shipping", "support"],
+      "settings": {}
     }
   },
-  "order": ["ralen_intro", "ralen_hero"]
+  "order": ["ralen_intro", "ralen_hero", "ralen_products", "ralen_manifesto", "ralen_assurance"]
 }
