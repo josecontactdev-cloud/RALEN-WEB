@@ -57,6 +57,27 @@
     });
   }
 
+  function initScrollReveals() {
+    const sections = [...document.querySelectorAll('[data-ralen-reveal]:not(.is-visible)')];
+    if (!sections.length) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+      sections.forEach((section) => section.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+
+    sections.forEach((section) => observer.observe(section));
+  }
+
   function initMobileBuyBar() {
     const bar = document.querySelector('[data-ralen-mobile-buy-bar]');
     const form = document.querySelector('.ralen-product-form');
@@ -110,6 +131,7 @@
 
   function init() {
     initMobileMenu();
+    initScrollReveals();
     initMobileBuyBar();
     initTouchState();
   }
