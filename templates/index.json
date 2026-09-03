@@ -14,11 +14,14 @@
     "ralen_hero": {
       "type": "ralen-hero",
       "settings": {
+        "merchandising_mode": "manual",
+        "rotation_limit": 6,
         "slide_label": "01 / 01",
         "eyebrow": "RALEN / SELECCIÓN ACTUAL",
         "heading": "MEJOR, NO MÁS.",
         "copy": "<p>Objetos seleccionados por diseño, utilidad y función.</p>",
         "cta_label": "EXPLORAR TIENDA",
+        "product_label": "SELECCIÓN RALEN",
         "badge": "ELEGIDO CON CRITERIO",
         "footer_note": "OBJETOS PARA HACER MEJOR LO COTIDIANO"
       }
