@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "ralen-main-cart",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}
