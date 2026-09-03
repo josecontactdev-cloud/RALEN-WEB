@@ -22,6 +22,7 @@
   text-transform: uppercase;
 }
 .ralen-announcement__inner a { color: #f2f2ef; white-space: nowrap; }
+body:has(.ralen-announcement) .ralen-header { top: 34px; }
 
 .ralen-faq {
   padding: clamp(84px, 10vw, 150px) 0;
@@ -113,7 +114,8 @@
   background: #f2f2ef;
   transition: transform .35s ease;
 }
-.ralen-cart-drawer__payments {
+.ralen-cart-drawer__payments,
+.ralen-cart__payments {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
@@ -122,20 +124,25 @@
   list-style: none;
   opacity: .72;
 }
-.ralen-cart-drawer__payments svg { width: 34px; height: auto; display: block; }
-.ralen-cart-drawer__policies {
+.ralen-cart-drawer__payments svg,
+.ralen-cart__payments svg { width: 34px; height: auto; display: block; }
+.ralen-cart-drawer__policies,
+.ralen-cart__policies {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 16px;
   margin-top: 14px;
 }
-.ralen-cart-drawer__policies a {
+.ralen-cart-drawer__policies a,
+.ralen-cart__policies a {
   color: #666662;
   font-size: 7px;
   letter-spacing: .14em;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.ralen-cart__payments + .ralen-cart__policies,
+.ralen-cart__policies + .ralen-cart__update { margin-top: 18px; }
 
 .ralen-product__launch-note {
   display: flex;
