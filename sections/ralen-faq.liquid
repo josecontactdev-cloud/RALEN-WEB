@@ -1,0 +1,58 @@
+<section class="ralen-faq" data-ralen-reveal>
+  <div class="ralen-shell ralen-faq__layout">
+    <header class="ralen-faq__head">
+      <span>{{ section.settings.index_label }}</span>
+      <div>
+        <p>{{ section.settings.kicker }}</p>
+        <h2>{{ section.settings.heading }}</h2>
+        {% if section.settings.copy != blank %}<div>{{ section.settings.copy }}</div>{% endif %}
+      </div>
+    </header>
+
+    <div class="ralen-faq__items">
+      {% for block in section.blocks %}
+        <details class="ralen-faq__item" {{ block.shopify_attributes }}>
+          <summary>
+            <span>{{ forloop.index | prepend: '0' }}</span>
+            <strong>{{ block.settings.question }}</strong>
+            <i aria-hidden="true">＋</i>
+          </summary>
+          <div class="ralen-faq__answer">{{ block.settings.answer }}</div>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RALEN Preguntas",
+  "settings": [
+    { "type": "text", "id": "index_label", "label": "Índice", "default": "06 / INFORMACIÓN" },
+    { "type": "text", "id": "kicker", "label": "Etiqueta", "default": "ANTES DE COMPRAR" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "LO IMPORTANTE, CLARO." },
+    { "type": "richtext", "id": "copy", "label": "Descripción", "default": "<p>Respuestas directas sobre pedidos, envíos y soporte.</p>" }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Pregunta",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Pregunta", "default": "¿Cómo sé cuándo llegará mi pedido?" },
+        { "type": "richtext", "id": "answer", "label": "Respuesta", "default": "<p>Cuando tu pedido sea enviado recibirás la información de seguimiento disponible para tu envío.</p>" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "RALEN Preguntas",
+      "blocks": [
+        { "type": "question", "settings": { "question": "¿Cómo sé cuándo llegará mi pedido?", "answer": "<p>Cuando tu pedido sea enviado recibirás la información de seguimiento disponible para tu envío.</p>" } },
+        { "type": "question", "settings": { "question": "¿Qué hago si tengo un problema con mi compra?", "answer": "<p>Contáctanos desde la página de contacto con tu número de pedido y revisaremos tu caso.</p>" } },
+        { "type": "question", "settings": { "question": "¿Dónde consulto cambios o devoluciones?", "answer": "<p>Consulta la política de devoluciones publicada en la tienda antes de finalizar tu compra.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
