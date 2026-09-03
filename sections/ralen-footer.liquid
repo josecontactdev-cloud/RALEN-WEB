@@ -14,7 +14,16 @@
         </nav>
       {% endif %}
 
-      <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+      {% if shop.privacy_policy != blank or shop.refund_policy != blank or shop.shipping_policy != blank or shop.terms_of_service != blank %}
+        <nav aria-label="Políticas de la tienda">
+          {% if shop.shipping_policy != blank %}<a href="{{ shop.shipping_policy.url }}">Envíos</a>{% endif %}
+          {% if shop.refund_policy != blank %}<a href="{{ shop.refund_policy.url }}">Devoluciones</a>{% endif %}
+          {% if shop.privacy_policy != blank %}<a href="{{ shop.privacy_policy.url }}">Privacidad</a>{% endif %}
+          {% if shop.terms_of_service != blank %}<a href="{{ shop.terms_of_service.url }}">Términos</a>{% endif %}
+        </nav>
+      {% endif %}
+
+      {% if section.settings.email != blank %}<a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>{% endif %}
     </div>
   </div>
 
@@ -31,7 +40,7 @@
     { "type": "text", "id": "logo_text", "label": "Logo", "default": "RALEN" },
     { "type": "text", "id": "tagline", "label": "Frase", "default": "Objetos para hacer mejor lo cotidiano." },
     { "type": "link_list", "id": "menu", "label": "Menú" },
-    { "type": "text", "id": "email", "label": "Email", "default": "hola@ralen.mx" }
+    { "type": "text", "id": "email", "label": "Email" }
   ]
 }
 {% endschema %}

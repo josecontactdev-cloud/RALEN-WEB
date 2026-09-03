@@ -1,0 +1,275 @@
+/* Phase 4 — mobile-first production polish */
+
+:focus-visible {
+  outline: 1px solid #f2f2ef;
+  outline-offset: 4px;
+}
+
+body.is-menu-open { overflow: hidden; }
+
+.ralen-menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.ralen-menu-toggle span {
+  display: block;
+  width: 18px;
+  height: 1px;
+  margin: 5px auto;
+  background: currentColor;
+  transition: transform .3s ease, opacity .3s ease;
+}
+.ralen-menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3px) rotate(45deg); }
+.ralen-menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3px) rotate(-45deg); }
+
+.ralen-mobile-menu { display: none; }
+
+/* Search */
+.ralen-search,
+.ralen-page,
+.ralen-404 {
+  min-height: 100svh;
+  padding: 150px 0 100px;
+  background: #050505;
+  color: var(--ralen-fg);
+}
+.ralen-search__head,
+.ralen-page__head,
+.ralen-404__inner {
+  display: grid;
+  grid-template-columns: minmax(150px, .4fr) minmax(0, 1.6fr);
+  gap: clamp(40px, 8vw, 140px);
+  align-items: start;
+  padding-bottom: clamp(56px, 8vw, 100px);
+}
+.ralen-search__index,
+.ralen-page__index,
+.ralen-404__index {
+  color: #686865;
+  font-size: 8px;
+  letter-spacing: .22em;
+}
+.ralen-search h1,
+.ralen-page h1,
+.ralen-404 h1 {
+  margin: 0;
+  max-width: 980px;
+  font-size: clamp(54px, 8vw, 120px);
+  font-weight: 400;
+  line-height: .88;
+  letter-spacing: -.06em;
+  text-transform: uppercase;
+}
+.ralen-search-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  border-top: 1px solid var(--ralen-line);
+  border-bottom: 1px solid var(--ralen-line);
+}
+.ralen-search-form input {
+  min-width: 0;
+  height: 76px;
+  border: 0;
+  padding: 0 20px 0 0;
+  background: transparent;
+  color: #fff;
+  outline: none;
+  font-size: clamp(18px, 2vw, 28px);
+}
+.ralen-search-form input::placeholder { color: #4f4f4c; }
+.ralen-search-form button {
+  min-width: 150px;
+  border: 0;
+  border-left: 1px solid var(--ralen-line);
+  background: transparent;
+  color: #f2f2ef;
+  cursor: pointer;
+  font-size: 8px;
+  letter-spacing: .22em;
+}
+.ralen-search__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 28px 0;
+  color: #696965;
+  font-size: 8px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.ralen-search__empty { padding: 80px 0; color: #858581; font-size: 13px; line-height: 1.7; }
+
+.ralen-page__content {
+  max-width: 760px;
+  margin-left: auto;
+  color: #aaa9a4;
+  font-size: clamp(15px, 1.3vw, 18px);
+  line-height: 1.85;
+}
+.ralen-page__content h2,
+.ralen-page__content h3 { color: #f2f2ef; font-weight: 400; }
+.ralen-page__content a { text-decoration: underline; text-underline-offset: 3px; }
+
+.ralen-404__copy { max-width: 500px; }
+.ralen-404__copy p { margin: 30px 0 0; color: #858581; font-size: 13px; line-height: 1.7; }
+
+/* Mobile-first resilience */
+@media (max-width: 989px) {
+  .ralen-header { position: absolute; }
+  .ralen-header__inner { min-height: 76px; grid-template-columns: 1fr auto; }
+  .ralen-actions { gap: 4px; }
+  .ralen-icon-link,
+  .ralen-menu-toggle { width: 44px; height: 44px; }
+  .ralen-menu-toggle { display: block; }
+
+  .ralen-mobile-menu:not([hidden]) {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    background: #050505;
+    color: #f2f2ef;
+    pointer-events: auto;
+  }
+  .ralen-mobile-menu::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: .12;
+    pointer-events: none;
+    background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .ralen-mobile-menu__top,
+  .ralen-mobile-menu__nav,
+  .ralen-mobile-menu__footer { position: relative; z-index: 1; }
+  .ralen-mobile-menu__top {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--ralen-line);
+  }
+  .ralen-mobile-menu__label,
+  .ralen-mobile-menu__close,
+  .ralen-mobile-menu__footer {
+    color: #777773;
+    font-size: 8px;
+    letter-spacing: .2em;
+  }
+  .ralen-mobile-menu__close {
+    min-width: 64px;
+    min-height: 44px;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: #f2f2ef;
+    cursor: pointer;
+  }
+  .ralen-mobile-menu__nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .ralen-mobile-menu__nav a {
+    display: grid;
+    grid-template-columns: 34px 1fr auto;
+    gap: 18px;
+    align-items: center;
+    min-height: 78px;
+    border-bottom: 1px solid var(--ralen-line);
+  }
+  .ralen-mobile-menu__nav a:first-child { border-top: 1px solid var(--ralen-line); }
+  .ralen-mobile-menu__nav span { color: #5e5e5a; font-size: 8px; letter-spacing: .16em; }
+  .ralen-mobile-menu__nav strong {
+    font-size: clamp(24px, 8vw, 42px);
+    font-weight: 400;
+    letter-spacing: -.03em;
+    text-transform: uppercase;
+  }
+  .ralen-mobile-menu__nav i { font-style: normal; color: #777773; }
+  .ralen-mobile-menu__footer {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    border-top: 1px solid var(--ralen-line);
+  }
+  .ralen-mobile-menu__footer span { margin-left: auto; color: #4f4f4c; }
+
+  .ralen-search,
+  .ralen-page,
+  .ralen-404 { padding-top: 112px; }
+  .ralen-search__head,
+  .ralen-page__head,
+  .ralen-404__inner { grid-template-columns: 1fr; gap: 32px; }
+
+  .ralen-product__sticky { padding-bottom: max(84px, calc(64px + env(safe-area-inset-bottom))); }
+  .ralen-cart { padding-bottom: max(80px, calc(60px + env(safe-area-inset-bottom))); }
+}
+
+@media (max-width: 640px) {
+  .ralen-shell { padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
+
+  .ralen-hero { min-height: 100dvh; }
+  .ralen-hero__content { min-height: 54dvh; padding-top: 92px; padding-bottom: 52px; }
+  .ralen-hero__visual { min-height: 46dvh; }
+  .ralen-hero__title { font-size: clamp(48px, 15vw, 70px); line-height: .9; }
+  .ralen-hero__copy { margin-top: 24px; font-size: 12px; line-height: 1.6; }
+  .ralen-text-link { min-height: 44px; align-items: center; margin-top: 28px; }
+  .ralen-product-chip { right: 20px; left: 20px; width: auto; }
+
+  .ralen-section-head { margin-bottom: 44px; }
+  .ralen-products { padding-top: 76px; padding-bottom: 84px; }
+  .ralen-card__meta { min-height: 82px; }
+
+  .ralen-product__gallery { margin-inline: calc(var(--ralen-gutter) * -1); }
+  .ralen-product__thumbs { overflow-x: auto; grid-template-columns: repeat(6, 86px); scrollbar-width: none; }
+  .ralen-product__thumbs::-webkit-scrollbar { display: none; }
+  .ralen-product__sticky { padding-top: 54px; }
+  .ralen-product__topline { gap: 10px; }
+  .ralen-product__buy-row { grid-template-columns: 78px minmax(0,1fr); }
+  .ralen-buy-button { min-height: 58px; padding-inline: 14px; letter-spacing: .14em; }
+
+  .ralen-cart-item { grid-template-columns: 96px minmax(0, 1fr); }
+  .ralen-cart-item__info { padding: 16px; }
+  .ralen-checkout-button { min-height: 60px; }
+
+  .ralen-search h1,
+  .ralen-page h1,
+  .ralen-404 h1 { font-size: clamp(48px, 15vw, 76px); }
+  .ralen-search-form { grid-template-columns: 1fr; }
+  .ralen-search-form input { height: 66px; padding-right: 0; }
+  .ralen-search-form button { min-height: 54px; border-left: 0; border-top: 1px solid var(--ralen-line); }
+  .ralen-search__meta { flex-direction: column; }
+  .ralen-page__content { margin-left: 0; }
+}
+
+@media (max-width: 390px) {
+  .ralen-wordmark { letter-spacing: .28em; }
+  .ralen-actions { gap: 0; }
+  .ralen-icon-link { width: 40px; }
+  .ralen-menu-toggle { width: 40px; }
+  .ralen-mobile-menu__footer { gap: 14px; font-size: 7px; }
+  .ralen-mobile-menu__footer span { display: none; }
+  .ralen-product__buy-row { grid-template-columns: 1fr; }
+  .ralen-quantity { display: grid; grid-template-columns: auto 74px; align-items: center; justify-content: space-between; }
+  .ralen-quantity input { height: 48px; }
+}
+
+@media (hover: none) {
+  .ralen-card:hover .ralen-card__image { transform: none; }
+  .ralen-buy-button:hover { background: #f2f2ef; color: #050505; }
+}

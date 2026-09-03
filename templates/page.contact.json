@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "ralen-contact",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

@@ -1,0 +1,65 @@
+.ralen-mobile-buy-bar {
+  display: none;
+}
+
+@media (max-width: 989px) {
+  .ralen-mobile-buy-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 80;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(132px, .45fr);
+    gap: 12px;
+    align-items: center;
+    padding: 10px max(14px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
+    border-top: 1px solid rgba(255,255,255,.16);
+    background: rgba(5,5,5,.9);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    transform: translateY(120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .32s cubic-bezier(.2,.7,.2,1), opacity .25s ease;
+  }
+  .ralen-mobile-buy-bar.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .ralen-mobile-buy-bar__meta {
+    min-width: 0;
+    display: grid;
+    gap: 5px;
+  }
+  .ralen-mobile-buy-bar__meta span {
+    overflow: hidden;
+    color: #8a8a86;
+    font-size: 8px;
+    letter-spacing: .13em;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .ralen-mobile-buy-bar__meta strong { font-size: 13px; font-weight: 400; }
+  .ralen-mobile-buy-bar button {
+    min-height: 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    border: 1px solid #f2f2ef;
+    padding: 0 14px;
+    background: #f2f2ef;
+    color: #050505;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: .15em;
+  }
+  .ralen-mobile-buy-bar button:disabled { opacity: .45; }
+}
+
+@media (max-width: 390px) {
+  .ralen-mobile-buy-bar { grid-template-columns: minmax(0, 1fr) 122px; gap: 8px; }
+}

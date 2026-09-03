@@ -1,0 +1,38 @@
+html { color-scheme: dark; }
+
+a,
+button,
+input,
+select { touch-action: manipulation; }
+
+a,
+button { -webkit-tap-highlight-color: transparent; }
+
+@media (max-width: 640px) {
+  .ralen-select-wrap select,
+  .ralen-quantity input,
+  .ralen-cart-item__controls input,
+  .ralen-search-form input {
+    font-size: 16px;
+  }
+
+  .ralen-footer__links a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .ralen-product__thumb {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+@media (forced-colors: active) {
+  .ralen-buy-button,
+  .ralen-checkout-button,
+  .ralen-mobile-buy-bar button,
+  .ralen-search-form button {
+    border: 1px solid ButtonText;
+  }
+}

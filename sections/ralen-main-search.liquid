@@ -1,0 +1,91 @@
+<section class="ralen-search">
+  <div class="ralen-shell">
+    <div class="ralen-search__head">
+      <span class="ralen-search__index">05 / BÚSQUEDA</span>
+      <h1>ENCUENTRA<br>LO JUSTO.</h1>
+    </div>
+
+    <form action="{{ routes.search_url }}" method="get" role="search" class="ralen-search-form">
+      <input
+        type="search"
+        name="q"
+        value="{{ search.terms | escape }}"
+        placeholder="Buscar en RALEN"
+        aria-label="Buscar en RALEN"
+        autocomplete="off"
+      >
+      <input type="hidden" name="options[prefix]" value="last">
+      <button type="submit">BUSCAR →</button>
+    </form>
+
+    {% if search.performed %}
+      <div class="ralen-search__meta">
+        <span>“{{ search.terms | escape }}”</span>
+        <span>{{ search.results_count }} {% if search.results_count == 1 %}RESULTADO{% else %}RESULTADOS{% endif %}</span>
+      </div>
+
+      {% paginate search.results by 12 %}
+        {% if search.results_count > 0 %}
+          <div class="ralen-search-grid">
+            {% for item in search.results %}
+              {% if item.object_type == 'product' %}
+                <article class="ralen-card" data-ralen-card>
+                  <a class="ralen-card__media" href="{{ item.url }}" aria-label="{{ item.title | escape }}">
+                    {% if item.featured_image != blank %}
+                      {{ item.featured_image
+                        | image_url: width: 900
+                        | image_tag:
+                          widths: '320, 480, 640, 900',
+                          sizes: '(min-width: 990px) 25vw, (min-width: 640px) 50vw, 100vw',
+                          loading: 'lazy',
+                          class: 'ralen-card__image',
+                          alt: item.featured_image.alt | default: item.title
+                      }}
+                    {% else %}
+                      {{ 'product-1' | placeholder_svg_tag: 'ralen-card__placeholder' }}
+                    {% endif %}
+                    <span class="ralen-card__number">{{ forloop.index | prepend: '0' }}</span>
+                  </a>
+                  <div class="ralen-card__meta">
+                    <div>
+                      <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+                      <span>OBJETO</span>
+                    </div>
+                    <div class="ralen-card__price"><strong>{{ item.price | money }}</strong></div>
+                  </div>
+                </article>
+              {% else %}
+                <article class="ralen-search-text-result">
+                  <span>{{ item.object_type | upcase }}</span>
+                  <h2><a href="{{ item.url }}">{{ item.title }}</a></h2>
+                  {% if item.content != blank %}<p>{{ item.content | strip_html | truncate: 150 }}</p>{% endif %}
+                  <a href="{{ item.url }}" class="ralen-search-text-result__link">ABRIR →</a>
+                </article>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          {% if paginate.pages > 1 %}
+            <nav class="ralen-pagination" aria-label="Paginación de búsqueda">
+              {% if paginate.previous %}<a href="{{ paginate.previous.url }}">← ANTERIOR</a>{% else %}<span></span>{% endif %}
+              <span>{{ paginate.current_page }} / {{ paginate.pages }}</span>
+              {% if paginate.next %}<a href="{{ paginate.next.url }}">SIGUIENTE →</a>{% endif %}
+            </nav>
+          {% endif %}
+        {% else %}
+          <div class="ralen-search__empty">
+            <p>No encontramos nada con ese término. Prueba con una palabra más simple.</p>
+            <a class="ralen-text-link" href="{{ routes.all_products_collection_url }}">VER CATÁLOGO <span aria-hidden="true">→</span></a>
+          </div>
+        {% endif %}
+      {% endpaginate %}
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RALEN Búsqueda",
+  "settings": []
+}
+{% endschema %}
