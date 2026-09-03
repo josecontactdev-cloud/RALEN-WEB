@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "ralen-main-search",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}
