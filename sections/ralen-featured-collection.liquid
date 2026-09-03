@@ -1,0 +1,108 @@
+{% liquid
+  assign selected_collection = section.settings.collection
+  assign products_to_show = section.settings.products_to_show | default: 4
+%}
+
+<section class="ralen-products" data-ralen-reveal>
+  <div class="ralen-shell">
+    <div class="ralen-section-head">
+      <div>
+        <span class="ralen-section-index">{{ section.settings.index_label }}</span>
+        <p class="ralen-section-kicker">{{ section.settings.kicker }}</p>
+      </div>
+      <div class="ralen-section-head__copy">
+        <h2>{{ section.settings.heading }}</h2>
+        {% if section.settings.description != blank %}
+          <p>{{ section.settings.description }}</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="ralen-product-grid">
+      {% if selected_collection != blank and selected_collection.products_count > 0 %}
+        {% for product in selected_collection.products limit: products_to_show %}
+          <article class="ralen-card" data-ralen-card>
+            <a class="ralen-card__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+              {% if product.featured_image != blank %}
+                {{ product.featured_image
+                  | image_url: width: 1000
+                  | image_tag:
+                    widths: '360, 540, 720, 900, 1000',
+                    sizes: '(min-width: 990px) 25vw, (min-width: 640px) 50vw, 100vw',
+                    loading: 'lazy',
+                    class: 'ralen-card__image',
+                    alt: product.featured_image.alt | default: product.title
+                }}
+              {% else %}
+                {{ 'product-1' | placeholder_svg_tag: 'ralen-card__placeholder' }}
+              {% endif %}
+
+              <span class="ralen-card__number">{{ forloop.index | prepend: '0' }}</span>
+              {% unless product.available %}
+                <span class="ralen-card__status">AGOTADO</span>
+              {% endunless %}
+            </a>
+
+            <div class="ralen-card__meta">
+              <div>
+                <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+                {% if section.settings.show_vendor and product.vendor != blank %}
+                  <span>{{ product.vendor }}</span>
+                {% endif %}
+              </div>
+              <div class="ralen-card__price">
+                {% if product.compare_at_price > product.price %}
+                  <s>{{ product.compare_at_price | money }}</s>
+                {% endif %}
+                <strong>{{ product.price | money }}</strong>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      {% else %}
+        {% for i in (1..4) %}
+          <article class="ralen-card ralen-card--placeholder" data-ralen-card>
+            <div class="ralen-card__media">
+              {{ 'product-' | append: i | placeholder_svg_tag: 'ralen-card__placeholder' }}
+              <span class="ralen-card__number">{{ i | prepend: '0' }}</span>
+            </div>
+            <div class="ralen-card__meta">
+              <div>
+                <h3>OBJETO {{ i | prepend: '0' }}</h3>
+                <span>SELECCIÓN RALEN</span>
+              </div>
+              <strong>—</strong>
+            </div>
+          </article>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    {% if selected_collection != blank %}
+      <div class="ralen-products__footer">
+        <a class="ralen-text-link" href="{{ selected_collection.url }}">
+          {{ section.settings.cta_label }} <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RALEN Productos",
+  "settings": [
+    { "type": "text", "id": "index_label", "label": "Índice", "default": "02 / SELECCIÓN" },
+    { "type": "text", "id": "kicker", "label": "Etiqueta", "default": "OBJETOS ACTUALES" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "LO QUE SÍ SE QUEDA." },
+    { "type": "textarea", "id": "description", "label": "Descripción", "default": "Una selección corta. Menos ruido, mejores decisiones." },
+    { "type": "collection", "id": "collection", "label": "Colección" },
+    { "type": "range", "id": "products_to_show", "min": 2, "max": 8, "step": 1, "default": 4, "label": "Productos a mostrar" },
+    { "type": "checkbox", "id": "show_vendor", "label": "Mostrar proveedor", "default": false },
+    { "type": "text", "id": "cta_label", "label": "CTA", "default": "VER TODA LA SELECCIÓN" }
+  ],
+  "presets": [
+    { "name": "RALEN Productos" }
+  ]
+}
+{% endschema %}
