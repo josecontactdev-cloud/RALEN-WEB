@@ -2,7 +2,7 @@
   const drawer = document.querySelector('[data-ralen-cart-drawer]');
   let latestCart = null;
 
-  function pushEvent(event, ecommerce = {}) {
+  function pushCommerceEvent(event, ecommerce = {}) {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event, ecommerce });
   }
@@ -40,10 +40,22 @@
     if (bar) bar.style.transform = `scaleX(${ratio})`;
   }
 
+  const cartToEcommerce = (cart) => ({
+    currency: drawer?.dataset.currency || 'MXN',
+    value: Number(cart?.total_price || 0) / 100,
+    items: (cart?.items || []).map((item) => ({
+      item_id: String(item.product_id || item.variant_id || ''),
+      item_name: item.product_title || item.title || '',
+      item_variant: item.variant_title || '',
+      price: Number(item.final_price || item.price || 0) / 100,
+      quantity: Number(item.quantity || 1)
+    }))
+  });
+
   function initCommerceEvents() {
     const product = document.querySelector('[data-ralen-product][data-product-id]');
     if (product) {
-      pushEvent('view_item', {
+      pushCommerceEvent('view_item', {
         currency: drawer?.dataset.currency || 'MXN',
         value: Number(product.dataset.productPrice || 0) / 100,
         items: [{
@@ -59,7 +71,7 @@
     document.addEventListener('ralen:item-added', (event) => {
       const item = event.detail?.item;
       if (!item) return;
-      pushEvent('add_to_cart', {
+      pushCommerceEvent('add_to_cart', {
         currency: drawer?.dataset.currency || 'MXN',
         value: Number(item.final_price || item.price || 0) / 100,
         items: [{
@@ -78,23 +90,17 @@
     });
 
     document.addEventListener('click', (event) => {
+      const cartTrigger = event.target.closest('[data-ralen-cart-trigger]');
+      if (cartTrigger && latestCart) pushCommerceEvent('view_cart', cartToEcommerce(latestCart));
+
       const checkout = event.target.closest('[name="checkout"], .ralen-cart-drawer__checkout');
-      if (!checkout || !latestCart) return;
-      pushEvent('begin_checkout', {
-        currency: drawer?.dataset.currency || 'MXN',
-        value: Number(latestCart.total_price || 0) / 100,
-        items: (latestCart.items || []).map((item) => ({
-          item_id: String(item.product_id || item.variant_id || ''),
-          item_name: item.product_title || item.title || '',
-          item_variant: item.variant_title || '',
-          price: Number(item.final_price || item.price || 0) / 100,
-          quantity: Number(item.quantity || 1)
-        }))
-      });
+      if (checkout && latestCart) pushCommerceEvent('begin_checkout', cartToEcommerce(latestCart));
     });
 
-    document.querySelectorAll('form[action*="/contact"] input[name="contact[email]"]').forEach((input) => {
-      input.form?.addEventListener('submit', () => pushEvent('generate_lead', { lead_source: 'newsletter' }));
+    const newsletter = document.querySelector('#RalenNewsletter');
+    newsletter?.addEventListener('submit', () => {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'generate_lead', lead_source: 'newsletter' });
     });
   }
 
