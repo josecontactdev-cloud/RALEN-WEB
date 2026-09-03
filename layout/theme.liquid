@@ -35,6 +35,9 @@
       {% when 'search' %}
         {{ 'phase-4-search.css' | asset_url | stylesheet_tag }}
     {% endcase %}
+    {% if request.page_type == 'page' and template.suffix == 'contact' %}
+      {{ 'phase-4-contact.css' | asset_url | stylesheet_tag }}
+    {% endif %}
 
     <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
     {% if request.page_type == 'index' %}
