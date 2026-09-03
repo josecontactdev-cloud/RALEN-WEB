@@ -1,0 +1,71 @@
+<div
+  class="ralen-cart-drawer"
+  data-ralen-cart-drawer
+  data-currency="{{ shop.currency }}"
+  aria-hidden="true"
+  hidden
+>
+  <button class="ralen-cart-drawer__overlay" type="button" data-ralen-cart-drawer-close aria-label="Cerrar carrito"></button>
+
+  <aside class="ralen-cart-drawer__panel" role="dialog" aria-modal="true" aria-labelledby="RalenCartDrawerTitle">
+    <header class="ralen-cart-drawer__header">
+      <div>
+        <span>05 / CARRITO</span>
+        <h2 id="RalenCartDrawerTitle">TU SELECCIÓN.</h2>
+      </div>
+      <button type="button" data-ralen-cart-drawer-close aria-label="Cerrar carrito">CERRAR</button>
+    </header>
+
+    <div class="ralen-cart-drawer__body" data-ralen-cart-drawer-items>
+      {% if cart.item_count == 0 %}
+        <div class="ralen-cart-drawer__empty" data-ralen-cart-empty>
+          <span>00</span>
+          <p>Nada aquí, todavía.</p>
+          <a href="{{ routes.all_products_collection_url }}">EXPLORAR OBJETOS →</a>
+        </div>
+      {% else %}
+        {% for item in cart.items %}
+          <article class="ralen-drawer-item" data-cart-key="{{ item.key }}">
+            <a href="{{ item.url }}" class="ralen-drawer-item__media">
+              {% if item.image != blank %}
+                {{ item.image | image_url: width: 360 | image_tag: widths: '120, 180, 240, 360', sizes: '96px', loading: 'lazy', alt: item.product.title }}
+              {% endif %}
+            </a>
+            <div class="ralen-drawer-item__info">
+              <div>
+                <h3><a href="{{ item.url }}">{{ item.product.title }}</a></h3>
+                {% unless item.product.has_only_default_variant %}<p>{{ item.variant.title }}</p>{% endunless %}
+              </div>
+              <strong>{{ item.final_line_price | money }}</strong>
+              <div class="ralen-drawer-item__controls">
+                <button type="button" data-cart-change="minus" aria-label="Reducir cantidad">−</button>
+                <span>{{ item.quantity }}</span>
+                <button type="button" data-cart-change="plus" aria-label="Aumentar cantidad">＋</button>
+                <button type="button" class="ralen-drawer-item__remove" data-cart-remove>ELIMINAR</button>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <footer class="ralen-cart-drawer__footer" data-ralen-cart-drawer-footer{% if cart.item_count == 0 %} hidden{% endif %}>
+      <div class="ralen-cart-drawer__subtotal">
+        <span>SUBTOTAL</span>
+        <strong data-ralen-cart-drawer-subtotal>{{ cart.total_price | money }}</strong>
+      </div>
+      <p>Envío, descuentos e impuestos se calculan al finalizar la compra.</p>
+      <form action="{{ routes.cart_url }}" method="post">
+        <button class="ralen-cart-drawer__checkout" type="submit" name="checkout">FINALIZAR COMPRA <span aria-hidden="true">→</span></button>
+      </form>
+      <a class="ralen-cart-drawer__cart-link" href="{{ routes.cart_url }}">VER CARRITO COMPLETO</a>
+    </footer>
+  </aside>
+</div>
+
+{% schema %}
+{
+  "name": "RALEN Carrito lateral",
+  "settings": []
+}
+{% endschema %}
