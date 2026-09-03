@@ -16,36 +16,7 @@
     {% paginate collection.products by section.settings.products_per_page %}
       <div class="ralen-product-grid ralen-collection__grid">
         {% for product in collection.products %}
-          <article class="ralen-card" data-ralen-card>
-            <a class="ralen-card__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
-              {% if product.featured_image != blank %}
-                {{ product.featured_image
-                  | image_url: width: 1200
-                  | image_tag:
-                    widths: '360, 540, 720, 900, 1200',
-                    sizes: '(min-width: 990px) 25vw, (min-width: 640px) 50vw, 100vw',
-                    loading: 'lazy',
-                    class: 'ralen-card__image',
-                    alt: product.featured_image.alt | default: product.title
-                }}
-              {% else %}
-                {{ 'product-1' | placeholder_svg_tag: 'ralen-card__placeholder' }}
-              {% endif %}
-              <span class="ralen-card__number">{{ forloop.index | prepend: '0' }}</span>
-              {% unless product.available %}<span class="ralen-card__status">AGOTADO</span>{% endunless %}
-              <span class="ralen-card__view">VER OBJETO <span aria-hidden="true">↗</span></span>
-            </a>
-            <div class="ralen-card__meta">
-              <div>
-                <h2><a href="{{ product.url }}">{{ product.title }}</a></h2>
-                <span>SELECCIÓN RALEN</span>
-              </div>
-              <div class="ralen-card__price">
-                {% if product.compare_at_price > product.price %}<s>{{ product.compare_at_price | money }}</s>{% endif %}
-                <strong>{{ product.price | money }}</strong>
-              </div>
-            </div>
-          </article>
+          {% render 'ralen-product-card', product: product, index: forloop.index, heading_tag: 'h2', show_vendor: false, show_quick_add: section.settings.show_quick_add %}
         {% else %}
           <p class="ralen-collection__empty">Todavía no hay objetos en esta colección.</p>
         {% endfor %}
@@ -66,7 +37,8 @@
 {
   "name": "RALEN Colección",
   "settings": [
-    { "type": "range", "id": "products_per_page", "min": 4, "max": 24, "step": 4, "default": 12, "label": "Productos por página" }
+    { "type": "range", "id": "products_per_page", "min": 4, "max": 24, "step": 4, "default": 12, "label": "Productos por página" },
+    { "type": "checkbox", "id": "show_quick_add", "label": "Mostrar compra rápida", "default": true }
   ]
 }
 {% endschema %}
