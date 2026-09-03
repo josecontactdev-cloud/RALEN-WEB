@@ -1,0 +1,76 @@
+{% if section.settings.enabled %}
+  <section
+    class="ralen-intro"
+    data-ralen-intro
+    data-duration="{{ section.settings.duration | times: 1000 }}"
+    data-once="{{ section.settings.show_once }}"
+    aria-label="Introducción de RALEN"
+  >
+    <button class="ralen-intro__skip" type="button" data-intro-skip>Omitir</button>
+
+    <div class="ralen-intro__content">
+      <p class="ralen-intro__line" data-split-line>{{ section.settings.line_1 }}</p>
+      <p class="ralen-intro__line" data-split-line>{{ section.settings.line_2 }}</p>
+      <p class="ralen-intro__brand" data-split-line>{{ section.settings.line_3 }}</p>
+    </div>
+
+    <div class="ralen-intro__meta" aria-hidden="true">
+      <span>RALEN</span>
+      <span class="ralen-intro__progress"><i data-intro-progress></i></span>
+      <span data-intro-count>00</span>
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "RALEN Intro",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enabled",
+      "label": "Activar intro",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "line_1",
+      "label": "Línea 1",
+      "default": "NO VENDEMOS TODO."
+    },
+    {
+      "type": "text",
+      "id": "line_2",
+      "label": "Línea 2",
+      "default": "ELEGIMOS LO QUE VALE LA PENA."
+    },
+    {
+      "type": "text",
+      "id": "line_3",
+      "label": "Línea 3",
+      "default": "RALEN."
+    },
+    {
+      "type": "range",
+      "id": "duration",
+      "label": "Duración aproximada",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "unit": "s",
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "show_once",
+      "label": "Mostrar una vez por sesión",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "RALEN Intro"
+    }
+  ]
+}
+{% endschema %}

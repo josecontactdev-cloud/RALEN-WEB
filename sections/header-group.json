@@ -1,0 +1,14 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "header": {
+      "type": "ralen-header",
+      "settings": {
+        "logo_text": "RALEN",
+        "menu": "main-menu"
+      }
+    }
+  },
+  "order": ["header"]
+}

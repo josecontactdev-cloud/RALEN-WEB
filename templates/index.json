@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "ralen_intro": {
+      "type": "ralen-intro",
+      "settings": {
+        "enabled": true,
+        "line_1": "NO VENDEMOS TODO.",
+        "line_2": "ELEGIMOS LO QUE VALE LA PENA.",
+        "line_3": "RALEN.",
+        "duration": 3,
+        "show_once": true
+      }
+    },
+    "ralen_hero": {
+      "type": "ralen-hero",
+      "settings": {
+        "slide_label": "01 / 01",
+        "eyebrow": "RALEN / SELECCIÓN ACTUAL",
+        "heading": "MEJOR, NO MÁS.",
+        "copy": "<p>Objetos seleccionados por diseño, utilidad y función.</p>",
+        "cta_label": "EXPLORAR TIENDA",
+        "badge": "ELEGIDO CON CRITERIO",
+        "footer_note": "OBJETOS PARA HACER MEJOR LO COTIDIANO"
+      }
+    }
+  },
+  "order": ["ralen_intro", "ralen_hero"]
+}

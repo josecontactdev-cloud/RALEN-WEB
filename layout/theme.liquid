@@ -1,0 +1,33 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#050505">
+
+    <title>
+      {{ page_title }}{% if current_tags %} — {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} — Página {{ current_page }}{% endif %}{% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {{ content_for_header }}
+
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+    <script src="{{ 'ralen.js' | asset_url }}" defer></script>
+  </head>
+
+  <body class="ralen-theme">
+    <a class="skip-link" href="#MainContent">Saltar al contenido</a>
+
+    {% sections 'header-group' %}
+
+    <main id="MainContent" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+  </body>
+</html>

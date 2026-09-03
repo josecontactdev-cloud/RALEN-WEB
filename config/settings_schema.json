@@ -1,0 +1,19 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "RALEN",
+    "theme_version": "0.1.0",
+    "theme_author": "RALEN",
+    "theme_documentation_url": "https://github.com/josecontactdev-cloud/RALEN-WEB",
+    "theme_support_url": "https://github.com/josecontactdev-cloud/RALEN-WEB/issues"
+  },
+  {
+    "name": "Identidad RALEN",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Fase 1: sistema visual oscuro, intro animada y hero configurable preparado para tendencias."
+      }
+    ]
+  }
+]

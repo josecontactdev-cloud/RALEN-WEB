@@ -1,0 +1,166 @@
+{% liquid
+  assign hero_link = section.settings.cta_link
+  assign hero_alt = section.settings.heading
+  if section.settings.image != blank and section.settings.image.alt != blank
+    assign hero_alt = section.settings.image.alt
+  endif
+  if section.settings.featured_product != blank
+    assign hero_link = section.settings.featured_product.url
+  endif
+%}
+
+<section class="ralen-hero" data-ralen-hero>
+  <div class="ralen-shell ralen-hero__grid">
+    <div class="ralen-hero__content">
+      <div class="ralen-hero__index" aria-hidden="true">
+        <span>{{ section.settings.slide_label }}</span>
+        <span class="ralen-line"></span>
+      </div>
+
+      {% if section.settings.eyebrow != blank %}
+        <p class="ralen-eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+
+      <h1 class="ralen-hero__title">{{ section.settings.heading }}</h1>
+
+      {% if section.settings.copy != blank %}
+        <div class="ralen-hero__copy">{{ section.settings.copy }}</div>
+      {% endif %}
+
+      {% if section.settings.cta_label != blank %}
+        <a class="ralen-text-link" href="{{ hero_link | default: routes.all_products_collection_url }}">
+          {{ section.settings.cta_label }}
+          <span aria-hidden="true">→</span>
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="ralen-hero__visual">
+      <div class="ralen-hero__media">
+        {% if section.settings.image != blank %}
+          {{ section.settings.image
+            | image_url: width: 1800
+            | image_tag:
+              widths: '640, 960, 1280, 1600, 1800',
+              sizes: '(min-width: 990px) 62vw, 100vw',
+              loading: 'eager',
+              fetchpriority: 'high',
+              class: 'ralen-hero__image',
+              alt: hero_alt
+          }}
+        {% elsif section.settings.featured_product != blank and section.settings.featured_product.featured_image != blank %}
+          {{ section.settings.featured_product.featured_image
+            | image_url: width: 1800
+            | image_tag:
+              widths: '640, 960, 1280, 1600, 1800',
+              sizes: '(min-width: 990px) 62vw, 100vw',
+              loading: 'eager',
+              fetchpriority: 'high',
+              class: 'ralen-hero__image',
+              alt: section.settings.featured_product.title
+          }}
+        {% else %}
+          <div class="ralen-hero__placeholder" aria-hidden="true">
+            <span>PRODUCTO</span>
+            <strong>01</strong>
+          </div>
+        {% endif %}
+      </div>
+
+      {% if section.settings.badge != blank %}
+        <div class="ralen-hero__badge">
+          <span>{{ section.settings.badge }}</span>
+          <i></i>
+        </div>
+      {% endif %}
+
+      {% if section.settings.featured_product != blank %}
+        <a class="ralen-product-chip" href="{{ section.settings.featured_product.url }}">
+          {% if section.settings.featured_product.featured_image != blank %}
+            {{ section.settings.featured_product.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: section.settings.featured_product.title }}
+          {% endif %}
+          <span>
+            <small>SELECCIÓN RALEN</small>
+            <strong>{{ section.settings.featured_product.title }}</strong>
+          </span>
+          <span aria-hidden="true">→</span>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="ralen-shell ralen-hero__footer">
+    <span>{{ section.settings.footer_note }}</span>
+    <span>MX / {{ 'now' | date: '%Y' }}</span>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RALEN Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "slide_label",
+      "label": "Índice",
+      "default": "01 / 01"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Etiqueta",
+      "default": "RALEN / SELECCIÓN ACTUAL"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Título",
+      "default": "MEJOR, NO MÁS."
+    },
+    {
+      "type": "richtext",
+      "id": "copy",
+      "label": "Descripción",
+      "default": "<p>Objetos seleccionados por diseño, utilidad y función.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Texto del botón",
+      "default": "EXPLORAR TIENDA"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Enlace del botón"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen principal"
+    },
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": "Producto destacado"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Etiqueta lateral",
+      "default": "ELEGIDO CON CRITERIO"
+    },
+    {
+      "type": "text",
+      "id": "footer_note",
+      "label": "Nota inferior",
+      "default": "OBJETOS PARA HACER MEJOR LO COTIDIANO"
+    }
+  ],
+  "presets": [
+    {
+      "name": "RALEN Hero"
+    }
+  ]
+}
+{% endschema %}

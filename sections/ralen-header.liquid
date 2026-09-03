@@ -1,0 +1,44 @@
+<header class="ralen-header" data-ralen-header>
+  <div class="ralen-shell ralen-header__inner">
+    <a class="ralen-wordmark" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
+      {{ section.settings.logo_text | default: shop.name }}
+    </a>
+
+    {% if section.settings.menu != blank %}
+      <nav class="ralen-nav" aria-label="Navegación principal">
+        {% for link in section.settings.menu.links %}
+          <a href="{{ link.url }}" class="ralen-nav__link{% if link.current %} is-active{% endif %}">{{ link.title }}</a>
+        {% endfor %}
+      </nav>
+    {% endif %}
+
+    <div class="ralen-actions">
+      <a href="{{ routes.search_url }}" class="ralen-icon-link" aria-label="Buscar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+      </a>
+      <a href="{{ routes.cart_url }}" class="ralen-icon-link" aria-label="Carrito">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>
+        {% if cart.item_count > 0 %}<span class="ralen-cart-count">{{ cart.item_count }}</span>{% endif %}
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "RALEN Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Texto del logo",
+      "default": "RALEN"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menú"
+    }
+  ]
+}
+{% endschema %}
