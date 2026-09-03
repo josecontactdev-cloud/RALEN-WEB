@@ -1,0 +1,174 @@
+/* Phase 6 — launch polish, trust and honest conversion cues */
+
+.ralen-announcement {
+  position: relative;
+  z-index: 45;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--ralen-line);
+  background: #0a0a0a;
+  color: #aaa9a4;
+}
+.ralen-announcement__inner {
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  font-size: 7px;
+  letter-spacing: .22em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.ralen-announcement__inner a { color: #f2f2ef; white-space: nowrap; }
+
+.ralen-faq {
+  padding: clamp(84px, 10vw, 150px) 0;
+  background: #050505;
+  color: var(--ralen-fg);
+  border-bottom: 1px solid var(--ralen-line);
+}
+.ralen-faq__layout {
+  display: grid;
+  grid-template-columns: minmax(230px, .7fr) minmax(0, 1.3fr);
+  gap: clamp(54px, 10vw, 160px);
+}
+.ralen-faq__head > span,
+.ralen-faq__head p {
+  color: #686865;
+  font-size: 8px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+.ralen-faq__head p { margin: 48px 0 18px; }
+.ralen-faq__head h2 {
+  margin: 0;
+  max-width: 560px;
+  font-size: clamp(42px, 5vw, 76px);
+  font-weight: 400;
+  line-height: .93;
+  letter-spacing: -.05em;
+}
+.ralen-faq__head > div > div {
+  max-width: 420px;
+  margin-top: 28px;
+  color: #858581;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.ralen-faq__head > div > div p { margin: 0; }
+.ralen-faq__items { border-top: 1px solid var(--ralen-line); }
+.ralen-faq__item { border-bottom: 1px solid var(--ralen-line); }
+.ralen-faq__item summary {
+  min-height: 92px;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+}
+.ralen-faq__item summary::-webkit-details-marker { display: none; }
+.ralen-faq__item summary > span { color: #5e5e5a; font-size: 8px; letter-spacing: .18em; }
+.ralen-faq__item summary strong { font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+.ralen-faq__item summary i { font-style: normal; color: #8b8b87; transition: transform .2s ease; }
+.ralen-faq__item[open] summary i { transform: rotate(45deg); }
+.ralen-faq__answer {
+  max-width: 620px;
+  padding: 0 44px 30px 62px;
+  color: #8d8d89;
+  font-size: 12px;
+  line-height: 1.75;
+}
+.ralen-faq__answer p { margin: 0 0 12px; }
+
+.ralen-cart-progress {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--ralen-line);
+}
+.ralen-cart-progress__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  color: #858581;
+  font-size: 8px;
+  line-height: 1.45;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.ralen-cart-progress__track {
+  height: 2px;
+  margin-top: 12px;
+  overflow: hidden;
+  background: #242421;
+}
+.ralen-cart-progress__track i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: #f2f2ef;
+  transition: transform .35s ease;
+}
+.ralen-cart-drawer__payments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  opacity: .72;
+}
+.ralen-cart-drawer__payments svg { width: 34px; height: auto; display: block; }
+.ralen-cart-drawer__policies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 14px;
+}
+.ralen-cart-drawer__policies a {
+  color: #666662;
+  font-size: 7px;
+  letter-spacing: .14em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ralen-product__launch-note {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 18px;
+  margin-top: 18px;
+  color: #777773;
+  font-size: 8px;
+  line-height: 1.55;
+  letter-spacing: .08em;
+}
+.ralen-product__launch-note a {
+  color: #aaa9a4;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 989px) {
+  .ralen-faq__layout { grid-template-columns: 1fr; gap: 52px; }
+  .ralen-faq__head p { margin-top: 30px; }
+}
+
+@media (max-width: 640px) {
+  .ralen-announcement__inner { justify-content: space-between; gap: 12px; font-size: 6px; letter-spacing: .16em; }
+  .ralen-announcement__inner span { text-align: left; }
+  .ralen-faq { padding: 72px 0 86px; }
+  .ralen-faq__item summary { min-height: 78px; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 12px; }
+  .ralen-faq__item summary strong { font-size: 11px; line-height: 1.45; }
+  .ralen-faq__answer { padding: 0 0 26px 40px; font-size: 11px; }
+  .ralen-cart-progress__meta { font-size: 7px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ralen-faq__item summary i,
+  .ralen-cart-progress__track i { transition: none; }
+}
