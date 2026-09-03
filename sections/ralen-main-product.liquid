@@ -119,6 +119,17 @@
       </div>
     </div>
   </div>
+
+  <div class="ralen-mobile-buy-bar" data-ralen-mobile-buy-bar aria-hidden="true">
+    <div class="ralen-mobile-buy-bar__meta">
+      <span>{{ product.title }}</span>
+      <strong data-ralen-sticky-price>{{ current_variant.price | money }}</strong>
+    </div>
+    <button type="button" data-ralen-sticky-add {% unless current_variant.available %}disabled{% endunless %}>
+      <span data-ralen-sticky-label>{% if current_variant.available %}AÑADIR{% else %}AGOTADO{% endif %}</span>
+      <span aria-hidden="true">→</span>
+    </button>
+  </div>
 </section>
 
 {% schema %}
