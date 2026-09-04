@@ -23,7 +23,7 @@
 
       <span class="ralen-card__number">{{ card_index | prepend: '0' }}</span>
       {% unless product.available %}<span class="ralen-card__status">AGOTADO</span>{% endunless %}
-      <span class="ralen-card__view">VER OBJETO <span aria-hidden="true">↗</span></span>
+      <span class="ralen-card__view">VER PRODUCTO <span aria-hidden="true">↗</span></span>
     </a>
 
     {% if show_quick_add %}
@@ -49,7 +49,7 @@
       {% if show_vendor and product.vendor != blank %}
         <span>{{ product.vendor }}</span>
       {% else %}
-        <span>SELECCIÓN RALEN</span>
+        <span>RALEN / SETUP</span>
       {% endif %}
     </div>
     <div class="ralen-card__price">
