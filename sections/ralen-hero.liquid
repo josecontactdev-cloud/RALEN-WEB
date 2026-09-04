@@ -47,6 +47,8 @@
     assign hero_link = display_product.url
   endif
 
+  assign secondary_link = section.settings.secondary_cta_link | default: routes.all_products_collection_url
+
   assign hero_image = section.settings.image
   if merchandising_mode != 'manual' and display_product != blank and display_product.featured_image != blank
     assign hero_image = display_product.featured_image
@@ -63,7 +65,7 @@
 %}
 
 <section
-  class="ralen-hero"
+  class="ralen-hero ralen-hero--tech"
   data-ralen-hero
   data-merchandising-mode="{{ merchandising_mode }}"
   {% if display_product != blank %}data-merchandising-product-id="{{ display_product.id }}"{% endif %}
@@ -80,18 +82,34 @@
         <p class="ralen-eyebrow">{{ section.settings.eyebrow }}</p>
       {% endif %}
 
-      <h1 class="ralen-hero__title">{{ section.settings.heading }}</h1>
+      <h1 class="ralen-hero__title" data-hero-split>{{ section.settings.heading }}</h1>
 
       {% if section.settings.copy != blank %}
         <div class="ralen-hero__copy">{{ section.settings.copy }}</div>
       {% endif %}
 
-      {% if section.settings.cta_label != blank %}
-        <a class="ralen-text-link" href="{{ hero_link | default: routes.all_products_collection_url }}">
-          {{ section.settings.cta_label }}
-          <span aria-hidden="true">→</span>
-        </a>
+      {% if section.settings.system_label != blank %}
+        <div class="ralen-hero__systems" aria-label="Categorías">
+          {% assign systems = section.settings.system_label | split: '/' %}
+          {% for system in systems %}<span>{{ system | strip }}</span>{% endfor %}
+        </div>
       {% endif %}
+
+      <div class="ralen-hero__actions">
+        {% if section.settings.cta_label != blank %}
+          <a class="ralen-tech-cta" href="{{ hero_link | default: routes.all_products_collection_url }}">
+            {{ section.settings.cta_label }}
+            <span aria-hidden="true">↗</span>
+          </a>
+        {% endif %}
+
+        {% if section.settings.secondary_cta_label != blank %}
+          <a class="ralen-text-link" href="{{ secondary_link }}">
+            {{ section.settings.secondary_cta_label }}
+            <span aria-hidden="true">→</span>
+          </a>
+        {% endif %}
+      </div>
     </div>
 
     <div class="ralen-hero__visual">
@@ -101,7 +119,7 @@
             | image_url: width: 1800
             | image_tag:
               widths: '640, 960, 1280, 1600, 1800',
-              sizes: '(min-width: 990px) 62vw, 100vw',
+              sizes: '(min-width: 990px) 55vw, 100vw',
               loading: 'eager',
               fetchpriority: 'high',
               class: 'ralen-hero__image',
@@ -109,10 +127,18 @@
           }}
         {% else %}
           <div class="ralen-hero__placeholder" aria-hidden="true">
-            <span>PRODUCTO</span>
-            <strong>01</strong>
+            <div class="ralen-device-stage">
+              <span class="ralen-device-stage__mat"></span>
+              <span class="ralen-device-stage__screen"></span>
+              <span class="ralen-device-stage__dock"></span>
+              <span class="ralen-device-stage__phone"></span>
+            </div>
           </div>
         {% endif %}
+      </div>
+
+      <div class="ralen-hero__frame" aria-hidden="true">
+        <span class="ralen-hero__frame-label">{{ section.settings.frame_label }}</span>
       </div>
 
       {% if section.settings.badge != blank %}
@@ -128,7 +154,7 @@
             {{ display_product.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: display_product.title }}
           {% endif %}
           <span>
-            <small>{{ section.settings.product_label | default: 'SELECCIÓN RALEN' }}</small>
+            <small>{{ section.settings.product_label | default: 'RALEN / FEATURED' }}</small>
             <strong>{{ display_product.title }}</strong>
             <em>{{ display_product.price | money }}</em>
           </span>
@@ -137,6 +163,8 @@
       {% endif %}
     </div>
   </div>
+
+  <div class="ralen-hero__scroll" aria-hidden="true"><i></i><span>SCROLL TO BUILD</span></div>
 
   <div class="ralen-shell ralen-hero__footer">
     <span>{{ section.settings.footer_note }}</span>
@@ -191,80 +219,28 @@
     },
     {
       "type": "paragraph",
-      "content": "Manual mantiene el comportamiento actual. Primero de una colección sigue su orden en Shopify. Rotación diaria alterna entre los primeros productos disponibles de esa colección. Si la fuente queda vacía, se usa el producto manual como respaldo."
+      "content": "Manual mantiene el producto elegido. Primero de una colección sigue su orden en Shopify. Rotación diaria alterna entre los primeros productos disponibles. Si la fuente queda vacía, se usa el producto manual como respaldo."
     },
     {
       "type": "header",
       "content": "Contenido"
     },
-    {
-      "type": "text",
-      "id": "slide_label",
-      "label": "Índice",
-      "default": "01 / 01"
-    },
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Etiqueta",
-      "default": "RALEN / SELECCIÓN ACTUAL"
-    },
-    {
-      "type": "textarea",
-      "id": "heading",
-      "label": "Título",
-      "default": "MEJOR, NO MÁS."
-    },
-    {
-      "type": "richtext",
-      "id": "copy",
-      "label": "Descripción",
-      "default": "<p>Objetos seleccionados por diseño, utilidad y función.</p>"
-    },
-    {
-      "type": "text",
-      "id": "cta_label",
-      "label": "Texto del botón",
-      "default": "EXPLORAR TIENDA"
-    },
-    {
-      "type": "url",
-      "id": "cta_link",
-      "label": "Enlace del botón"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Imagen manual / respaldo"
-    },
-    {
-      "type": "product",
-      "id": "featured_product",
-      "label": "Producto manual / respaldo"
-    },
-    {
-      "type": "text",
-      "id": "product_label",
-      "label": "Etiqueta de producto",
-      "default": "SELECCIÓN RALEN"
-    },
-    {
-      "type": "text",
-      "id": "badge",
-      "label": "Etiqueta lateral",
-      "default": "ELEGIDO CON CRITERIO"
-    },
-    {
-      "type": "text",
-      "id": "footer_note",
-      "label": "Nota inferior",
-      "default": "OBJETOS PARA HACER MEJOR LO COTIDIANO"
-    }
+    { "type": "text", "id": "slide_label", "label": "Índice", "default": "01 / SETUP" },
+    { "type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "RALEN / CLEAN SETUPS" },
+    { "type": "textarea", "id": "heading", "label": "Título", "default": "BUILD A CLEANER SETUP." },
+    { "type": "richtext", "id": "copy", "label": "Descripción", "default": "<p>Accesorios tecnológicos seleccionados para ordenar tu escritorio, simplificar tu carga y mejorar cómo usas tu espacio.</p>" },
+    { "type": "text", "id": "system_label", "label": "Categorías separadas por /", "default": "DESK / MOBILE / CHARGE / CARRY" },
+    { "type": "text", "id": "cta_label", "label": "CTA principal", "default": "EXPLORAR SETUP" },
+    { "type": "url", "id": "cta_link", "label": "Enlace CTA principal" },
+    { "type": "text", "id": "secondary_cta_label", "label": "CTA secundario", "default": "VER TODO" },
+    { "type": "url", "id": "secondary_cta_link", "label": "Enlace CTA secundario" },
+    { "type": "image_picker", "id": "image", "label": "Imagen manual / respaldo" },
+    { "type": "product", "id": "featured_product", "label": "Producto manual / respaldo" },
+    { "type": "text", "id": "product_label", "label": "Etiqueta de producto", "default": "RALEN / FEATURED" },
+    { "type": "text", "id": "badge", "label": "Etiqueta lateral", "default": "TOOLS THAT EARN THEIR PLACE" },
+    { "type": "text", "id": "frame_label", "label": "Etiqueta del visor", "default": "SETUP OBJECT / LIVE PREVIEW" },
+    { "type": "text", "id": "footer_note", "label": "Nota inferior", "default": "PREMIUM ACCESSORIES / DESK + MOBILE" }
   ],
-  "presets": [
-    {
-      "name": "RALEN Hero"
-    }
-  ]
+  "presets": [{ "name": "RALEN Hero" }]
 }
 {% endschema %}
