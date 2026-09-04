@@ -4,13 +4,17 @@
       {{ section.settings.logo_text | default: shop.name }}
     </a>
 
-    {% if section.settings.menu != blank %}
-      <nav class="ralen-nav" aria-label="Navegación principal">
+    <nav class="ralen-nav" aria-label="Navegación principal">
+      {% if section.settings.menu != blank %}
         {% for link in section.settings.menu.links %}
           <a href="{{ link.url }}" class="ralen-nav__link{% if link.current %} is-active{% endif %}">{{ link.title }}</a>
         {% endfor %}
-      </nav>
-    {% endif %}
+      {% else %}
+        <a href="{{ routes.root_url }}#RalenSystems" class="ralen-nav__link">SETUP</a>
+        <a href="{{ routes.all_products_collection_url }}" class="ralen-nav__link">SHOP</a>
+        <a href="{{ routes.root_url }}#RalenPhilosophy" class="ralen-nav__link">ABOUT</a>
+      {% endif %}
+    </nav>
 
     <div class="ralen-actions">
       <a href="{{ routes.search_url }}" class="ralen-icon-link" aria-label="Buscar">
@@ -49,8 +53,9 @@
           </a>
         {% endfor %}
       {% else %}
-        <a href="{{ routes.root_url }}"><span>01</span><strong>INICIO</strong><i aria-hidden="true">→</i></a>
-        <a href="{{ routes.all_products_collection_url }}"><span>02</span><strong>CATÁLOGO</strong><i aria-hidden="true">→</i></a>
+        <a href="{{ routes.root_url }}#RalenSystems"><span>01</span><strong>SETUP</strong><i aria-hidden="true">→</i></a>
+        <a href="{{ routes.all_products_collection_url }}"><span>02</span><strong>SHOP</strong><i aria-hidden="true">→</i></a>
+        <a href="{{ routes.root_url }}#RalenPhilosophy"><span>03</span><strong>ABOUT</strong><i aria-hidden="true">→</i></a>
       {% endif %}
     </nav>
 
