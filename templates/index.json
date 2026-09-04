@@ -4,9 +4,9 @@
       "type": "ralen-intro",
       "settings": {
         "enabled": true,
-        "line_1": "NO VENDEMOS TODO.",
-        "line_2": "ELEGIMOS LO QUE VALE LA PENA.",
-        "line_3": "RALEN.",
+        "line_1": "LESS CLUTTER.",
+        "line_2": "MORE SIGNAL.",
+        "line_3": "RALEN / SETUP SYSTEMS",
         "duration": 3,
         "show_once": true
       }
@@ -16,36 +16,115 @@
       "settings": {
         "merchandising_mode": "manual",
         "rotation_limit": 6,
-        "slide_label": "01 / 01",
-        "eyebrow": "RALEN / SELECCIÓN ACTUAL",
-        "heading": "MEJOR, NO MÁS.",
-        "copy": "<p>Objetos seleccionados por diseño, utilidad y función.</p>",
-        "cta_label": "EXPLORAR TIENDA",
-        "product_label": "SELECCIÓN RALEN",
-        "badge": "ELEGIDO CON CRITERIO",
-        "footer_note": "OBJETOS PARA HACER MEJOR LO COTIDIANO"
+        "slide_label": "01 / SETUP",
+        "eyebrow": "RALEN / CLEAN SETUPS",
+        "heading": "BUILD A CLEANER SETUP.",
+        "copy": "<p>Accesorios tecnológicos seleccionados para ordenar tu escritorio, simplificar tu carga y mejorar cómo usas tu espacio.</p>",
+        "system_label": "DESK / MOBILE / CHARGE / CARRY",
+        "cta_label": "EXPLORAR SETUP",
+        "secondary_cta_label": "VER TODO",
+        "product_label": "RALEN / FEATURED",
+        "badge": "TOOLS THAT EARN THEIR PLACE",
+        "frame_label": "SETUP OBJECT / LIVE PREVIEW",
+        "footer_note": "PREMIUM ACCESSORIES / DESK + MOBILE"
       }
+    },
+    "ralen_signal": {
+      "type": "ralen-signal-marquee",
+      "settings": {
+        "item_1": "DESK SYSTEMS",
+        "item_2": "MOBILE",
+        "item_3": "CHARGING",
+        "item_4": "CARRY",
+        "item_5": "LESS CLUTTER"
+      }
+    },
+    "ralen_systems": {
+      "type": "ralen-setup-systems",
+      "settings": {
+        "index_label": "02 / SYSTEMS",
+        "kicker": "SHOP BY SETUP",
+        "heading": "EVERYTHING HAS A PLACE.",
+        "description": "Accesorios elegidos para reducir ruido visual, liberar espacio y hacer que tu tecnología trabaje mejor junta."
+      },
+      "blocks": {
+        "desk": {
+          "type": "system",
+          "settings": {
+            "title": "DESK",
+            "subtitle": "Soportes, mats y organización."
+          }
+        },
+        "mobile": {
+          "type": "system",
+          "settings": {
+            "title": "MOBILE",
+            "subtitle": "Stands, wallets y accesorios."
+          }
+        },
+        "charge": {
+          "type": "system",
+          "settings": {
+            "title": "CHARGE",
+            "subtitle": "Docks, hubs y energía limpia."
+          }
+        },
+        "carry": {
+          "type": "system",
+          "settings": {
+            "title": "CARRY",
+            "subtitle": "Tech pouches y organización móvil."
+          }
+        }
+      },
+      "block_order": ["desk", "mobile", "charge", "carry"]
     },
     "ralen_products": {
       "type": "ralen-featured-collection",
       "settings": {
-        "index_label": "02 / SELECCIÓN",
-        "kicker": "OBJETOS ACTUALES",
-        "heading": "LO QUE SÍ SE QUEDA.",
-        "description": "Una selección corta. Menos ruido, mejores decisiones.",
+        "index_label": "03 / DROP 01",
+        "kicker": "CURATED GEAR",
+        "heading": "START WITH THE ESSENTIALS.",
+        "description": "Una selección corta de piezas útiles para escritorio, móvil y carga. Nada de gadgets por llenar catálogo.",
         "products_to_show": 4,
         "show_vendor": false,
-        "cta_label": "VER TODA LA SELECCIÓN"
+        "show_quick_add": true,
+        "cta_label": "VER TODO EL DROP"
       }
     },
-    "ralen_manifesto": {
-      "type": "ralen-manifesto",
+    "ralen_editorial": {
+      "type": "ralen-setup-editorial",
       "settings": {
-        "index_label": "03",
-        "kicker": "NUESTRO CRITERIO",
-        "heading": "NO NECESITAS MÁS COSAS. NECESITAS ELEGIR MEJOR.",
-        "copy": "<p>RALEN selecciona objetos útiles, bien resueltos y visualmente honestos. Lo demás se queda fuera.</p>"
-      }
+        "index_label": "04 / PHILOSOPHY",
+        "kicker": "THE CLEAN SETUP",
+        "heading": "A BETTER SETUP IS MOSTLY WHAT YOU REMOVE.",
+        "copy": "<p>Menos cables a la vista. Menos objetos que no aportan. Más espacio para trabajar, estudiar y crear.</p>",
+        "caption": "TOOLS THAT EARN THEIR PLACE"
+      },
+      "blocks": {
+        "less": {
+          "type": "principle",
+          "settings": {
+            "heading": "LESS CLUTTER",
+            "copy": "Cada objeto debe resolver algo real."
+          }
+        },
+        "flow": {
+          "type": "principle",
+          "settings": {
+            "heading": "BETTER FLOW",
+            "copy": "Tu escritorio debe ayudarte a moverte, no estorbarte."
+          }
+        },
+        "stay": {
+          "type": "principle",
+          "settings": {
+            "heading": "BUILT TO STAY",
+            "copy": "Elegimos piezas sobrias que no se sienten desechables."
+          }
+        }
+      },
+      "block_order": ["less", "flow", "stay"]
     },
     "ralen_assurance": {
       "type": "ralen-assurance",
@@ -76,5 +155,5 @@
       "settings": {}
     }
   },
-  "order": ["ralen_intro", "ralen_hero", "ralen_products", "ralen_manifesto", "ralen_assurance"]
+  "order": ["ralen_intro", "ralen_hero", "ralen_signal", "ralen_systems", "ralen_products", "ralen_editorial", "ralen_assurance"]
 }
