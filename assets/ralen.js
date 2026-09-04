@@ -52,6 +52,7 @@
       closed = true;
       if (showOnce && !isDesignMode) sessionStorage.setItem(INTRO_KEY, '1');
       document.body.classList.remove('is-intro-active');
+      document.dispatchEvent(new CustomEvent('ralen:intro-complete'));
 
       const hide = () => {
         intro.hidden = true;
