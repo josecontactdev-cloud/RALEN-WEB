@@ -1,0 +1,116 @@
+{% liquid
+  assign fallback_link = routes.all_products_collection_url
+%}
+
+<section id="RalenSystems" class="ralen-systems" data-ralen-reveal data-ralen-systems>
+  <div class="ralen-shell">
+    <div class="ralen-section-head ralen-systems__head">
+      <div>
+        <span class="ralen-section-index">{{ section.settings.index_label }}</span>
+        <p class="ralen-section-kicker">{{ section.settings.kicker }}</p>
+      </div>
+      <div class="ralen-section-head__copy">
+        <h2 data-ralen-split-reveal>{{ section.settings.heading }}</h2>
+        {% if section.settings.description != blank %}<p>{{ section.settings.description }}</p>{% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="ralen-systems__viewport">
+    <div class="ralen-systems__grid">
+      {% for block in section.blocks %}
+        {% liquid
+          assign card_collection = block.settings.collection
+          assign card_link = fallback_link
+          if card_collection != blank
+            assign card_link = card_collection.url
+          endif
+
+          assign card_image = block.settings.image
+          if card_image == blank and card_collection != blank and card_collection.featured_image != blank
+            assign card_image = card_collection.featured_image
+          elsif card_image == blank and card_collection != blank and card_collection.products_count > 0
+            assign first_product = card_collection.products.first
+            if first_product.featured_image != blank
+              assign card_image = first_product.featured_image
+            endif
+          endif
+        %}
+
+        <a class="ralen-system-card" href="{{ card_link }}" data-ralen-system-card {{ block.shopify_attributes }}>
+          <div class="ralen-system-card__media">
+            {% if card_image != blank %}
+              {{ card_image
+                | image_url: width: 1200
+                | image_tag:
+                  widths: '420, 640, 840, 1200',
+                  sizes: '(min-width: 990px) 25vw, 82vw',
+                  loading: 'lazy',
+                  class: 'ralen-system-card__image',
+                  alt: block.settings.title
+              }}
+            {% else %}
+              <div class="ralen-system-card__abstract ralen-system-card__abstract--{{ forloop.index }}" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+            {% endif %}
+            <span class="ralen-system-card__ghost" aria-hidden="true">{{ block.settings.title }}</span>
+          </div>
+
+          <div class="ralen-system-card__top">
+            <span>{{ forloop.index | prepend: '0' }}</span>
+            <span>RALEN / SYSTEM</span>
+          </div>
+
+          <div class="ralen-system-card__body">
+            <div>
+              <h3>{{ block.settings.title }}</h3>
+              {% if block.settings.subtitle != blank %}<p>{{ block.settings.subtitle }}</p>{% endif %}
+            </div>
+            <span class="ralen-system-card__arrow" aria-hidden="true">↗</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="ralen-shell ralen-systems__mobile-note" aria-hidden="true">
+    <span>DESLIZA PARA EXPLORAR</span><span>→</span>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RALEN Setup Systems",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "index_label", "label": "Índice", "default": "02 / SYSTEMS" },
+    { "type": "text", "id": "kicker", "label": "Etiqueta", "default": "SHOP BY SETUP" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "EVERYTHING HAS A PLACE." },
+    { "type": "textarea", "id": "description", "label": "Descripción", "default": "Accesorios elegidos para reducir ruido visual, liberar espacio y hacer que tu tecnología trabaje mejor junta." }
+  ],
+  "blocks": [
+    {
+      "type": "system",
+      "name": "Sistema",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título", "default": "DESK" },
+        { "type": "textarea", "id": "subtitle", "label": "Descripción", "default": "Soportes, mats y organización." },
+        { "type": "collection", "id": "collection", "label": "Colección" },
+        { "type": "image_picker", "id": "image", "label": "Imagen opcional" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "RALEN Setup Systems",
+      "blocks": [
+        { "type": "system", "settings": { "title": "DESK", "subtitle": "Soportes, mats y organización." } },
+        { "type": "system", "settings": { "title": "MOBILE", "subtitle": "Stands, wallets y accesorios." } },
+        { "type": "system", "settings": { "title": "CHARGE", "subtitle": "Docks, hubs y energía limpia." } },
+        { "type": "system", "settings": { "title": "CARRY", "subtitle": "Tech pouches y organización móvil." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
