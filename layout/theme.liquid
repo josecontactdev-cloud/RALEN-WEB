@@ -24,6 +24,7 @@
     {{ 'phase-5.css' | asset_url | stylesheet_tag }}
     {{ 'phase-5-newsletter.css' | asset_url | stylesheet_tag }}
     {{ 'phase-6.css' | asset_url | stylesheet_tag }}
+    {{ 'phase-8.css' | asset_url | stylesheet_tag }}
 
     {% case request.page_type %}
       {% when 'index' %}
@@ -48,6 +49,7 @@
       <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
       <script src="{{ 'ralen.js' | asset_url }}" defer></script>
       <script src="{{ 'phase-7.js' | asset_url }}" defer></script>
+      <script src="{{ 'phase-8.js' | asset_url }}" defer></script>
     {% endif %}
     {% if request.page_type == 'product' %}
       <script src="{{ 'phase-3.js' | asset_url }}" defer></script>
