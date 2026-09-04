@@ -59,46 +59,55 @@
 
     if (!reducedMotion && window.gsap) {
       const gsap = window.gsap;
-      const introActive = document.body.classList.contains('is-intro-active');
-      const delay = introActive ? .28 : .08;
 
       gsap.set(titleWords, { yPercent: 120, opacity: 0 });
       gsap.set(staged, { y: 18, opacity: 0 });
-
       if (media) gsap.set(media, { clipPath: 'inset(0 0 100% 0)' });
       if (frame) gsap.set(frame, { opacity: 0 });
 
-      const tl = gsap.timeline({ delay, defaults: { ease: 'power3.out' } });
-      tl.to(titleWords, {
-        yPercent: 0,
-        opacity: 1,
-        duration: .82,
-        stagger: .055
-      })
-      .to(staged, {
-        y: 0,
-        opacity: 1,
-        duration: .7,
-        stagger: .065
-      }, '-=.5');
+      let revealed = false;
+      const runReveal = () => {
+        if (revealed) return;
+        revealed = true;
 
-      if (media) {
-        tl.to(media, {
-          clipPath: 'inset(0 0 0% 0)',
-          duration: 1.05,
-          ease: 'power4.inOut'
-        }, '-=.72');
-      }
+        const tl = gsap.timeline({ delay: .08, defaults: { ease: 'power3.out' } });
+        tl.to(titleWords, {
+          yPercent: 0,
+          opacity: 1,
+          duration: .82,
+          stagger: .055
+        })
+        .to(staged, {
+          y: 0,
+          opacity: 1,
+          duration: .7,
+          stagger: .065
+        }, '-=.5');
 
-      if (frame) {
-        tl.to(frame, { opacity: 1, duration: .6 }, '-=.45');
-      }
+        if (media) {
+          tl.to(media, {
+            clipPath: 'inset(0 0 0% 0)',
+            duration: 1.05,
+            ease: 'power4.inOut'
+          }, '-=.72');
+        }
 
-      if (image) {
-        gsap.fromTo(image,
-          { scale: 1.1 },
-          { scale: 1.035, duration: 1.35, ease: 'power3.out', delay: delay + .35 }
-        );
+        if (frame) {
+          tl.to(frame, { opacity: 1, duration: .6 }, '-=.45');
+        }
+
+        if (image) {
+          gsap.fromTo(image,
+            { scale: 1.1 },
+            { scale: 1.035, duration: 1.35, ease: 'power3.out', delay: .43 }
+          );
+        }
+      };
+
+      if (document.body.classList.contains('is-intro-active')) {
+        document.addEventListener('ralen:intro-complete', runReveal, { once: true });
+      } else {
+        runReveal();
       }
     }
 
