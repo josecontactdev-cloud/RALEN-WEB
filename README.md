@@ -57,11 +57,23 @@ Custom Shopify theme for RALEN.
 - Dynamic modes use the collection order already managed by Shopify
 - Manual product remains a safe fallback
 - Selected merchandising state is exposed for future analytics and automation integrations
-- Dynamic hero remains visually identical, so product selection can change without redesigning the storefront
+- Dynamic hero remains visually consistent, so product selection can change without redesigning the storefront
 - Operating and future-automation contract documented in `docs/TREND_ENGINE.md`
 
+## Phase 8 — Premium setup store
+- RALEN repositioned around premium/minimal tech accessories for desk, mobile, charging and carry
+- Immersive split-text landing intro and tech-focused hero
+- Product viewer with mask reveal, pointer depth and configurable dynamic merchandising
+- Setup-system category rail with native horizontal touch navigation on mobile
+- Continuous signal marquee and light editorial philosophy chapter
+- Setup-first fallback navigation when Shopify menus are not configured yet
+- Responsive layouts tuned for phone screens, safe touch interaction and reduced-motion preferences
+- Product-card and product-page language aligned to the new setup positioning
+- Brand and merchandising operating guide in `docs/SETUP_DIRECTION.md`
+
 ## Shopify setup notes
-- Assign a navigation menu to **RALEN Header**.
+- Assign a navigation menu to **RALEN Header** if you want custom links. Without one, the theme falls back to Setup / Shop / About.
+- Create **Desk**, **Mobile**, **Charge** and **Carry** collections and map them to the `RALEN Setup Systems` blocks.
 - Select a collection in **RALEN Productos**.
 - Create a Shopify page and assign the `contact` template to use the RALEN contact form.
 - Configure shipping, refund, privacy and terms policies in Shopify; configured policies appear automatically in the footer and relevant purchase surfaces.
@@ -69,3 +81,4 @@ Custom Shopify theme for RALEN.
 - Leave the cart drawer free-shipping target at `0` unless your actual shipping policy includes free shipping above a defined amount.
 - Quick add automatically sends products with variants to the product page instead of guessing a variant.
 - For dynamic hero merchandising, create a source collection and choose how Shopify should order it: best-selling, newest, or manual. See `docs/TREND_ENGINE.md`.
+- For visual/product curation guidance, see `docs/SETUP_DIRECTION.md`.
