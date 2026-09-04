@@ -1,0 +1,29 @@
+<section class="ralen-signal" aria-label="Categorías RALEN">
+  <div class="ralen-signal__viewport">
+    <div class="ralen-signal__track" aria-hidden="true">
+      {% for repeat in (1..2) %}
+        <div class="ralen-signal__group">
+          <span><i></i>{{ section.settings.item_1 }}</span>
+          <span><i></i>{{ section.settings.item_2 }}</span>
+          <span><i></i>{{ section.settings.item_3 }}</span>
+          <span><i></i>{{ section.settings.item_4 }}</span>
+          <span><i></i>{{ section.settings.item_5 }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RALEN Signal",
+  "settings": [
+    { "type": "text", "id": "item_1", "label": "Elemento 1", "default": "DESK SYSTEMS" },
+    { "type": "text", "id": "item_2", "label": "Elemento 2", "default": "MOBILE" },
+    { "type": "text", "id": "item_3", "label": "Elemento 3", "default": "CHARGING" },
+    { "type": "text", "id": "item_4", "label": "Elemento 4", "default": "CARRY" },
+    { "type": "text", "id": "item_5", "label": "Elemento 5", "default": "LESS CLUTTER" }
+  ],
+  "presets": [{ "name": "RALEN Signal" }]
+}
+{% endschema %}
