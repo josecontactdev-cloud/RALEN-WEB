@@ -3,7 +3,7 @@
     "main": {
       "type": "ralen-main-product",
       "settings": {
-        "eyebrow": "RALEN / OBJETO SELECCIONADO",
+        "eyebrow": "RALEN / SETUP GEAR",
         "show_dynamic_checkout": false,
         "assurance_1": "Pago protegido y procesado de forma segura.",
         "assurance_2": "Seguimiento disponible después del envío.",
@@ -13,8 +13,8 @@
     "recommendations": {
       "type": "ralen-product-recommendations",
       "settings": {
-        "index_label": "04 / CONTINÚA",
-        "heading": "TAMBIÉN PUEDE SERVIRTE.",
+        "index_label": "04 / COMPLETE",
+        "heading": "COMPLETE THE SETUP.",
         "products_to_show": 4,
         "show_quick_add": true
       }
