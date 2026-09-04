@@ -103,7 +103,7 @@
 
   function initHeroReveal() {
     const hero = document.querySelector('[data-ralen-hero]');
-    if (!hero || !window.gsap || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!hero || hero.classList.contains('ralen-hero--tech') || !window.gsap || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const targets = hero.querySelectorAll('.ralen-eyebrow, .ralen-hero__title, .ralen-hero__copy, .ralen-text-link');
     window.gsap.from(targets, {
