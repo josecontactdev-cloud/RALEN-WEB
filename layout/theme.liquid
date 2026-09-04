@@ -24,7 +24,6 @@
     {{ 'phase-5.css' | asset_url | stylesheet_tag }}
     {{ 'phase-5-newsletter.css' | asset_url | stylesheet_tag }}
     {{ 'phase-6.css' | asset_url | stylesheet_tag }}
-    {{ 'phase-8.css' | asset_url | stylesheet_tag }}
 
     {% case request.page_type %}
       {% when 'index' %}
@@ -43,6 +42,8 @@
     {% if request.page_type == 'page' and template.suffix == 'contact' %}
       {{ 'phase-4-contact.css' | asset_url | stylesheet_tag }}
     {% endif %}
+
+    {{ 'phase-8.css' | asset_url | stylesheet_tag }}
 
     <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
     {% if request.page_type == 'index' %}
