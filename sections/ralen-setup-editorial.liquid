@@ -1,0 +1,92 @@
+<section id="RalenPhilosophy" class="ralen-setup-editorial" data-ralen-reveal>
+  <div class="ralen-shell ralen-setup-editorial__inner">
+    <div class="ralen-setup-editorial__copy">
+      <div class="ralen-setup-editorial__meta">
+        <span>{{ section.settings.index_label }}</span>
+        <span>{{ section.settings.kicker }}</span>
+      </div>
+
+      <h2 data-ralen-split-reveal>{{ section.settings.heading }}</h2>
+
+      {% if section.settings.copy != blank %}
+        <div class="ralen-setup-editorial__lede">{{ section.settings.copy }}</div>
+      {% endif %}
+
+      <div class="ralen-setup-editorial__principles">
+        {% for block in section.blocks %}
+          <article class="ralen-principle" {{ block.shopify_attributes }}>
+            <span>{{ forloop.index | prepend: '0' }}</span>
+            <div>
+              <h3>{{ block.settings.heading }}</h3>
+              <p>{{ block.settings.copy }}</p>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="ralen-setup-editorial__visual" data-ralen-depth>
+      {% if section.settings.image != blank %}
+        {{ section.settings.image
+          | image_url: width: 1800
+          | image_tag:
+            widths: '640, 960, 1280, 1600, 1800',
+            sizes: '(min-width: 990px) 46vw, 100vw',
+            loading: 'lazy',
+            class: 'ralen-setup-editorial__image',
+            alt: section.settings.image.alt | default: section.settings.heading
+        }}
+      {% else %}
+        <div class="ralen-blueprint" aria-hidden="true">
+          <span class="ralen-blueprint__label ralen-blueprint__label--a">DESK / 001</span>
+          <span class="ralen-blueprint__label ralen-blueprint__label--b">SIGNAL / 100%</span>
+          <span class="ralen-blueprint__device ralen-blueprint__device--screen"></span>
+          <span class="ralen-blueprint__device ralen-blueprint__device--stand"></span>
+          <span class="ralen-blueprint__device ralen-blueprint__device--phone"></span>
+          <span class="ralen-blueprint__device ralen-blueprint__device--dock"></span>
+          <span class="ralen-blueprint__cursor">+</span>
+        </div>
+      {% endif %}
+
+      <div class="ralen-setup-editorial__caption">
+        <span>{{ section.settings.caption }}</span>
+        <span>RALEN / MX</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RALEN Setup Editorial",
+  "max_blocks": 3,
+  "settings": [
+    { "type": "text", "id": "index_label", "label": "Índice", "default": "04 / PHILOSOPHY" },
+    { "type": "text", "id": "kicker", "label": "Etiqueta", "default": "THE CLEAN SETUP" },
+    { "type": "textarea", "id": "heading", "label": "Título", "default": "A BETTER SETUP IS MOSTLY WHAT YOU REMOVE." },
+    { "type": "richtext", "id": "copy", "label": "Texto", "default": "<p>Menos cables a la vista. Menos objetos que no aportan. Más espacio para trabajar, estudiar y crear.</p>" },
+    { "type": "image_picker", "id": "image", "label": "Imagen editorial opcional" },
+    { "type": "text", "id": "caption", "label": "Pie visual", "default": "TOOLS THAT EARN THEIR PLACE" }
+  ],
+  "blocks": [
+    {
+      "type": "principle",
+      "name": "Principio",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Título", "default": "LESS CLUTTER" },
+        { "type": "textarea", "id": "copy", "label": "Texto", "default": "Cada objeto debe resolver algo real." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "RALEN Setup Editorial",
+      "blocks": [
+        { "type": "principle", "settings": { "heading": "LESS CLUTTER", "copy": "Cada objeto debe resolver algo real." } },
+        { "type": "principle", "settings": { "heading": "BETTER FLOW", "copy": "Tu escritorio debe ayudarte a moverte, no estorbarte." } },
+        { "type": "principle", "settings": { "heading": "BUILT TO STAY", "copy": "Elegimos piezas sobrias que no se sienten desechables." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
