@@ -43,10 +43,10 @@
       "type": "ralen-featured-collection",
       "settings": {
         "index_label": "02 / SELECCIÓN",
-        "kicker": "OBJETOS ACTUALES",
+        "kicker": "CAMISAS ACTUALES",
         "heading": "LO QUE SÍ SE QUEDA.",
         "description": "Una selección corta. Menos ruido, mejores decisiones.",
-        "collection": "",
+        "collection": "destacados",
         "products_to_show": 4,
         "show_vendor": false,
         "show_quick_add": true,
