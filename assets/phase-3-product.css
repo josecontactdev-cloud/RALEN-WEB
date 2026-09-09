@@ -221,3 +221,10 @@
   .ralen-product__assurance { grid-template-columns: 1fr; }
   .ralen-product__assurance > div { min-height: 92px; }
 }
+
+/* Keep long product names within narrow product columns. */
+.ralen-product__info h1 { overflow-wrap: anywhere; }
+.ralen-product__details { margin-top: 24px; }
+.ralen-product__details details { border-bottom: 1px solid var(--ralen-line); padding: 14px 0; }
+.ralen-product__details summary { cursor: pointer; font-size: 14px; }
+.ralen-product__details details > div { margin-top: 12px; font-size: 14px; line-height: 1.6; }

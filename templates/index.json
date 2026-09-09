@@ -29,7 +29,7 @@
         "slide_label": "01 / 01",
         "eyebrow": "RALEN / RUN 001",
         "heading": "BUILT TO MOVE",
-        "copy": "<p>Objetos seleccionados por diseño, utilidad y función.</p>",
+        "copy": "<p>Playera técnica de secado rápido para correr y moverte. Diseño minimalista, producida bajo demanda en México.</p>",
         "cta_label": "VER RUN / 001",
         "cta_link": "shopify://products/ralen-run-001-performance-tee-1",
         "image": "shopify://shop_images/ChatGPT_Image_5_sept_2026_02_06_51_a.m._4.png",
@@ -43,9 +43,9 @@
       "type": "ralen-featured-collection",
       "settings": {
         "index_label": "02 / SELECCIÓN",
-        "kicker": "CAMISAS ACTUALES",
+        "kicker": "RALEN RUN / DROP 001",
         "heading": "LO QUE SÍ SE QUEDA.",
-        "description": "Una selección corta. Menos ruido, mejores decisiones.",
+        "description": "Nuestra primera playera técnica. Elige tu talla y conoce los detalles.",
         "collection": "destacados",
         "products_to_show": 4,
         "show_vendor": false,
@@ -59,7 +59,7 @@
         "index_label": "03",
         "kicker": "NUESTRO CRITERIO",
         "heading": "NO NECESITAS MÁS COSAS. NECESITAS ELEGIR MEJOR.",
-        "copy": "<p>RALEN selecciona objetos útiles, bien resueltos y visualmente honestos. Lo demás se queda fuera.</p>"
+        "copy": "<p>RALEN RUN combina ropa para moverte con una identidad minimalista. Empezamos con una playera técnica producida bajo demanda en México.</p>"
       }
     },
     "ralen_assurance": {

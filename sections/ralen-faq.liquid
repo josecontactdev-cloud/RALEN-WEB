@@ -17,7 +17,24 @@
             <strong>{{ block.settings.question }}</strong>
             <i aria-hidden="true">＋</i>
           </summary>
-          <div class="ralen-faq__answer">{{ block.settings.answer }}</div>
+          <div class="ralen-faq__answer">
+            {% case block.settings.policy %}
+              {% when 'refund' %}
+                {% if shop.refund_policy.body != blank %}
+                  <p>Consulta nuestra <a href="{{ shop.refund_policy.url }}">política de cambios y devoluciones</a> antes de comprar.</p>
+                {% else %}
+                  <p>Para conocer las condiciones de cambios y devoluciones, <a href="{{ pages['contact'].url | default: routes.root_url }}">contáctanos antes de comprar</a>.</p>
+                {% endif %}
+              {% when 'shipping' %}
+                {% if shop.shipping_policy.body != blank %}
+                  <p>Consulta los plazos y condiciones en nuestra <a href="{{ shop.shipping_policy.url }}">política de envíos</a>.</p>
+                {% else %}
+                  <p>Consulta el plazo de producción y entrega para tu pedido <a href="{{ pages['contact'].url | default: routes.root_url }}">antes de comprar</a>. El seguimiento estará disponible después del envío.</p>
+                {% endif %}
+              {% else %}
+                {{ block.settings.answer }}
+            {% endcase %}
+          </div>
         </details>
       {% endfor %}
     </div>
@@ -38,6 +55,11 @@
       "type": "question",
       "name": "Pregunta",
       "settings": [
+        { "type": "select", "id": "policy", "label": "Enlazar política de Shopify", "default": "none", "options": [
+          { "value": "none", "label": "Respuesta personalizada" },
+          { "value": "shipping", "label": "Envíos" },
+          { "value": "refund", "label": "Cambios y devoluciones" }
+        ] },
         { "type": "text", "id": "question", "label": "Pregunta", "default": "¿Cómo sé cuándo llegará mi pedido?" },
         { "type": "richtext", "id": "answer", "label": "Respuesta", "default": "<p>Cuando tu pedido sea enviado recibirás la información de seguimiento disponible para tu envío.</p>" }
       ]

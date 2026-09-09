@@ -29,7 +29,8 @@
 
     const showOnce = intro.dataset.once === 'true';
     const isDesignMode = Boolean(window.Shopify && window.Shopify.designMode);
-    const hasSeen = showOnce && !isDesignMode && sessionStorage.getItem(INTRO_KEY) === '1';
+    let hasSeen = false;
+    try { hasSeen = showOnce && !isDesignMode && sessionStorage.getItem(INTRO_KEY) === '1'; } catch (_) {}
 
     if (hasSeen) {
       intro.hidden = true;
@@ -50,7 +51,7 @@
     const finish = () => {
       if (closed) return;
       closed = true;
-      if (showOnce && !isDesignMode) sessionStorage.setItem(INTRO_KEY, '1');
+      try { if (showOnce && !isDesignMode) sessionStorage.setItem(INTRO_KEY, '1'); } catch (_) {}
       document.body.classList.remove('is-intro-active');
 
       const hide = () => {

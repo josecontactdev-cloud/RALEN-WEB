@@ -3,7 +3,7 @@
     "main": {
       "type": "ralen-main-product",
       "settings": {
-        "eyebrow": "RALEN / OBJETO SELECCIONADO",
+        "eyebrow": "RALEN RUN / PERFORMANCE TEE",
         "show_dynamic_checkout": false,
         "assurance_1": "Pago protegido y procesado de forma segura.",
         "assurance_2": "Seguimiento disponible después del envío.",
@@ -26,7 +26,8 @@
           "type": "question",
           "settings": {
             "question": "¿Cómo sé cuándo llegará mi pedido?",
-            "answer": "<p>Cuando tu pedido sea enviado recibirás la información de seguimiento disponible para tu envío.</p>"
+            "answer": "<p>Cuando tu pedido sea enviado recibirás la información de seguimiento disponible para tu envío.</p>",
+            "policy": "shipping"
           }
         },
         "support": {
@@ -40,11 +41,16 @@
           "type": "question",
           "settings": {
             "question": "¿Dónde consulto cambios o devoluciones?",
-            "answer": "<p>Consulta la política de devoluciones publicada en la tienda antes de finalizar tu compra.</p>"
+            "answer": "<p>Consulta la política de devoluciones publicada en la tienda antes de finalizar tu compra.</p>",
+            "policy": "refund"
           }
         }
       },
-      "block_order": ["shipping", "support", "returns"],
+      "block_order": [
+        "shipping",
+        "support",
+        "returns"
+      ],
       "settings": {
         "index_label": "05 / INFORMACIÓN",
         "kicker": "ANTES DE COMPRAR",
@@ -64,5 +70,10 @@
       }
     }
   },
-  "order": ["main", "recommendations", "faq", "assurance"]
+  "order": [
+    "main",
+    "recommendations",
+    "faq",
+    "assurance"
+  ]
 }

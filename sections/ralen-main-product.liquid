@@ -72,6 +72,17 @@
           <div class="ralen-product__description">{{ product.description }}</div>
         {% endif %}
 
+        {% if section.settings.size_guide != blank or section.settings.delivery_info != blank %}
+          <div class="ralen-product__details">
+            {% if section.settings.size_guide != blank %}
+              <details><summary>Guía de tallas</summary><div>{{ section.settings.size_guide }}</div></details>
+            {% endif %}
+            {% if section.settings.delivery_info != blank %}
+              <details><summary>Producción y entrega</summary><div>{{ section.settings.delivery_info }}</div></details>
+            {% endif %}
+          </div>
+        {% endif %}
+
         {% form 'product', product, id: product_form_id, class: 'ralen-product-form' %}
           {% if product.variants.size > 1 %}
             <label class="ralen-field-label" for="RalenVariant-{{ section.id }}">VARIANTE</label>
@@ -152,6 +163,8 @@
 {
   "name": "RALEN Producto",
   "settings": [
+    { "type": "richtext", "id": "size_guide", "label": "Guía de tallas", "info": "Añade únicamente las medidas confirmadas por el proveedor para los productos de esta plantilla." },
+    { "type": "richtext", "id": "delivery_info", "label": "Producción y entrega", "info": "Indica los plazos reales de producción y envío para los productos de esta plantilla." },
     { "type": "text", "id": "eyebrow", "label": "Etiqueta", "default": "RALEN / OBJETO SELECCIONADO" },
     { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Mostrar compra rápida", "default": false },
     { "type": "text", "id": "assurance_1", "label": "Confianza 1", "default": "Pago protegido y procesado de forma segura." },

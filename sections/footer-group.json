@@ -6,10 +6,13 @@
       "type": "ralen-footer",
       "settings": {
         "logo_text": "RALEN",
-        "tagline": "Objetos para hacer mejor lo cotidiano.",
-        "email": ""
+        "tagline": "Ropa para correr. Diseño minimalista.",
+        "email": "",
+        "newsletter_heading": "NOVEDADES DE RALEN RUN."
       }
     }
   },
-  "order": ["ralen_footer"]
+  "order": [
+    "ralen_footer"
+  ]
 }
