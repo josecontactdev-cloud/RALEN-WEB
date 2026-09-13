@@ -1,15 +1,25 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "ralen-main-product",
+      "disabled": true,
       "settings": {
-        "eyebrow": "RALEN RUN / PERFORMANCE TEE",
-        "show_dynamic_checkout": false,
+        "size_guide": "",
+        "delivery_info": "<p>Este producto se envía directamente desde nuestro proveedor internacional. Tiempo estimado de entrega: 14 a 16 días hábiles, con número de seguimiento disponible para que sepas en todo momento dónde va tu pedido.</p><p>Empacamos con cuidado para que llegue en perfectas condiciones. Si tienes dudas sobre tu envío, contáctanos y te ayudamos a darle seguimiento.</p>",
+        "eyebrow": "RALEN / SmartBottle",
+        "show_dynamic_checkout": true,
         "assurance_1": "Pago protegido y procesado de forma segura.",
         "assurance_2": "Seguimiento disponible después del envío.",
-        "assurance_3": "Soporte directo si algo no sale como esperabas.",
-        "size_guide": "<p>Medidas de la prenda extendida, en centímetros (ancho × largo):</p><ul><li>S / CH: 45.7 × 68.6 cm</li><li>M: 50.8 × 71.1 cm</li><li>L / G: 55.9 × 73.7 cm</li><li>XL / EG: 61.0 × 76.2 cm</li></ul><p>El ancho no es el contorno del pecho. Compara estas medidas con una playera que ya te quede bien. Tolerancia del fabricante: ±2.5 cm en ancho y largo.</p>",
-        "delivery_info": "<p>Entrega estimada en México: de 2 a 5 días hábiles desde que el taller recibe tu pedido con el pago confirmado. Este plazo incluye la preparación y el envío; no es una fecha garantizada.</p><p>Recibirás el seguimiento después del envío. El costo de envío se muestra al finalizar la compra.</p>"
+        "assurance_3": "Soporte directo si algo no sale como esperabas."
       }
     },
     "recommendations": {
@@ -27,14 +37,15 @@
         "shipping": {
           "type": "question",
           "settings": {
+            "policy": "none",
             "question": "¿Cómo sé cuándo llegará mi pedido?",
-            "answer": "<p>Entrega estimada en México: de 2 a 5 días hábiles desde que el taller recibe tu pedido con el pago confirmado. Este plazo incluye la preparación y el envío; no es una fecha garantizada.</p><p>Recibirás el seguimiento después del envío. El costo de envío se muestra al finalizar la compra.</p>",
-            "policy": "none"
+            "answer": "<p>Entrega estimada en México: de 2 a 5 días hábiles desde que el taller recibe tu pedido con el pago confirmado. Este plazo incluye la preparación y el envío; no es una fecha garantizada.</p><p>Recibirás el seguimiento después del envío. El costo de envío se muestra al finalizar la compra.</p>"
           }
         },
         "support": {
           "type": "question",
           "settings": {
+            "policy": "none",
             "question": "¿Qué hago si tengo un problema con mi compra?",
             "answer": "<p>Contáctanos desde la página de contacto con tu número de pedido y revisaremos tu caso.</p>"
           }
@@ -42,9 +53,9 @@
         "returns": {
           "type": "question",
           "settings": {
+            "policy": "refund",
             "question": "¿Dónde consulto cambios o devoluciones?",
-            "answer": "<p>Consulta la política de devoluciones publicada en la tienda antes de finalizar tu compra.</p>",
-            "policy": "refund"
+            "answer": "<p>Consulta la política de devoluciones publicada en la tienda antes de finalizar tu compra.</p>"
           }
         }
       },
@@ -62,14 +73,7 @@
     },
     "assurance": {
       "type": "ralen-assurance",
-      "settings": {
-        "item_1_title": "PAGO SEGURO",
-        "item_1_copy": "Tus datos se procesan de forma protegida.",
-        "item_2_title": "SEGUIMIENTO",
-        "item_2_copy": "Mantente al tanto del estado de tu pedido.",
-        "item_3_title": "SOPORTE DIRECTO",
-        "item_3_copy": "Estamos para ayudarte antes y después de comprar."
-      }
+      "settings": {}
     }
   },
   "order": [
