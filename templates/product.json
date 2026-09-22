@@ -76,20 +76,26 @@
     },
     "1790043339859c8fb8": {
       "type": "apps",
+      "settings": {}
+    },
+    "17900440355f14ed51": {
+      "type": "apps",
       "blocks": {
-        "judge_me_reviews_review_widget_qTXJkb": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "ali_reviews_widget_box_BkXDzT": {
+          "type": "shopify://apps/ali-reviews/blocks/widget-box/bf2eea72-0400-4db1-8908-44b7418f9a88",
           "settings": {
-            "review_data": "sample_data",
-            "max_width": 1200,
-            "show_shop_reviews": false,
-            "empty_state": "empty_widget"
+            "product": "ralen-run-001-performance-tee-1",
+            "collection": "destacados"
           }
         }
       },
       "block_order": [
-        "judge_me_reviews_review_widget_qTXJkb"
+        "ali_reviews_widget_box_BkXDzT"
       ],
+      "settings": {}
+    },
+    "17900440386ad2b196": {
+      "type": "apps",
       "settings": {}
     }
   },
@@ -98,6 +104,8 @@
     "recommendations",
     "faq",
     "assurance",
-    "1790043339859c8fb8"
+    "1790043339859c8fb8",
+    "17900440355f14ed51",
+    "17900440386ad2b196"
   ]
 }
