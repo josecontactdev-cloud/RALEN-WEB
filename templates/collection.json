@@ -1,11 +1,55 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "ralen-main-collection",
       "settings": {
-        "products_per_page": 12
+        "products_per_page": 12,
+        "show_quick_add": true
       }
+    },
+    "1790555182f6757421": {
+      "type": "apps",
+      "blocks": {
+        "ali_reviews_widget_star_rating_J794pE": {
+          "type": "shopify://apps/ali-reviews/blocks/widget-star-rating/bf2eea72-0400-4db1-8908-44b7418f9a88",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "ali_reviews_widget_star_rating_J794pE"
+      ],
+      "settings": {}
+    },
+    "17905551772c23853b": {
+      "type": "apps",
+      "blocks": {
+        "ali_reviews_widget_box_in_cart_8LF9fm": {
+          "type": "shopify://apps/ali-reviews/blocks/widget-box-in-cart/bf2eea72-0400-4db1-8908-44b7418f9a88",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "ali_reviews_widget_box_in_cart_8LF9fm"
+      ],
+      "settings": {}
     }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "1790555182f6757421",
+    "17905551772c23853b"
+  ]
 }
