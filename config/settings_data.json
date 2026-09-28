@@ -24,6 +24,11 @@
         "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
         "disabled": false,
         "settings": {}
+      },
+      "8924079168617604943": {
+        "type": "shopify://apps/ali-reviews/blocks/widget-popup/bf2eea72-0400-4db1-8908-44b7418f9a88",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
