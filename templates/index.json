@@ -97,15 +97,16 @@
     "1790552913cd0e7cc1": {
       "type": "apps",
       "blocks": {
-        "ali_reviews_widget_box_in_cart_YLq33W": {
-          "type": "shopify://apps/ali-reviews/blocks/widget-box-in-cart/bf2eea72-0400-4db1-8908-44b7418f9a88",
+        "ali_reviews_widget_box_iaiWCq": {
+          "type": "shopify://apps/ali-reviews/blocks/widget-box/bf2eea72-0400-4db1-8908-44b7418f9a88",
           "settings": {
-            "product": ""
+            "product": "",
+            "collection": ""
           }
         }
       },
       "block_order": [
-        "ali_reviews_widget_box_in_cart_YLq33W"
+        "ali_reviews_widget_box_iaiWCq"
       ],
       "settings": {}
     }
