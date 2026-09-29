@@ -31,18 +31,19 @@
 
 .ralen-collection__header h1 {
   color: #f4f5f4;
+  max-width: 9ch;
 }
 
 .ralen-collection__header > p,
 .ralen-collection__description {
-  max-width: 42ch;
+  max-width: 38ch;
   color: #8f9498;
 }
 
 .ralen-collection__grid {
   position: relative;
   z-index: 1;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 1px;
   border: 1px solid var(--ralen-line);
   background: var(--ralen-line);
@@ -57,7 +58,7 @@
 }
 
 .ralen-collection__grid .ralen-card__media {
-  aspect-ratio: .82;
+  aspect-ratio: .88;
   min-height: 0;
   background:
     radial-gradient(circle at 50% 40%, rgba(91,127,166,.08), transparent 34%),
