@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ralen_intro": {
@@ -15,6 +24,7 @@
       "type": "ralen-hero",
       "settings": {
         "merchandising_mode": "manual",
+        "trend_collection": "",
         "rotation_limit": 6,
         "slide_label": "01 / RUN 001",
         "eyebrow": "RALEN / PERFORMANCE",
@@ -22,8 +32,10 @@
         "copy": "<p>Equipo técnico para correr y moverte. Minimalista por diseño, producido bajo demanda en México.</p>",
         "system_label": "RUN / PERFORMANCE / DRY / MX",
         "cta_label": "VER RUN / 001",
+        "cta_link": "",
         "secondary_cta_label": "VER CATÁLOGO",
         "secondary_cta_link": "/collections/all",
+        "image": "shopify://shop_images/Add_logo_and_fabric_type_2K_20260928205349.jpg",
         "featured_product": "ralen-run-001-performance-tee-1",
         "product_label": "RALEN / RUN 001",
         "badge": "PERFORMANCE / MADE ON DEMAND",
@@ -46,7 +58,7 @@
       "settings": {
         "index_label": "02 / DROP 001",
         "kicker": "RALEN / RUN",
-        "heading": "START WITH RUN / 001.",
+        "heading": "INicia con la / 001.",
         "description": "Una primera pieza técnica para correr y moverte: secado rápido, diseño limpio y producción bajo demanda en México.",
         "collection": "all",
         "products_to_show": 4,
@@ -80,9 +92,19 @@
           }
         }
       },
-      "block_order": ["payment", "shipping", "support"],
+      "block_order": [
+        "payment",
+        "shipping",
+        "support"
+      ],
       "settings": {}
     }
   },
-  "order": ["ralen_intro", "ralen_hero", "ralen_signal", "ralen_products", "ralen_assurance"]
+  "order": [
+    "ralen_intro",
+    "ralen_hero",
+    "ralen_signal",
+    "ralen_products",
+    "ralen_assurance"
+  ]
 }
