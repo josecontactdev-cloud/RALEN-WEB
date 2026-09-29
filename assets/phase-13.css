@@ -1,0 +1,187 @@
+/* Phase 13 — RALEN RUN reviews + first-load stability */
+.ralen-reviews {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(96px, 12vw, 170px) 0;
+  background:
+    radial-gradient(circle at 82% 42%, rgba(91,127,166,.045), transparent 26rem),
+    #050505;
+  border-top: 1px solid rgba(255,255,255,.05);
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+
+.ralen-reviews::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: linear-gradient(to bottom, #000, transparent 82%);
+}
+
+.ralen-reviews__head,
+.ralen-reviews__grid {
+  position: relative;
+  z-index: 1;
+}
+
+.ralen-reviews__head {
+  display: grid;
+  grid-template-columns: minmax(150px,.35fr) minmax(0,1.65fr);
+  gap: clamp(36px, 7vw, 120px);
+  align-items: end;
+  padding-bottom: clamp(42px, 5vw, 70px);
+}
+
+.ralen-reviews__head-copy h2 {
+  max-width: 980px;
+  margin: 0;
+  font-size: clamp(46px, 6.4vw, 94px);
+  line-height: .88;
+  letter-spacing: -.065em;
+  text-wrap: balance;
+}
+
+.ralen-reviews__head-copy p {
+  max-width: 520px;
+  margin: 24px 0 0;
+  color: #898f95;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.ralen-reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 1px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.08);
+}
+
+.ralen-review-card {
+  position: relative;
+  min-height: 320px;
+  padding: clamp(24px, 3vw, 40px);
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at 75% 15%, rgba(91,127,166,.045), transparent 14rem),
+    #090a0b;
+}
+
+.ralen-review-card__top,
+.ralen-review-card__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+
+.ralen-review-card__top > span:first-child {
+  color: #646c73;
+  font-size: 7px;
+  letter-spacing: .2em;
+}
+
+.ralen-review-card__stars {
+  color: #F2C45B;
+  font-size: 14px;
+  letter-spacing: .09em;
+  line-height: 1;
+  text-shadow: 0 0 16px rgba(242,196,91,.18);
+}
+
+.ralen-review-card blockquote {
+  margin: auto 0;
+  padding: 56px 0 42px;
+  max-width: 28ch;
+  color: #F2F3F2;
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.18;
+  letter-spacing: -.025em;
+}
+
+.ralen-review-card__meta {
+  align-items: end;
+  border-top: 1px solid rgba(255,255,255,.06);
+  padding-top: 18px;
+}
+
+.ralen-review-card__meta strong {
+  color: #dfe3e5;
+  font-size: 9px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.ralen-review-card__meta span {
+  color: #68727a;
+  font-size: 7px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.ralen-review-card__demo {
+  margin-top: 16px;
+  color: #8c6e2f;
+  font-size: 6px;
+  font-weight: 700;
+  letter-spacing: .2em;
+}
+
+@media (max-width: 989px) {
+  .ralen-reviews {
+    padding: 84px 0;
+  }
+
+  .ralen-reviews__head {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .ralen-reviews__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ralen-review-card {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ralen-reviews {
+    padding: 72px 0;
+  }
+
+  .ralen-reviews__head-copy h2 {
+    font-size: clamp(40px, 13vw, 60px);
+  }
+
+  .ralen-reviews__head-copy p {
+    font-size: 11px;
+  }
+
+  .ralen-review-card {
+    min-height: 250px;
+    padding: 22px;
+  }
+
+  .ralen-review-card blockquote {
+    padding: 44px 0 32px;
+    font-size: 21px;
+  }
+
+  .ralen-review-card__stars {
+    font-size: 13px;
+  }
+}
+
+/* Never hide the catalog/product cards while JS is booting. */
+.ralen-products .ralen-card[data-ralen-motion="hidden"] {
+  opacity: 1 !important;
+  transform: none !important;
+  transition-delay: 0ms !important;
+}
