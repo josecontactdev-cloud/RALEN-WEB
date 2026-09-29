@@ -2,14 +2,14 @@
   <div class="ralen-shell">
     <header class="ralen-collection__header">
       <div>
-        <span>03 / CATÁLOGO</span>
-        <span>{{ collection.products_count }} OBJETOS</span>
+        <span>03 / RALEN RUN</span>
+        <span>{{ collection.products_count }} PIEZAS</span>
       </div>
       <h1>{{ collection.title }}</h1>
       {% if collection.description != blank %}
         <div class="ralen-collection__description">{{ collection.description }}</div>
       {% else %}
-        <p>Una selección corta de objetos elegidos por utilidad, diseño y función.</p>
+        <p>Equipo técnico para correr y moverte. Descubre las piezas actuales de RALEN RUN.</p>
       {% endif %}
     </header>
 
@@ -18,7 +18,7 @@
         {% for product in collection.products %}
           {% render 'ralen-product-card', product: product, index: forloop.index, heading_tag: 'h2', show_vendor: false, show_quick_add: section.settings.show_quick_add %}
         {% else %}
-          <p class="ralen-collection__empty">Todavía no hay objetos en esta colección.</p>
+          <p class="ralen-collection__empty">Todavía no hay piezas en esta colección.</p>
         {% endfor %}
       </div>
 
