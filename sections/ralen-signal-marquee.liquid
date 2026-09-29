@@ -1,15 +1,12 @@
-<section class="ralen-signal" aria-label="RALEN RUN y reseñas">
+<section class="ralen-signal ralen-signal--reviews" aria-label="Reseñas de RALEN RUN">
   <div class="ralen-signal__viewport">
     <div class="ralen-signal__track" aria-hidden="true">
-      {% for repeat in (1..2) %}
+      {% for repeat in (1..4) %}
         <div class="ralen-signal__group">
-          <span><i></i>{{ section.settings.item_1 }}</span>
-          <span><i></i>{{ section.settings.item_2 }}</span>
-          <span><i></i>{{ section.settings.item_3 }}</span>
-          <span><i></i>{{ section.settings.item_4 }}</span>
           <span class="ralen-signal__review">
             <strong aria-hidden="true">★★★★★</strong>
             <em>{{ section.settings.review_label }}</em>
+            <b>{{ section.settings.review_cta }}</b>
           </span>
         </div>
       {% endfor %}
@@ -19,14 +16,11 @@
 
 {% schema %}
 {
-  "name": "RALEN Signal",
+  "name": "RALEN Reviews Signal",
   "settings": [
-    { "type": "text", "id": "item_1", "label": "Elemento 1", "default": "RUN" },
-    { "type": "text", "id": "item_2", "label": "Elemento 2", "default": "PERFORMANCE" },
-    { "type": "text", "id": "item_3", "label": "Elemento 3", "default": "QUICK DRY" },
-    { "type": "text", "id": "item_4", "label": "Elemento 4", "default": "MADE IN MEXICO" },
-    { "type": "text", "id": "review_label", "label": "Etiqueta de reseñas", "default": "REVIEWS / RUN 001" }
+    { "type": "text", "id": "review_label", "label": "Etiqueta de reseñas", "default": "REVIEWS / RUN 001" },
+    { "type": "text", "id": "review_cta", "label": "Texto secundario", "default": "LEER OPINIONES" }
   ],
-  "presets": [{ "name": "RALEN Signal" }]
+  "presets": [{ "name": "RALEN Reviews Signal" }]
 }
 {% endschema %}
