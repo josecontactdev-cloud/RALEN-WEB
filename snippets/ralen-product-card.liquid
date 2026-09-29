@@ -56,7 +56,7 @@
 
   <div class="ralen-card__meta">
     <div>
-      <{{} card_heading {{'}}'}><a href="{{ product.url }}">{{ product.title }}</a></{{} card_heading {{'}}'}>
+      <{{ card_heading }}><a href="{{ product.url }}">{{ product.title }}</a></{{ card_heading }}>
       {% if show_vendor and product.vendor != blank %}
         <span>{{ product.vendor }}</span>
       {% else %}
