@@ -5,7 +5,13 @@
         <span>03 / RALEN RUN</span>
         <span>{{ collection.products_count }} PIEZAS</span>
       </div>
-      <h1>{{ collection.title }}</h1>
+      {% liquid
+        assign catalog_title = collection.title
+        if collection.handle == 'all'
+          assign catalog_title = 'RUN / 001'
+        endif
+      %}
+      <h1>{{ catalog_title }}</h1>
       {% if collection.description != blank %}
         <div class="ralen-collection__description">{{ collection.description }}</div>
       {% else %}
