@@ -1,0 +1,60 @@
+/* Phase 12 — RALEN RUN review signal */
+.ralen-signal__group span {
+  color: #7d858d;
+  transition: color .25s ease;
+}
+
+.ralen-signal__group span i {
+  background: var(--ralen-steel);
+  box-shadow: 0 0 10px rgba(91,127,166,.12);
+}
+
+.ralen-signal__review {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 11px !important;
+  padding-inline: 34px !important;
+  border-left: 1px solid rgba(255,255,255,.06);
+}
+
+.ralen-signal__review strong {
+  color: #E3BE62;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  line-height: 1;
+  text-shadow: 0 0 14px rgba(227,190,98,.1);
+}
+
+.ralen-signal__review em {
+  color: #a5a7a8;
+  font-size: 8px;
+  font-style: normal;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.ralen-signal__review:hover strong {
+  color: #f0cb70;
+}
+
+@media (max-width: 640px) {
+  .ralen-signal__group span {
+    min-height: 50px;
+    padding-inline: 22px;
+  }
+
+  .ralen-signal__review {
+    gap: 9px !important;
+    padding-inline: 24px !important;
+  }
+
+  .ralen-signal__review strong {
+    font-size: 10px;
+  }
+
+  .ralen-signal__review em {
+    font-size: 7px;
+    letter-spacing: .16em;
+  }
+}
