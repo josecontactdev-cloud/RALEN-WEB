@@ -9,9 +9,6 @@
  */
 {
   "sections": {
-    "ralen_newsletter_popup": {
-      "type": "ralen-newsletter-popup"
-    },
     "ralen_intro": {
       "type": "ralen-intro",
       "settings": {
@@ -43,53 +40,15 @@
         "product_label": "RALEN / RUN 001",
         "badge": "PERFORMANCE / MADE ON DEMAND",
         "frame_label": "RUN / 001 — PERFORMANCE TEE",
-        "footer_note": "TECHNICAL APPAREL / MADE IN MEXICO"
+        "footer_note": ""
       }
     },
     "ralen_signal": {
       "type": "ralen-signal-marquee",
       "settings": {
-        "item_1": "RUN",
-        "item_2": "PERFORMANCE",
-        "item_3": "QUICK DRY",
-        "item_4": "MADE IN MEXICO"
+        "review_label": "REVIEWS / RUN 001",
+        "review_cta": "LEER OPINIONES"
       }
-    },
-    "ralen_reviews": {
-      "type": "ralen-reviews",
-      "settings": {
-        "index_label": "03 / OPINIONES",
-        "kicker": "RUN / 001",
-        "heading": "LO QUE QUEREMOS QUE SIENTAS AL CORRER.",
-        "description": "Ejemplos de cómo puede verse la sección de opiniones cuando empiecen a llegar las reseñas reales."
-      },
-      "blocks": {
-        "review_1": {
-          "type": "review",
-          "settings": {
-            "quote": "100% recomendada. La siento ligera, cómoda y seca rápido cuando corro.",
-            "author": "Runner / ejemplo 01",
-            "detail": "RUN / 001"
-          }
-        },
-        "review_2": {
-          "type": "review",
-          "settings": {
-            "quote": "Está súper cool. La uso casi diario para salir a correr y no se siente pesada.",
-            "author": "Runner / ejemplo 02",
-            "detail": "RUN / 001"
-          }
-        },
-        "review_3": {
-          "type": "review",
-          "settings": {
-            "quote": "Me gustó mucho el fit. Se siente limpia, técnica y fácil de usar para entrenar.",
-            "author": "Runner / ejemplo 03",
-            "detail": "RUN / 001"
-          }
-        }
-      },
-      "block_order": ["review_1", "review_2", "review_3"]
     },
     "ralen_products": {
       "type": "ralen-featured-collection",
