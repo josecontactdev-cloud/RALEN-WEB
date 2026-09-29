@@ -1,0 +1,86 @@
+<section id="RalenReviews" class="ralen-reviews" aria-labelledby="RalenReviewsTitle">
+  <div class="ralen-shell">
+    <div class="ralen-reviews__head">
+      <div>
+        <span class="ralen-section-index">{{ section.settings.index_label }}</span>
+        <p class="ralen-section-kicker">{{ section.settings.kicker }}</p>
+      </div>
+      <div class="ralen-reviews__head-copy">
+        <h2 id="RalenReviewsTitle">{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.description }}</p>
+      </div>
+    </div>
+
+    <div class="ralen-reviews__grid">
+      {% for block in section.blocks %}
+        <article class="ralen-review-card" {{ block.shopify_attributes }}>
+          <div class="ralen-review-card__top">
+            <span>{{ forloop.index | prepend: '0' }}</span>
+            <span class="ralen-review-card__stars" aria-label="Cinco estrellas">★★★★★</span>
+          </div>
+          <blockquote>“{{ block.settings.quote }}”</blockquote>
+          <div class="ralen-review-card__meta">
+            <strong>{{ block.settings.author }}</strong>
+            <span>{{ block.settings.detail }}</span>
+          </div>
+          <small class="ralen-review-card__demo">TEXTO DE EJEMPLO</small>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RALEN Reviews",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "index_label", "label": "Índice", "default": "03 / OPINIONES" },
+    { "type": "text", "id": "kicker", "label": "Etiqueta", "default": "RUN / 001" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "LO QUE QUEREMOS QUE SIENTAS AL CORRER." },
+    { "type": "textarea", "id": "description", "label": "Descripción", "default": "Ejemplos de cómo puede verse la sección de opiniones cuando empiecen a llegar las reseñas reales." }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Opinión",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Comentario", "default": "100% recomendada. Se siente ligera y se seca rápido." },
+        { "type": "text", "id": "author", "label": "Autor", "default": "Runner / ejemplo" },
+        { "type": "text", "id": "detail", "label": "Detalle", "default": "RUN / 001" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "RALEN Reviews",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "quote": "100% recomendada. La siento ligera, cómoda y seca rápido cuando corro.",
+            "author": "Runner / ejemplo 01",
+            "detail": "RUN / 001"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "Está súper cool. La uso casi diario para salir a correr y no se siente pesada.",
+            "author": "Runner / ejemplo 02",
+            "detail": "RUN / 001"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "Me gustó mucho el fit. Se siente limpia, técnica y fácil de usar para entrenar.",
+            "author": "Runner / ejemplo 03",
+            "detail": "RUN / 001"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
