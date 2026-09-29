@@ -9,6 +9,9 @@
  */
 {
   "sections": {
+    "ralen_newsletter_popup": {
+      "type": "ralen-newsletter-popup"
+    },
     "ralen_intro": {
       "type": "ralen-intro",
       "settings": {
