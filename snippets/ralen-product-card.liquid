@@ -3,6 +3,10 @@
   assign card_heading = heading_tag | default: 'h3'
   assign variant = product.selected_or_first_available_variant
   assign secondary_image = product.images[1]
+  assign card_loading = 'lazy'
+  if card_index <= 4
+    assign card_loading = 'eager'
+  endif
 %}
 
 <article class="ralen-card" data-ralen-card>
@@ -14,7 +18,7 @@
           | image_tag:
             widths: '360, 540, 720, 900, 1200',
             sizes: '(min-width: 990px) 25vw, (min-width: 640px) 50vw, 100vw',
-            loading: 'lazy',
+            loading: card_loading,
             class: 'ralen-card__image ralen-card__image--primary',
             alt: product.featured_image.alt | default: product.title
         }}
@@ -24,7 +28,7 @@
             | image_tag:
               widths: '360, 540, 720, 900, 1200',
               sizes: '(min-width: 990px) 25vw, (min-width: 640px) 50vw, 100vw',
-              loading: 'lazy',
+              loading: card_loading,
               class: 'ralen-card__image ralen-card__image--secondary',
               alt: secondary_image.alt | default: product.title
           }}
