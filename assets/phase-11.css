@@ -1,0 +1,287 @@
+/* Phase 11 — RALEN RUN catalog repair + mobile commerce */
+.ralen-collection {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(91,127,166,.035), transparent 30rem),
+    #050505;
+}
+
+.ralen-collection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .42;
+  background:
+    linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: linear-gradient(to bottom, #000, transparent 70%);
+}
+
+.ralen-collection__header {
+  position: relative;
+  z-index: 1;
+}
+
+.ralen-collection__header > div:first-child span:last-child {
+  color: #8897a5;
+}
+
+.ralen-collection__header h1 {
+  color: #f4f5f4;
+}
+
+.ralen-collection__header > p,
+.ralen-collection__description {
+  max-width: 42ch;
+  color: #8f9498;
+}
+
+.ralen-collection__grid {
+  position: relative;
+  z-index: 1;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid var(--ralen-line);
+  background: var(--ralen-line);
+}
+
+.ralen-collection__grid .ralen-card {
+  position: relative;
+  min-width: 0;
+  background: #08090a;
+  border: 0;
+  overflow: hidden;
+}
+
+.ralen-collection__grid .ralen-card__media {
+  aspect-ratio: .82;
+  min-height: 0;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(91,127,166,.08), transparent 34%),
+    radial-gradient(circle at 50% 45%, #1b1d1f 0, #101112 48%, #08090a 82%);
+  border: 0;
+}
+
+.ralen-collection__grid .ralen-card__media-link {
+  height: 100%;
+}
+
+.ralen-collection__grid .ralen-card__image {
+  object-fit: contain;
+  padding: 28px;
+  filter: saturate(.5) contrast(1.08) brightness(.97);
+  transform: scale(1.01);
+}
+
+.ralen-collection__grid .ralen-card:hover .ralen-card__image {
+  transform: scale(1.035) translateY(-4px);
+  filter: saturate(.68) contrast(1.08) brightness(1.02);
+}
+
+.ralen-collection__grid .ralen-card__media::before {
+  content: "RALEN / RUN";
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  z-index: 3;
+  color: rgba(255,255,255,.3);
+  font-size: 7px;
+  letter-spacing: .22em;
+  pointer-events: none;
+}
+
+.ralen-collection__grid .ralen-card__media::after {
+  background:
+    linear-gradient(90deg, transparent 49.8%, rgba(255,255,255,.025) 50%, transparent 50.2%),
+    linear-gradient(0deg, transparent 49.8%, rgba(255,255,255,.02) 50%, transparent 50.2%);
+  background-size: 50% 100%, 100% 50%;
+}
+
+.ralen-collection__grid .ralen-card__empty-media {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(91,127,166,.07), transparent 32%),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    #0a0b0c;
+  background-size: auto, 72px 72px, 72px 72px;
+}
+
+.ralen-collection__grid .ralen-card__empty-media::after {
+  content: "";
+  width: 35%;
+  height: 58%;
+  border: 1px solid rgba(255,255,255,.075);
+  transform: skewY(-7deg);
+}
+
+.ralen-collection__grid .ralen-card__number {
+  z-index: 4;
+}
+
+.ralen-collection__grid .ralen-card__status {
+  z-index: 4;
+}
+
+.ralen-collection__grid .ralen-card__view {
+  display: none !important;
+}
+
+.ralen-collection__grid .ralen-card__quick {
+  z-index: 5;
+}
+
+.ralen-collection__grid .ralen-card__quick button,
+.ralen-collection__grid .ralen-card__options {
+  border-color: rgba(91,127,166,.32);
+}
+
+.ralen-collection__grid .ralen-card__quick button:hover,
+.ralen-collection__grid .ralen-card__options:hover {
+  border-color: #5B7FA6;
+  background: #5B7FA6;
+  color: #050505;
+}
+
+.ralen-collection__grid .ralen-card__meta {
+  min-height: 84px;
+  padding: 16px 18px;
+  background: #08090a;
+  border-top: 1px solid rgba(255,255,255,.055);
+}
+
+.ralen-collection__grid .ralen-card__meta h2 {
+  color: #f2f3f2;
+}
+
+.ralen-collection__grid .ralen-card__meta > div:first-child > span {
+  color: #6f7882;
+}
+
+.ralen-collection__grid .ralen-card__price strong {
+  color: #f2f3f2;
+}
+
+.ralen-pagination {
+  position: relative;
+  z-index: 1;
+  color: #747c83;
+}
+
+.ralen-pagination a:hover {
+  color: #5B7FA6;
+}
+
+@media (max-width: 989px) {
+  .ralen-collection {
+    padding-top: 108px;
+  }
+
+  .ralen-collection__header {
+    gap: 22px;
+    padding-bottom: 46px;
+  }
+
+  .ralen-collection__header h1 {
+    font-size: clamp(54px, 12vw, 92px);
+  }
+
+  .ralen-collection__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ralen-collection__grid .ralen-card__media {
+    aspect-ratio: .82;
+  }
+
+  .ralen-collection__grid .ralen-card__quick {
+    opacity: 1;
+    transform: none;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .ralen-collection__grid .ralen-card__quick button,
+  .ralen-collection__grid .ralen-card__options {
+    min-height: 46px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ralen-collection {
+    padding: 96px 0 76px;
+  }
+
+  .ralen-collection__header {
+    padding-bottom: 34px;
+  }
+
+  .ralen-collection__header > div:first-child {
+    font-size: 7px;
+  }
+
+  .ralen-collection__header h1 {
+    font-size: clamp(48px, 16vw, 72px);
+  }
+
+  .ralen-collection__header > p,
+  .ralen-collection__description {
+    font-size: 11px;
+    line-height: 1.65;
+  }
+
+  .ralen-collection__grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    border: 0;
+    background: transparent;
+  }
+
+  .ralen-collection__grid .ralen-card {
+    border: 1px solid rgba(255,255,255,.08);
+  }
+
+  .ralen-collection__grid .ralen-card__media {
+    aspect-ratio: 1 / 1.15;
+  }
+
+  .ralen-collection__grid .ralen-card__image {
+    padding: 28px 24px 74px;
+  }
+
+  .ralen-collection__grid .ralen-card__quick {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .ralen-collection__grid .ralen-card__meta {
+    min-height: 72px;
+    padding: 14px 16px;
+  }
+
+  .ralen-pagination {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    gap: 14px;
+    padding-top: 26px;
+  }
+
+  .ralen-pagination > span {
+    justify-self: start;
+    order: -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ralen-collection__grid .ralen-card__image {
+    transition: none !important;
+  }
+}
