@@ -35,11 +35,11 @@
         {% for i in (1..4) %}
           <article class="ralen-card ralen-card--placeholder" data-ralen-card>
             <div class="ralen-card__media">
-              {{ 'product-' | append: i | placeholder_svg_tag: 'ralen-card__placeholder' }}
+              <div class="ralen-card__empty-media" aria-hidden="true"></div>
               <span class="ralen-card__number">{{ i | prepend: '0' }}</span>
             </div>
             <div class="ralen-card__meta">
-              <div><h3>OBJETO {{ i | prepend: '0' }}</h3><span>SELECCIÓN RALEN</span></div>
+              <div><h3>RUN / 00{{ i }}</h3><span>RALEN / RUN</span></div>
               <strong>—</strong>
             </div>
           </article>
@@ -59,15 +59,15 @@
 {
   "name": "RALEN Productos",
   "settings": [
-    { "type": "text", "id": "index_label", "label": "Índice", "default": "02 / SELECCIÓN" },
-    { "type": "text", "id": "kicker", "label": "Etiqueta", "default": "OBJETOS ACTUALES" },
-    { "type": "text", "id": "heading", "label": "Título", "default": "LO QUE SÍ SE QUEDA." },
-    { "type": "textarea", "id": "description", "label": "Descripción", "default": "Una selección corta. Menos ruido, mejores decisiones." },
+    { "type": "text", "id": "index_label", "label": "Índice", "default": "02 / DROP 001" },
+    { "type": "text", "id": "kicker", "label": "Etiqueta", "default": "RALEN / RUN" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "START WITH RUN / 001." },
+    { "type": "textarea", "id": "description", "label": "Descripción", "default": "Una primera pieza técnica para correr y moverte: secado rápido, diseño limpio y producción bajo demanda en México." },
     { "type": "collection", "id": "collection", "label": "Colección" },
     { "type": "range", "id": "products_to_show", "min": 2, "max": 8, "step": 1, "default": 4, "label": "Productos a mostrar" },
     { "type": "checkbox", "id": "show_vendor", "label": "Mostrar proveedor", "default": false },
     { "type": "checkbox", "id": "show_quick_add", "label": "Mostrar compra rápida", "default": true },
-    { "type": "text", "id": "cta_label", "label": "CTA", "default": "VER TODA LA SELECCIÓN" }
+    { "type": "text", "id": "cta_label", "label": "CTA", "default": "VER TODO EL CATÁLOGO" }
   ],
   "presets": [{ "name": "RALEN Productos" }]
 }
