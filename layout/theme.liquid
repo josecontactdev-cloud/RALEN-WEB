@@ -49,6 +49,7 @@
     {{ 'phase-11.css' | asset_url | stylesheet_tag }}
     {{ 'phase-12.css' | asset_url | stylesheet_tag }}
     {{ 'phase-13.css' | asset_url | stylesheet_tag }}
+    {{ 'phase-14.css' | asset_url | stylesheet_tag }}
 
     <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
     {% if request.page_type == 'index' %}
@@ -58,6 +59,7 @@
       <script src="{{ 'phase-8.js' | asset_url }}" defer></script>
       <script src="{{ 'phase-10.js' | asset_url }}" defer></script>
       <script src="{{ 'phase-13.js' | asset_url }}" defer></script>
+      <script src="{{ 'phase-14.js' | asset_url }}" defer></script>
     {% endif %}
     {% if request.page_type == 'product' %}
       <script src="{{ 'phase-3.js' | asset_url }}" defer></script>
