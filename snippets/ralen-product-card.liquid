@@ -2,6 +2,7 @@
   assign card_index = index | default: 1
   assign card_heading = heading_tag | default: 'h3'
   assign variant = product.selected_or_first_available_variant
+  assign secondary_image = product.images[1]
 %}
 
 <article class="ralen-card" data-ralen-card>
@@ -14,16 +15,26 @@
             widths: '360, 540, 720, 900, 1200',
             sizes: '(min-width: 990px) 25vw, (min-width: 640px) 50vw, 100vw',
             loading: 'lazy',
-            class: 'ralen-card__image',
+            class: 'ralen-card__image ralen-card__image--primary',
             alt: product.featured_image.alt | default: product.title
         }}
+        {% if secondary_image != blank %}
+          {{ secondary_image
+            | image_url: width: 1200
+            | image_tag:
+              widths: '360, 540, 720, 900, 1200',
+              sizes: '(min-width: 990px) 25vw, (min-width: 640px) 50vw, 100vw',
+              loading: 'lazy',
+              class: 'ralen-card__image ralen-card__image--secondary',
+              alt: secondary_image.alt | default: product.title
+          }}
+        {% endif %}
       {% else %}
-        {{ 'product-1' | placeholder_svg_tag: 'ralen-card__placeholder' }}
+        <div class="ralen-card__empty-media" aria-hidden="true"></div>
       {% endif %}
 
       <span class="ralen-card__number">{{ card_index | prepend: '0' }}</span>
       {% unless product.available %}<span class="ralen-card__status">AGOTADO</span>{% endunless %}
-      <span class="ralen-card__view">VER PRODUCTO <span aria-hidden="true">↗</span></span>
     </a>
 
     {% if show_quick_add %}
@@ -45,11 +56,11 @@
 
   <div class="ralen-card__meta">
     <div>
-      <{{ card_heading }}><a href="{{ product.url }}">{{ product.title }}</a></{{ card_heading }}>
+      <{{} card_heading {{'}}'}><a href="{{ product.url }}">{{ product.title }}</a></{{} card_heading {{'}}'}>
       {% if show_vendor and product.vendor != blank %}
         <span>{{ product.vendor }}</span>
       {% else %}
-        <span>RALEN / SETUP</span>
+        <span>RALEN / RUN</span>
       {% endif %}
     </div>
     <div class="ralen-card__price">
