@@ -9,33 +9,66 @@
   box-shadow: 0 0 10px rgba(91,127,166,.12);
 }
 
+/* Reviews are the visual proof point of the marquee. */
 .ralen-signal__review {
+  position: relative;
   display: inline-flex !important;
   align-items: center;
-  gap: 11px !important;
-  padding-inline: 34px !important;
-  border-left: 1px solid rgba(255,255,255,.06);
+  justify-content: center;
+  gap: 18px !important;
+  min-width: clamp(260px, 24vw, 360px);
+  min-height: 70px !important;
+  margin-inline: 8px;
+  padding-inline: clamp(34px, 4vw, 58px) !important;
+  border-left: 1px solid rgba(227,190,98,.24);
+  border-right: 1px solid rgba(227,190,98,.24);
+  background:
+    linear-gradient(90deg, transparent, rgba(227,190,98,.045) 18%, rgba(227,190,98,.07) 50%, rgba(227,190,98,.045) 82%, transparent);
+}
+
+.ralen-signal__review::before {
+  content: "5.0";
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  color: rgba(227,190,98,.44);
+  font-size: 6px;
+  font-weight: 700;
+  letter-spacing: .2em;
 }
 
 .ralen-signal__review strong {
-  color: #E3BE62;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: .08em;
-  line-height: 1;
-  text-shadow: 0 0 14px rgba(227,190,98,.1);
+  display: inline-block;
+  flex: 0 0 auto;
+  color: #F2C45B;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 600;
+  letter-spacing: .12em;
+  line-height: .9;
+  text-shadow:
+    0 0 10px rgba(242,196,91,.28),
+    0 0 24px rgba(242,196,91,.12);
+  transform: translateY(-1px);
+  transition: color .25s ease, transform .25s ease;
 }
 
 .ralen-signal__review em {
-  color: #a5a7a8;
+  color: #d1c7b0;
   font-size: 8px;
   font-style: normal;
-  letter-spacing: .2em;
+  font-weight: 600;
+  letter-spacing: .22em;
   text-transform: uppercase;
 }
 
+.ralen-signal__review:hover {
+  background:
+    linear-gradient(90deg, transparent, rgba(227,190,98,.065) 18%, rgba(227,190,98,.095) 50%, rgba(227,190,98,.065) 82%, transparent);
+}
+
 .ralen-signal__review:hover strong {
-  color: #f0cb70;
+  color: #FFD978;
+  transform: scale(1.04);
 }
 
 @media (max-width: 640px) {
@@ -45,16 +78,25 @@
   }
 
   .ralen-signal__review {
-    gap: 9px !important;
+    gap: 13px !important;
+    min-width: 250px;
+    min-height: 62px !important;
+    margin-inline: 4px;
     padding-inline: 24px !important;
   }
 
+  .ralen-signal__review::before {
+    top: 6px;
+    right: 9px;
+    font-size: 5px;
+  }
+
   .ralen-signal__review strong {
-    font-size: 10px;
+    font-size: 18px;
   }
 
   .ralen-signal__review em {
     font-size: 7px;
-    letter-spacing: .16em;
+    letter-spacing: .17em;
   }
 }
