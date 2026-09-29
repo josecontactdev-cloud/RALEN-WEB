@@ -1,0 +1,283 @@
+/* =========================================================
+   RALEN — PHASE 9 / DARK PRODUCT CONTRAST
+   Purpose: separate black products from the dark UI without
+   breaking the minimal / premium visual language.
+   ========================================================= */
+
+:root {
+  --ralen-p9-media-bg: #141414;
+  --ralen-p9-media-border: #222222;
+  --ralen-p9-media-border-hover: #383838;
+
+  --ralen-p9-spotlight-core: #242424;
+  --ralen-p9-spotlight-mid: #171717;
+  --ralen-p9-spotlight-edge: #080808;
+
+  --ralen-p9-review-bg: #0d0d0d;
+  --ralen-p9-review-card: #111111;
+  --ralen-p9-review-input: #141414;
+  --ralen-p9-review-border: #222222;
+  --ralen-p9-review-border-hover: #383838;
+  --ralen-p9-review-text: #f5f5f2;
+  --ralen-p9-review-muted: #8d8d89;
+}
+
+/* =========================================================
+   01 — PRODUCT CARDS
+   ========================================================= */
+
+.ralen-card__media {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 50% 44%,
+      rgba(255,255,255,.055) 0%,
+      rgba(255,255,255,.018) 34%,
+      transparent 68%
+    ),
+    var(--ralen-p9-media-bg);
+
+  border: 1px solid var(--ralen-p9-media-border);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.012),
+    inset 0 0 60px rgba(255,255,255,.018);
+
+  transition:
+    background .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+.ralen-card:hover .ralen-card__media,
+.ralen-card:focus-within .ralen-card__media {
+  background:
+    radial-gradient(
+      circle at 50% 44%,
+      rgba(255,255,255,.075) 0%,
+      rgba(255,255,255,.022) 34%,
+      transparent 68%
+    ),
+    var(--ralen-p9-media-bg);
+
+  border-color: var(--ralen-p9-media-border-hover);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.02),
+    inset 0 0 70px rgba(255,255,255,.022);
+}
+
+.ralen-card__image {
+  filter:
+    brightness(1.06)
+    contrast(1.08)
+    saturate(.72);
+
+  transition:
+    transform .75s cubic-bezier(.22,1,.36,1),
+    filter .45s ease;
+}
+
+.ralen-card:hover .ralen-card__image,
+.ralen-card:focus-within .ralen-card__image {
+  filter:
+    brightness(1.10)
+    contrast(1.09)
+    saturate(.78);
+}
+
+/* =========================================================
+   02 — HERO PRODUCT SPOTLIGHT
+   ========================================================= */
+
+.ralen-hero--tech .ralen-hero__media {
+  background:
+    radial-gradient(
+      circle at 50% 44%,
+      var(--ralen-p9-spotlight-core) 0%,
+      var(--ralen-p9-spotlight-mid) 32%,
+      #0e0e0e 56%,
+      var(--ralen-p9-spotlight-edge) 82%,
+      #060606 100%
+    ) !important;
+
+  border-color: var(--ralen-p9-media-border) !important;
+
+  box-shadow:
+    inset 0 0 100px rgba(255,255,255,.025),
+    0 24px 80px rgba(0,0,0,.28);
+}
+
+.ralen-hero--tech .ralen-hero__media::after {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5,5,5,.18),
+      transparent 28%,
+      transparent 72%,
+      rgba(5,5,5,.16)
+    ),
+    linear-gradient(
+      0deg,
+      rgba(5,5,5,.18),
+      transparent 28%
+    );
+}
+
+.ralen-hero--tech .ralen-hero__image {
+  filter:
+    saturate(.68)
+    contrast(1.10)
+    brightness(1.02);
+}
+
+/* =========================================================
+   03 — MAIN PRODUCT GALLERY
+   ========================================================= */
+
+.ralen-product__stage {
+  background:
+    radial-gradient(
+      circle at 50% 43%,
+      #232323 0%,
+      #181818 27%,
+      #0f0f0f 55%,
+      #080808 78%,
+      #070707 100%
+    ) !important;
+
+  border: 1px solid var(--ralen-p9-media-border);
+
+  box-shadow:
+    inset 0 0 90px rgba(255,255,255,.022);
+}
+
+.ralen-product__main-image {
+  filter:
+    saturate(.44)
+    contrast(1.08)
+    brightness(1.02) !important;
+}
+
+.ralen-product__thumb {
+  background:
+    radial-gradient(circle at 50% 45%, #191919, #0d0d0d 68%);
+  border: 1px solid #1c1c1c;
+}
+
+/* =========================================================
+   04 — REVIEW WIDGET DARK OVERRIDE
+   Scoped to Ali Reviews / Kudosi's documented mount.
+   ========================================================= */
+
+.alireviews-review-box {
+  background: var(--ralen-p9-review-bg) !important;
+  color: var(--ralen-p9-review-text) !important;
+  border-color: var(--ralen-p9-review-border) !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.alireviews-review-box,
+.alireviews-review-box > div,
+.alireviews-review-box [class*="review-box"],
+.alireviews-review-box [class*="review-list"],
+.alireviews-review-box [class*="review-item"],
+.alireviews-review-box [class*="review-card"] {
+  background-color: var(--ralen-p9-review-bg) !important;
+  color: var(--ralen-p9-review-text) !important;
+  border-color: var(--ralen-p9-review-border) !important;
+  box-shadow: none !important;
+}
+
+.alireviews-review-box [class*="review-item"],
+.alireviews-review-box [class*="review-card"] {
+  background-color: var(--ralen-p9-review-card) !important;
+  border: 1px solid var(--ralen-p9-review-border) !important;
+}
+
+.alireviews-review-box h1,
+.alireviews-review-box h2,
+.alireviews-review-box h3,
+.alireviews-review-box h4,
+.alireviews-review-box p,
+.alireviews-review-box span,
+.alireviews-review-box label,
+.alireviews-review-box strong,
+.alireviews-review-box small {
+  color: var(--ralen-p9-review-text) !important;
+}
+
+.alireviews-review-box [class*="date"],
+.alireviews-review-box [class*="author"],
+.alireviews-review-box [class*="name"],
+.alireviews-review-box [class*="verified"] {
+  color: var(--ralen-p9-review-muted) !important;
+}
+
+.alireviews-review-box input,
+.alireviews-review-box select,
+.alireviews-review-box textarea {
+  background-color: var(--ralen-p9-review-input) !important;
+  color: var(--ralen-p9-review-text) !important;
+  border: 1px solid var(--ralen-p9-review-border) !important;
+  box-shadow: none !important;
+}
+
+.alireviews-review-box input::placeholder,
+.alireviews-review-box textarea::placeholder {
+  color: #686865 !important;
+}
+
+.alireviews-review-box button {
+  background-color: var(--ralen-p9-review-bg) !important;
+  color: var(--ralen-p9-review-text) !important;
+  border: 1px solid var(--ralen-p9-review-border) !important;
+  box-shadow: none !important;
+}
+
+.alireviews-review-box button:hover {
+  background-color: #141414 !important;
+  border-color: var(--ralen-p9-review-border-hover) !important;
+}
+
+.alireviews-review-box a {
+  color: var(--ralen-p9-review-text) !important;
+}
+
+/* =========================================================
+   05 — MOBILE / REDUCED MOTION
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .ralen-card__media {
+    border-color: #222222;
+  }
+
+  .ralen-card__image {
+    filter:
+      brightness(1.05)
+      contrast(1.07)
+      saturate(.72);
+  }
+
+  .ralen-hero--tech .ralen-hero__image {
+    filter:
+      saturate(.68)
+      contrast(1.08)
+      brightness(1.01);
+  }
+
+  .ralen-product__main-image {
+    filter:
+      saturate(.44)
+      contrast(1.07)
+      brightness(1.01) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ralen-card__media,
+  .ralen-card__image {
+    transition: none !important;
+  }
+}
