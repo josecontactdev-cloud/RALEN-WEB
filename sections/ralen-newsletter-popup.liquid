@@ -1,0 +1,36 @@
+<div class="ralen-newsletter-modal" data-ralen-newsletter-modal hidden>
+  <div class="ralen-newsletter-modal__backdrop" data-newsletter-close></div>
+  <div class="ralen-newsletter-modal__panel" role="dialog" aria-modal="true" aria-labelledby="RalenNewsletterTitle" aria-describedby="RalenNewsletterCopy">
+    <button class="ralen-newsletter-modal__close" type="button" aria-label="Cerrar" data-newsletter-close><span aria-hidden="true">×</span></button>
+    <div class="ralen-newsletter-modal__eyebrow">RALEN / RUN 001</div>
+    <div class="ralen-newsletter-modal__content">
+      <p class="ralen-newsletter-modal__kicker">{{ section.settings.kicker }}</p>
+      <h2 id="RalenNewsletterTitle">{{ section.settings.heading }}</h2>
+      <p id="RalenNewsletterCopy">{{ section.settings.copy }}</p>
+      {% form 'customer', id: 'RalenLaunchNewsletter', class: 'ralen-newsletter-modal__form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter,ralen-run">
+        <label class="visually-hidden" for="RalenLaunchNewsletterEmail">Correo electrónico</label>
+        <input id="RalenLaunchNewsletterEmail" type="email" name="contact[email]" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ section.settings.placeholder }}" autocomplete="email" required>
+        <button type="submit"><span>{{ section.settings.button_label }}</span><span aria-hidden="true">→</span></button>
+        {% if form.posted_successfully? %}<p class="ralen-newsletter-modal__status" role="status">{{ section.settings.success_message }}</p>{% endif %}
+        {% if form.errors %}<div class="ralen-newsletter-modal__status" role="alert">{{ form.errors | default_errors }}</div>{% endif %}
+      {% endform %}
+    </div>
+    <div class="ralen-newsletter-modal__footer"><span>NOVEDADES · DROPS · RUN</span><span>MÉXICO</span></div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "RALEN Newsletter Popup",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Etiqueta", "default": "ENTRA A RALEN" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "CORRE CON LO NUEVO." },
+    { "type": "textarea", "id": "copy", "label": "Descripción", "default": "Recibe nuevos drops, lanzamientos y novedades de RALEN RUN. Sin spam. Solo lo que vale la pena." },
+    { "type": "text", "id": "placeholder", "label": "Placeholder", "default": "TU CORREO" },
+    { "type": "text", "id": "button_label", "label": "Botón", "default": "QUIERO ENTRAR" },
+    { "type": "text", "id": "success_message", "label": "Confirmación", "default": "LISTO. ESTÁS DENTRO." }
+  ],
+  "presets": [{ "name": "RALEN Newsletter Popup" }]
+}
+{% endschema %}
