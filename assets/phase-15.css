@@ -1,0 +1,239 @@
+/* Phase 15 — RALEN RUN campaign / mobile-first editorial hero */
+:root {
+  --ralen-signal: #5B7FA6;
+  --ralen-accent: #5B7FA6;
+  --ralen-grid: rgba(255,255,255,.045);
+}
+::selection { background: #5B7FA6; color: #050505; }
+body.ralen-theme {
+  background: #050607;
+  background-image: radial-gradient(ellipse at 72% 0%, rgba(91,127,166,.09), transparent 42rem);
+}
+.ralen-wordmark::after {
+  background: var(--ralen-signal);
+  box-shadow: 0 0 14px rgba(91,127,166,.55);
+}
+.ralen-nav__link::after { background: var(--ralen-signal); }
+.ralen-hero.ralen-hero--tech {
+  position: relative;
+  min-height: 100svh;
+  min-height: 100dvh;
+  overflow: clip;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: #050607;
+}
+.ralen-hero--tech .ralen-hero__grid {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: none;
+  min-height: 100svh;
+  min-height: 100dvh;
+  display: block;
+  padding: 0;
+}
+.ralen-hero--tech .ralen-hero__visual {
+  position: absolute;
+  inset: 0;
+  min-height: 0;
+  background: #050607;
+}
+.ralen-hero--tech .ralen-hero__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 0;
+  background: #050607;
+}
+.ralen-hero--tech .ralen-hero__media::before {
+  z-index: 2;
+  opacity: .16;
+  background-image: linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px);
+  background-size: 64px 64px;
+}
+.ralen-hero--tech .ralen-hero__media::after {
+  z-index: 3;
+  background:
+    linear-gradient(0deg,rgba(3,5,8,.98) 0%,rgba(3,5,8,.76) 20%,rgba(3,5,8,.2) 54%,rgba(3,5,8,.16) 74%,rgba(3,5,8,.56) 100%),
+    linear-gradient(90deg,rgba(3,5,8,.44),transparent 76%);
+}
+.ralen-hero--tech .ralen-hero__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 54% 34%;
+  padding: 0;
+  filter: saturate(.82) contrast(1.06) brightness(.86);
+  transform: scale(1.015);
+  animation: ralen-hero-drift 18s ease-in-out infinite alternate;
+}
+@keyframes ralen-hero-drift { from { transform:scale(1.015); } to { transform:scale(1.065); } }
+.ralen-hero--tech .ralen-hero__content {
+  position: absolute;
+  z-index: 5;
+  inset: auto 0 0;
+  width: 100%;
+  max-width: 980px;
+  padding: 0 22px calc(74px + env(safe-area-inset-bottom));
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.ralen-hero--tech .ralen-hero__index {
+  position: static;
+  order: 0;
+  margin-bottom: 24px;
+  color: rgba(239,243,247,.72);
+  font-size: 8px;
+  letter-spacing: .2em;
+}
+.ralen-hero--tech .ralen-eyebrow {
+  order: 1;
+  margin: 0 0 12px;
+  color: #a8c0d8;
+  font-size: 8px;
+  letter-spacing: .23em;
+}
+.ralen-hero--tech .ralen-eyebrow::before {
+  background: #8eb5dd;
+  box-shadow: 0 0 12px rgba(91,127,166,.6);
+}
+.ralen-hero--tech .ralen-hero__title {
+  order: 2;
+  max-width: 10ch;
+  margin: 0;
+  font-size: clamp(54px, 12.8vw, 100px);
+  line-height: .82;
+  letter-spacing: -.075em;
+  text-wrap: balance;
+  color: #f5f7f8;
+  text-shadow: 0 4px 36px rgba(0,0,0,.2);
+}
+.ralen-hero--tech .ralen-hero__copy {
+  order: 3;
+  max-width: 34ch;
+  margin-top: 18px;
+  color: rgba(234,239,244,.78);
+  font-size: 12px;
+  line-height: 1.65;
+}
+.ralen-hero__systems {
+  order: 5;
+  gap: 8px 13px;
+  margin-top: 22px;
+  color: rgba(219,229,238,.65);
+  font-size: 7px;
+  letter-spacing: .14em;
+}
+.ralen-hero__systems span:not(:last-child)::after { color: rgba(151,182,210,.55); }
+.ralen-hero__actions {
+  order: 4;
+  width: 100%;
+  gap: 12px;
+  margin-top: 24px;
+}
+.ralen-tech-cta {
+  min-height: 52px;
+  min-width: 176px;
+  justify-content: space-between;
+  gap: 26px;
+  padding: 0 19px;
+  border-color: #5B7FA6;
+  background: #5B7FA6;
+  color: #05080b;
+  font-size: 9px;
+  letter-spacing: .17em;
+}
+.ralen-tech-cta:hover { box-shadow: 0 10px 34px rgba(91,127,166,.22); }
+.ralen-hero__actions .ralen-text-link {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  color: #eef2f5;
+  font-size: 8px;
+  letter-spacing: .16em;
+}
+.ralen-hero__frame { inset: 18px 18px 18px; z-index: 4; }
+.ralen-hero__frame::before, .ralen-hero__frame::after {
+  width: 14px; height: 14px; border-color: rgba(151,190,224,.65);
+}
+.ralen-hero__frame-label {
+  left: 12px; top: 12px; color: rgba(236,242,247,.74); font-size: 7px;
+}
+.ralen-hero--tech .ralen-product-chip,
+.ralen-hero--tech .ralen-hero__badge { display: none; }
+.ralen-hero__scroll { left: 22px; bottom: 24px; color: rgba(226,234,241,.55); }
+.ralen-hero__scroll i::after { background: #5B7FA6; }
+.ralen-hero__footer {
+  position: absolute;
+  z-index: 6;
+  left: 0; right: 0; bottom: 0;
+  width: 100%;
+  padding: 0 22px 18px;
+  display: flex;
+  justify-content: flex-end;
+  color: rgba(220,230,239,.48);
+  font-size: 7px;
+  letter-spacing: .15em;
+  pointer-events: none;
+}
+.ralen-hero__footer span:first-child { display: none; }
+.ralen-hero--tech::before {
+  z-index: 1;
+  opacity: .5;
+  background: radial-gradient(ellipse at 72% 38%,rgba(91,127,166,.22),transparent 45%);
+  mask-image: none;
+}
+.ralen-hero--tech::after { display: none; }
+.ralen-signal { background:#07090b; }
+.ralen-signal__group i { background:#5B7FA6; }
+.ralen-products {
+  background: #07090b;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.ralen-products .ralen-section-kicker,
+.ralen-products .ralen-section-index { color: #829bb5; }
+.ralen-products .ralen-text-link { color: #dce6ef; }
+.ralen-products .ralen-text-link:hover { color: #9cb9d6; }
+.ralen-card__media { border-radius: 2px; }
+@media (min-width: 700px) {
+  .ralen-hero--tech .ralen-hero__content {
+    left: max(5vw, calc((100vw - 1440px)/2));
+    right: auto;
+    bottom: clamp(86px, 12vh, 140px);
+    width: min(58vw, 760px);
+    padding: 0;
+  }
+  .ralen-hero--tech .ralen-hero__title { max-width: 9ch; font-size: clamp(86px, 10vw, 156px); }
+  .ralen-hero--tech .ralen-hero__copy { max-width: 38ch; font-size: 13px; }
+  .ralen-hero--tech .ralen-hero__media::after {
+    background: linear-gradient(0deg,rgba(3,5,8,.94) 0%,rgba(3,5,8,.52) 24%,transparent 68%),linear-gradient(90deg,rgba(3,5,8,.65) 0%,rgba(3,5,8,.25) 42%,transparent 78%);
+  }
+  .ralen-hero--tech .ralen-hero__image { object-position: 58% 35%; }
+  .ralen-hero__footer { padding: 0 34px 22px; }
+  .ralen-hero__footer span:first-child { display: inline; margin-right: auto; }
+}
+@media (min-width: 1200px) {
+  .ralen-hero--tech .ralen-hero__content { bottom: 13vh; }
+}
+@media (max-width: 699px) {
+  .ralen-hero--tech .ralen-hero__title { font-size: clamp(53px, 13vw, 76px); }
+  .ralen-hero--tech .ralen-hero__copy { max-width: 30ch; }
+  .ralen-hero__systems { max-width: 330px; }
+  .ralen-hero__scroll { display: none; }
+}
+@media (max-height: 700px) and (max-width: 699px) {
+  .ralen-hero--tech .ralen-hero__content { padding-bottom: 54px; }
+  .ralen-hero--tech .ralen-hero__index { margin-bottom: 12px; }
+  .ralen-hero--tech .ralen-hero__copy { margin-top: 12px; }
+  .ralen-hero__actions { margin-top: 16px; }
+  .ralen-hero__systems { margin-top: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ralen-hero--tech .ralen-hero__image { animation: none; transform: none; }
+}
