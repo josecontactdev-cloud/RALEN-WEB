@@ -51,7 +51,11 @@
           }
         }
       },
-      "block_order": ["fabric", "design", "origin"],
+      "block_order": [
+        "fabric",
+        "design",
+        "origin"
+      ],
       "settings": {
         "index_label": "02 / ENGINEERED",
         "kicker": "RALEN / RUN 001",
@@ -97,14 +101,35 @@
           }
         }
       },
-      "block_order": ["payment", "shipping", "support"],
+      "block_order": [
+        "payment",
+        "shipping",
+        "support"
+      ],
       "settings": {}
+    },
+    "ralen_reviews": {
+      "type": "ralen-reviews",
+      "settings": {
+        "index_label": "04 / SOCIAL PROOF",
+        "kicker": "RALEN / RUN 001",
+        "heading": "HECHO PARA MOVERSE. JUZGADO POR QUIENES LO USAN.",
+        "description": "Opiniones reales, métricas reales y experiencias de quienes ya usan RALEN.",
+        "rating": "",
+        "review_count": "",
+        "review_link": "",
+        "empty_cta_label": "VER RUN / 001",
+        "empty_cta_link": "/products/ralen-run-001-performance-tee-1"
+      },
+      "blocks": {},
+      "block_order": []
     }
   },
   "order": [
     "ralen_hero",
     "ralen_technology",
     "ralen_run_featured",
+    "ralen_reviews",
     "ralen_assurance"
   ]
 }
