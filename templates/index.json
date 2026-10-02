@@ -9,17 +9,6 @@
  */
 {
   "sections": {
-    "ralen_intro": {
-      "type": "ralen-intro",
-      "settings": {
-        "enabled": true,
-        "line_1": "NO VENDEMOS TODO.",
-        "line_2": "ELEGIMOS LO QUE VALE LA PENA.",
-        "line_3": "RALEN / Run",
-        "duration": 3,
-        "show_once": true
-      }
-    },
     "ralen_hero": {
       "type": "ralen-hero",
       "settings": {
@@ -29,9 +18,9 @@
         "slide_label": "01 / RUN 001",
         "eyebrow": "RALEN / PERFORMANCE",
         "heading": "BUILT TO MOVE.",
-        "copy": "<p>Equipo técnico para correr y moverte. Minimalista por diseño, producido bajo demanda en México.</p>",
-        "system_label": "RUN / PERFORMANCE / DRY / MX",
-        "cta_label": "VER RUN / 001",
+        "copy": "<p>Playera técnica de secado rápido para correr y moverte. Minimalista por diseño, producida bajo demanda en México.</p>",
+        "system_label": "DRY / LIGHTWEIGHT / PERFORMANCE / MX",
+        "cta_label": "VER OPCIONES",
         "cta_link": "",
         "secondary_cta_label": "VER CATÁLOGO",
         "secondary_cta_link": "/collections/all",
@@ -40,7 +29,7 @@
         "product_label": "RALEN / RUN 001",
         "badge": "PERFORMANCE / MADE ON DEMAND",
         "frame_label": "RUN / 001 — PERFORMANCE TEE",
-        "footer_note": ""
+        "footer_note": "NO VENDEMOS TODO. ELEGIMOS LO QUE VALE LA PENA."
       }
     },
     "ralen_signal": {
@@ -55,13 +44,13 @@
       "settings": {
         "index_label": "02 / DROP 001",
         "kicker": "RALEN / RUN",
-        "heading": "INicia con la / 001.",
+        "heading": "Empieza con la / 001.",
         "description": "Una primera pieza técnica para correr y moverte: secado rápido, diseño limpio y producción bajo demanda en México.",
         "collection": "all",
         "products_to_show": 4,
         "show_vendor": false,
         "show_quick_add": true,
-        "cta_label": "VER TODO EL CATÁLOGO"
+        "cta_label": "VER OPCIONES"
       }
     },
     "ralen_assurance": {
@@ -98,7 +87,6 @@
     }
   },
   "order": [
-    "ralen_intro",
     "ralen_hero",
     "ralen_signal",
     "ralen_products",
