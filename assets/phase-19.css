@@ -1,0 +1,35 @@
+/* RALEN product slots — future collection grid */
+.ralen-product-slots{position:relative;overflow:hidden;padding:78px 0 88px;background:#07090b;border-top:1px solid rgba(255,255,255,.06)}
+.ralen-product-slots::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px);background-size:64px 64px}
+.ralen-product-slots .ralen-shell{position:relative;z-index:1}
+.ralen-product-slots__head{display:grid;grid-template-columns:120px minmax(0,1fr);gap:28px;padding-bottom:30px}
+.ralen-product-slots__head>div:first-child{display:flex;flex-direction:column;gap:11px}
+.ralen-product-slots__index{color:#7089a3;font-size:7px;letter-spacing:.22em}
+.ralen-product-slots__head p{margin:0;color:#7e96ae;font-size:8px;letter-spacing:.2em;text-transform:uppercase}
+.ralen-product-slots__head h2{margin:0;color:#eef2f4;font-size:clamp(42px,7vw,84px);line-height:.88;letter-spacing:-.065em}
+.ralen-product-slots__copy{max-width:48ch!important;margin:18px 0 0!important;color:#7f8991!important;font-size:11px!important;line-height:1.65!important;letter-spacing:0!important;text-transform:none!important}
+.ralen-product-slots__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.ralen-product-slot{display:block;min-width:0;color:inherit;text-decoration:none}
+.ralen-product-slot__media{position:relative;display:grid;place-items:center;aspect-ratio:1/1.12;overflow:hidden;border:1px solid rgba(255,255,255,.1);background:linear-gradient(145deg,#0b0f12,#080a0c)}
+.ralen-product-slot__media::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 46%,rgba(91,127,166,.1),transparent 48%),linear-gradient(145deg,transparent 55%,rgba(255,255,255,.025))}
+.ralen-product-slot__empty-mark{position:relative;z-index:2;color:#7089a3;font-size:34px;font-weight:300;line-height:1}
+.ralen-product-slot__number{position:absolute;z-index:3;top:14px;left:14px;color:#596a79;font-size:7px;letter-spacing:.18em}
+.ralen-product-slot__status{position:absolute;z-index:3;bottom:14px;left:14px;color:#768898;font-size:7px;letter-spacing:.18em}
+.ralen-product-slot__media img{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,1,.36,1)}
+.ralen-product-slot--product:hover .ralen-product-slot__media img{transform:scale(1.025)}
+.ralen-product-slot__info{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:14px 2px 0}
+.ralen-product-slot__info span,.ralen-product-slot__info strong{color:#778591;font-size:7px;letter-spacing:.13em;text-transform:uppercase}
+.ralen-product-slot__info h3{margin:5px 0 0;color:#e8edef;font-size:11px;font-weight:500;letter-spacing:.03em}
+.ralen-product-slot__info strong{white-space:nowrap;color:#d4dce2;font-weight:500}
+.ralen-product-slot__future{padding-top:2px;color:#53616d!important}
+@media(max-width:699px){
+  .ralen-product-slots{padding:66px 0 72px}
+  .ralen-product-slots__head{display:block;padding-bottom:25px}
+  .ralen-product-slots__head>div:first-child{margin-bottom:24px}
+  .ralen-product-slots__head h2{font-size:clamp(42px,12vw,62px)}
+  .ralen-product-slots__copy{font-size:11px!important}
+  .ralen-product-slots__grid{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:none}
+  .ralen-product-slots__grid::-webkit-scrollbar{display:none}
+  .ralen-product-slot{flex:0 0 84vw;scroll-snap-align:start}
+}
+@media(prefers-reduced-motion:reduce){.ralen-product-slot__media img{transition:none}}
