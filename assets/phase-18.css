@@ -1,0 +1,59 @@
+/* Phase 18 — RALEN social proof / real reviews system */
+.ralen-reviews{position:relative;overflow:hidden;padding:82px 0 88px;background:#06080a;border-top:1px solid rgba(255,255,255,.06)}
+.ralen-reviews::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(to bottom,#000,transparent 82%)}
+.ralen-reviews .ralen-shell{position:relative;z-index:1}
+.ralen-reviews__head{display:grid;grid-template-columns:120px minmax(0,1fr);gap:28px;padding-bottom:34px}
+.ralen-reviews__head>div:first-child{display:flex;flex-direction:column;gap:12px}
+.ralen-reviews__head .ralen-section-index{color:#7089a3;font-size:7px;letter-spacing:.22em}
+.ralen-reviews__head .ralen-section-kicker{margin:0;color:#7e96ae;font-size:8px;letter-spacing:.22em}
+.ralen-reviews__head-copy h2{max-width:12ch;margin:0;color:#f1f4f5;font-size:clamp(42px,7vw,88px);line-height:.88;letter-spacing:-.065em}
+.ralen-reviews__head-copy p{max-width:48ch;margin:20px 0 0;color:#8b949c;font-size:12px;line-height:1.7}
+.ralen-reviews__summary{display:flex;align-items:center;gap:18px;padding:16px 0;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);color:#b6c4d0}
+.ralen-reviews__score{display:flex;align-items:center;gap:10px}
+.ralen-reviews__score strong{color:#f2f5f6;font-size:18px;font-weight:600;letter-spacing:-.03em}
+.ralen-reviews__stars,.ralen-review-card__stars{color:#8eb5dd;letter-spacing:.12em;font-size:11px;text-shadow:0 0 14px rgba(91,127,166,.25)}
+.ralen-reviews__count{color:#7e8992;font-size:8px;letter-spacing:.12em;text-transform:uppercase}
+.ralen-reviews__link{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:44px;padding:0 17px;border:1px solid rgba(142,181,221,.42);color:#dce7ef;text-decoration:none;font-size:8px;letter-spacing:.17em;transition:background .25s ease,border-color .25s ease,color .25s ease}
+.ralen-reviews__link:hover{background:#8eb5dd;border-color:#8eb5dd;color:#05080b}
+.ralen-reviews__viewport{overflow:hidden;margin-top:30px}
+.ralen-reviews__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ralen-review-card{min-height:310px;padding:20px;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.09);background:linear-gradient(145deg,rgba(255,255,255,.025),rgba(255,255,255,.006))}
+.ralen-review-card__top{display:flex;align-items:center;justify-content:space-between;color:#566574;font-size:8px;letter-spacing:.18em}
+.ralen-review-card blockquote{margin:58px 0 auto;color:#edf0f1;font-size:20px;line-height:1.1;letter-spacing:-.025em}
+.ralen-review-card__meta{display:flex;flex-direction:column;gap:5px;margin-top:28px}
+.ralen-review-card__meta strong{color:#e3e8ec;font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+.ralen-review-card__meta span{color:#71808e;font-size:8px;letter-spacing:.12em;text-transform:uppercase}
+.ralen-review-card__verified{display:inline-flex;align-items:center;gap:7px;margin-top:16px;color:#8eb5dd;font-size:7px;letter-spacing:.14em}
+.ralen-review-card__verified span{display:inline-grid;place-items:center;width:14px;height:14px;border:1px solid rgba(142,181,221,.65);font-size:8px}
+.ralen-reviews__empty{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:28px;align-items:end;padding:28px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.ralen-reviews__empty-index{color:#566574;font-size:7px;letter-spacing:.18em}
+.ralen-reviews__empty h3{max-width:24ch;margin:0;color:#e9edef;font-size:clamp(24px,3vw,38px);line-height:.98;letter-spacing:-.045em}
+.ralen-reviews__empty p{max-width:55ch;margin:14px 0 0;color:#7f898f;font-size:11px;line-height:1.65}
+.ralen-reviews__ugc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:26px}
+.ralen-reviews__ugc figure{margin:0;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#0a0d0f}
+.ralen-reviews__ugc img{display:block;width:100%;aspect-ratio:1/1.12;object-fit:cover;filter:saturate(.78) contrast(1.04);transition:transform .55s cubic-bezier(.22,1,.36,1),filter .4s ease}
+.ralen-reviews__ugc figure:hover img{transform:scale(1.03);filter:saturate(.9) contrast(1.05)}
+.ralen-reviews__ugc figcaption{padding:10px 12px;color:#71808e;font-size:7px;letter-spacing:.12em;text-transform:uppercase}
+@media(max-width:699px){
+  .ralen-reviews{padding:68px 0 72px}
+  .ralen-reviews__head{display:block;padding-bottom:28px}
+  .ralen-reviews__head>div:first-child{margin-bottom:25px}
+  .ralen-reviews__head-copy h2{font-size:clamp(40px,12vw,64px)}
+  .ralen-reviews__head-copy p{font-size:11px}
+  .ralen-reviews__summary{gap:10px;flex-wrap:wrap}
+  .ralen-reviews__score strong{font-size:16px}
+  .ralen-reviews__stars{font-size:10px}
+  .ralen-reviews__count{flex:1}
+  .ralen-reviews__link{width:100%;margin-left:0}
+  .ralen-reviews__viewport{overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:5px;scrollbar-width:none}
+  .ralen-reviews__viewport::-webkit-scrollbar{display:none}
+  .ralen-reviews__grid{display:flex;gap:8px;width:max-content}
+  .ralen-review-card{width:min(84vw,330px);min-height:310px;scroll-snap-align:start}
+  .ralen-review-card blockquote{font-size:19px}
+  .ralen-reviews__empty{display:block;padding:24px 0}
+  .ralen-reviews__empty-index{display:block;margin-bottom:24px}
+  .ralen-reviews__empty h3{font-size:28px}
+  .ralen-reviews__empty .ralen-reviews__link{width:auto;margin-top:22px}
+  .ralen-reviews__ugc{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+}
+@media(prefers-reduced-motion:reduce){.ralen-reviews__link,.ralen-reviews__ugc img{transition:none}}
