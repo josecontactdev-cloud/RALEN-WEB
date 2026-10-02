@@ -71,8 +71,8 @@
       {% endif %}
     </div>
     <div class="ralen-card__price">
-      {% if product.compare_at_price > product.price %}<s>{{ product.compare_at_price | money }}</s>{% endif %}
-      <strong>{{ product.price | money }}</strong>
+      {% if product.compare_at_price > product.price %}<s>{{ product.compare_at_price | money }} MXN</s>{% endif %}
+      <strong>{{ product.price | money }} MXN</strong>
     </div>
   </div>
 </article>
