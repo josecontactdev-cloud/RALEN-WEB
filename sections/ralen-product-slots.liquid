@@ -1,0 +1,91 @@
+<section class="ralen-product-slots" id="RalenProductSlots" data-ralen-reveal>
+  <div class="ralen-shell">
+    <div class="ralen-product-slots__head">
+      <div>
+        <span class="ralen-product-slots__index">{{ section.settings.index_label }}</span>
+        <p>{{ section.settings.kicker }}</p>
+      </div>
+      <div>
+        <h2>{{ section.settings.heading }}</h2>
+        {% if section.settings.copy != blank %}<p class="ralen-product-slots__copy">{{ section.settings.copy }}</p>{% endif %}
+      </div>
+    </div>
+
+    <div class="ralen-product-slots__grid">
+      {% for block in section.blocks %}
+        {% assign slot_product = blank %}
+        {% if block.settings.product != blank %}
+          {% assign slot_product = all_products[block.settings.product] %}
+        {% endif %}
+        {% if slot_product != blank %}
+          <a class="ralen-product-slot ralen-product-slot--product" href="{{ slot_product.url }}" {{ block.shopify_attributes }}>
+            <div class="ralen-product-slot__media">
+              {% if slot_product.featured_image %}
+                {{ slot_product.featured_image | image_url: width: 900 | image_tag: widths: '360, 540, 720, 900', sizes: '(min-width: 900px) 33vw, 84vw', loading: 'lazy', alt: slot_product.title }}
+              {% else %}
+                <span class="ralen-product-slot__empty-mark">+</span>
+              {% endif %}
+              <span class="ralen-product-slot__number">{{ forloop.index | prepend: '0' }}</span>
+            </div>
+            <div class="ralen-product-slot__info">
+              <div>
+                <span>{{ block.settings.label }}</span>
+                <h3>{{ slot_product.title }}</h3>
+              </div>
+              <strong>{{ slot_product.price | money }} MXN</strong>
+            </div>
+          </a>
+        {% else %}
+          <div class="ralen-product-slot ralen-product-slot--empty" {{ block.shopify_attributes }}>
+            <div class="ralen-product-slot__media">
+              <span class="ralen-product-slot__empty-mark">+</span>
+              <span class="ralen-product-slot__number">{{ forloop.index | prepend: '0' }}</span>
+              <span class="ralen-product-slot__status">PRÓXIMAMENTE</span>
+            </div>
+            <div class="ralen-product-slot__info">
+              <div>
+                <span>{{ block.settings.label }}</span>
+                <h3>{{ block.settings.placeholder }}</h3>
+              </div>
+              <span class="ralen-product-slot__future">SLOT DISPONIBLE</span>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RALEN Product Slots",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "index_label", "label": "Índice", "default": "03 / COLECCIÓN" },
+    { "type": "text", "id": "kicker", "label": "Etiqueta", "default": "RALEN / PRÓXIMAMENTE" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "LO QUE SIGUE." },
+    { "type": "textarea", "id": "copy", "label": "Descripción", "default": "Espacios preparados para las próximas piezas de RALEN. Sin llenar la colección por llenar." }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Pieza",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Producto" },
+        { "type": "text", "id": "label", "label": "Etiqueta", "default": "RALEN / NUEVA PIEZA" },
+        { "type": "text", "id": "placeholder", "label": "Texto del slot", "default": "EN DESARROLLO" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "RALEN Product Slots",
+      "blocks": [
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" }
+      ]
+    }
+  ]
+}
+{% endschema %}
