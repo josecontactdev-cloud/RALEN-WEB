@@ -11,75 +11,128 @@
       </div>
     </div>
 
-    <div class="ralen-reviews__grid">
-      {% for block in section.blocks %}
-        <article class="ralen-review-card" {{ block.shopify_attributes }}>
-          <div class="ralen-review-card__top">
-            <span>{{ forloop.index | prepend: '0' }}</span>
-            <span class="ralen-review-card__stars" aria-label="Cinco estrellas">★★★★★</span>
-          </div>
-          <blockquote>“{{ block.settings.quote }}”</blockquote>
-          <div class="ralen-review-card__meta">
-            <strong>{{ block.settings.author }}</strong>
-            <span>{{ block.settings.detail }}</span>
-          </div>
-          <small class="ralen-review-card__demo">TEXTO DE EJEMPLO</small>
-        </article>
-      {% endfor %}
-    </div>
+    {% if section.settings.rating != blank or section.settings.review_count != blank %}
+      <div class="ralen-reviews__summary">
+        <div class="ralen-reviews__score">
+          {% if section.settings.rating != blank %}
+            <strong>{{ section.settings.rating }}</strong>
+            <span class="ralen-reviews__stars" aria-label="{{ section.settings.rating }} de 5 estrellas">★★★★★</span>
+          {% endif %}
+        </div>
+        {% if section.settings.review_count != blank %}
+          <span class="ralen-reviews__count">{{ section.settings.review_count }}</span>
+        {% endif %}
+        {% if section.settings.review_link != blank %}
+          <a class="ralen-reviews__link" href="{{ section.settings.review_link }}">LEER OPINIONES <span aria-hidden="true">↗</span></a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% assign has_reviews = false %}
+    {% for block in section.blocks %}
+      {% if block.type == 'review' and block.settings.quote != blank %}
+        {% assign has_reviews = true %}
+      {% endif %}
+    {% endfor %}
+
+    {% if has_reviews %}
+      <div class="ralen-reviews__viewport">
+        <div class="ralen-reviews__grid">
+          {% for block in section.blocks %}
+            {% if block.type == 'review' and block.settings.quote != blank %}
+              <article class="ralen-review-card" {{ block.shopify_attributes }}>
+                <div class="ralen-review-card__top">
+                  <span>{{ forloop.index | prepend: '0' }}</span>
+                  <span class="ralen-review-card__stars" aria-label="Cinco estrellas">★★★★★</span>
+                </div>
+                <blockquote>“{{ block.settings.quote }}”</blockquote>
+                <div class="ralen-review-card__meta">
+                  <strong>{{ block.settings.author }}</strong>
+                  <span>{{ block.settings.detail }}</span>
+                </div>
+                {% if block.settings.verified %}
+                  <small class="ralen-review-card__verified"><span aria-hidden="true">✓</span> COMPRADOR VERIFICADO</small>
+                {% endif %}
+              </article>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% else %}
+      <div class="ralen-reviews__empty">
+        <span class="ralen-reviews__empty-index">01 / FIRST SIGNAL</span>
+        <div>
+          <h3>LAS PRIMERAS OPINIONES APARECERÁN AQUÍ.</h3>
+          <p>RALEN no va a inventar reseñas para llenar espacio. Cuando lleguen las primeras experiencias reales, este bloque mostrará la voz de quienes usan RUN / 001.</p>
+        </div>
+        {% if section.settings.empty_cta_label != blank and section.settings.empty_cta_link != blank %}
+          <a class="ralen-reviews__link" href="{{ section.settings.empty_cta_link }}">{{ section.settings.empty_cta_label }} <span aria-hidden="true">↗</span></a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% assign has_ugc = false %}
+    {% for block in section.blocks %}
+      {% if block.type == 'ugc' and block.settings.image != blank %}
+        {% assign has_ugc = true %}
+      {% endif %}
+    {% endfor %}
+
+    {% if has_ugc %}
+      <div class="ralen-reviews__ugc">
+        {% for block in section.blocks %}
+          {% if block.type == 'ugc' and block.settings.image != blank %}
+            <figure {{ block.shopify_attributes }}>
+              {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '320, 480, 700, 900', sizes: '(min-width: 900px) 25vw, 80vw', alt: block.settings.alt | escape }}
+              {% if block.settings.caption != blank %}<figcaption>{{ block.settings.caption }}</figcaption>{% endif %}
+            </figure>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
   </div>
 </section>
 
 {% schema %}
 {
   "name": "RALEN Reviews",
-  "max_blocks": 6,
+  "max_blocks": 10,
   "settings": [
-    { "type": "text", "id": "index_label", "label": "Índice", "default": "03 / OPINIONES" },
-    { "type": "text", "id": "kicker", "label": "Etiqueta", "default": "RUN / 001" },
-    { "type": "text", "id": "heading", "label": "Título", "default": "LO QUE QUEREMOS QUE SIENTAS AL CORRER." },
-    { "type": "textarea", "id": "description", "label": "Descripción", "default": "Ejemplos de cómo puede verse la sección de opiniones cuando empiecen a llegar las reseñas reales." }
+    { "type": "text", "id": "index_label", "label": "Índice", "default": "04 / SOCIAL PROOF" },
+    { "type": "text", "id": "kicker", "label": "Etiqueta", "default": "RALEN / RUN 001" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "HECHO PARA MOVERSE. JUZGADO POR QUIENES LO USAN." },
+    { "type": "textarea", "id": "description", "label": "Descripción", "default": "Opiniones reales, métricas reales y experiencias de quienes ya usan RALEN." },
+    { "type": "text", "id": "rating", "label": "Promedio de estrellas", "default": "" },
+    { "type": "text", "id": "review_count", "label": "Cantidad de opiniones", "default": "" },
+    { "type": "url", "id": "review_link", "label": "Enlace para leer opiniones" },
+    { "type": "text", "id": "empty_cta_label", "label": "CTA cuando no hay reseñas", "default": "VER RUN / 001" },
+    { "type": "url", "id": "empty_cta_link", "label": "Enlace del CTA cuando no hay reseñas" }
   ],
   "blocks": [
     {
       "type": "review",
-      "name": "Opinión",
+      "name": "Opinión real",
       "settings": [
-        { "type": "textarea", "id": "quote", "label": "Comentario", "default": "100% recomendada. Se siente ligera y se seca rápido." },
-        { "type": "text", "id": "author", "label": "Autor", "default": "Runner / ejemplo" },
-        { "type": "text", "id": "detail", "label": "Detalle", "default": "RUN / 001" }
+        { "type": "textarea", "id": "quote", "label": "Comentario", "default": "" },
+        { "type": "text", "id": "author", "label": "Nombre", "default": "" },
+        { "type": "text", "id": "detail", "label": "Detalle", "default": "RUN / 001" },
+        { "type": "checkbox", "id": "verified", "label": "Comprador verificado", "default": true }
+      ]
+    },
+    {
+      "type": "ugc",
+      "name": "Foto de cliente",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Foto" },
+        { "type": "text", "id": "alt", "label": "Texto alternativo", "default": "Cliente usando RALEN RUN / 001" },
+        { "type": "text", "id": "caption", "label": "Texto de la foto", "default": "" }
       ]
     }
   ],
   "presets": [
     {
       "name": "RALEN Reviews",
-      "blocks": [
-        {
-          "type": "review",
-          "settings": {
-            "quote": "100% recomendada. La siento ligera, cómoda y seca rápido cuando corro.",
-            "author": "Runner / ejemplo 01",
-            "detail": "RUN / 001"
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "quote": "Está súper cool. La uso casi diario para salir a correr y no se siente pesada.",
-            "author": "Runner / ejemplo 02",
-            "detail": "RUN / 001"
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "quote": "Me gustó mucho el fit. Se siente limpia, técnica y fácil de usar para entrenar.",
-            "author": "Runner / ejemplo 03",
-            "detail": "RUN / 001"
-          }
-        }
-      ]
+      "blocks": []
     }
   ]
 }
