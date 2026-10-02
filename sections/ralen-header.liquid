@@ -10,9 +10,9 @@
           <a href="{{ link.url }}" class="ralen-nav__link{% if link.current %} is-active{% endif %}">{{ link.title }}</a>
         {% endfor %}
       {% else %}
-        <a href="{{ routes.root_url }}#RalenSystems" class="ralen-nav__link">SETUP</a>
-        <a href="{{ routes.all_products_collection_url }}" class="ralen-nav__link">SHOP</a>
-        <a href="{{ routes.root_url }}#RalenPhilosophy" class="ralen-nav__link">ABOUT</a>
+        <a href="{{ routes.root_url }}#RalenSystems" class="ralen-nav__link">SISTEMA</a>
+        <a href="{{ routes.all_products_collection_url }}" class="ralen-nav__link">CATÁLOGO</a>
+        <a href="{{ routes.root_url }}#RalenPhilosophy" class="ralen-nav__link">RALEN</a>
       {% endif %}
     </nav>
 
@@ -53,9 +53,9 @@
           </a>
         {% endfor %}
       {% else %}
-        <a href="{{ routes.root_url }}#RalenSystems"><span>01</span><strong>SETUP</strong><i aria-hidden="true">→</i></a>
-        <a href="{{ routes.all_products_collection_url }}"><span>02</span><strong>SHOP</strong><i aria-hidden="true">→</i></a>
-        <a href="{{ routes.root_url }}#RalenPhilosophy"><span>03</span><strong>ABOUT</strong><i aria-hidden="true">→</i></a>
+        <a href="{{ routes.root_url }}#RalenSystems"><span>01</span><strong>SISTEMA</strong><i aria-hidden="true">→</i></a>
+        <a href="{{ routes.all_products_collection_url }}"><span>02</span><strong>CATÁLOGO</strong><i aria-hidden="true">→</i></a>
+        <a href="{{ routes.root_url }}#RalenPhilosophy"><span>03</span><strong>RALEN</strong><i aria-hidden="true">→</i></a>
       {% endif %}
     </nav>
 
