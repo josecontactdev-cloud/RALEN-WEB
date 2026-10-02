@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ralen_hero": {
@@ -7,15 +16,15 @@
         "trend_collection": "",
         "rotation_limit": 6,
         "slide_label": "01 / RUN 001",
-        "eyebrow": "RALEN / RENDIMIENTO",
+        "eyebrow": "RALEN / PERFORMANCE",
         "heading": "BUILT TO MOVE.",
         "copy": "<p>Playera técnica de secado rápido para correr y moverte. Minimalista por diseño, producida bajo demanda en México.</p>",
         "system_label": "DRY / RUN 001 / MADE IN MX",
-        "cta_label": "VER RUN / 001",
+        "cta_label": "VER OPCIONES",
         "cta_link": "",
         "secondary_cta_label": "",
         "secondary_cta_link": "",
-        "image": "shopify://shop_images/Add_logo_and_fabric_type_2K_20260928205349.jpg",
+        "image": "shopify://shop_images/Modify_logo_and_shirt_2K_20261001211242.jpg",
         "featured_product": "ralen-run-001-performance-tee-1",
         "product_label": "RALEN / RUN 001",
         "badge": "",
@@ -57,9 +66,9 @@
         "origin"
       ],
       "settings": {
-        "index_label": "02 / DISEÑADO",
+        "index_label": "02 / ENGINEERED",
         "kicker": "RALEN / RUN 001",
-        "heading": "DISEÑADO PARA MOVERTE.",
+        "heading": "BUILT FOR MOTION.",
         "copy": "Menos piezas. Más criterio. RUN / 001 parte de lo esencial para moverte.",
         "bottom_note": "NO VENDEMOS TODO. ELEGIMOS LO QUE VALE LA PENA."
       }
@@ -67,13 +76,22 @@
     "ralen_run_featured": {
       "type": "ralen-run-featured",
       "settings": {
-        "index_label": "03 / LA PIEZA",
+        "index_label": "03 / THE PIECE",
         "kicker": "RALEN / RUN 001",
-        "heading": "UNA PIEZA. TODO LO NECESARIO PARA MOVERTE.",
+        "heading": "ONE PIECE. ENOUGH TO MOVE.",
         "copy": "<p>La primera pieza de RALEN: técnica, minimalista y producida bajo demanda en México.</p>",
         "product": "ralen-run-001-performance-tee-1",
-        "product_label": "PLAYERA TÉCNICA / HECHA EN MÉXICO",
-        "cta": "VER PRODUCTO"
+        "product_label": "PERFORMANCE TEE / MADE IN MX",
+        "cta": "VER OPCIONES"
+      }
+    },
+    "ralen_reviews": {
+      "type": "ralen-reviews",
+      "settings": {
+        "index_label": "04 / SOCIAL PROOF",
+        "kicker": "RALEN / RUN 001",
+        "heading": "HECHO PARA MOVERSE. JUZGADO POR QUIENES LO USAN.",
+        "description": "Opiniones reales, métricas reales y experiencias de quienes ya usan RALEN."
       }
     },
     "ralen_assurance": {
@@ -107,22 +125,6 @@
         "support"
       ],
       "settings": {}
-    },
-    "ralen_reviews": {
-      "type": "ralen-reviews",
-      "settings": {
-        "index_label": "04 / OPINIONES",
-        "kicker": "RALEN / RUN 001",
-        "heading": "HECHO PARA MOVERSE. RESPALDADO POR QUIENES LO USAN.",
-        "description": "Opiniones reales, métricas reales y experiencias de quienes ya usan RALEN.",
-        "rating": "",
-        "review_count": "",
-        "review_link": "",
-        "empty_cta_label": "VER RUN / 001",
-        "empty_cta_link": "/products/ralen-run-001-performance-tee-1"
-      },
-      "blocks": {},
-      "block_order": []
     }
   },
   "order": [

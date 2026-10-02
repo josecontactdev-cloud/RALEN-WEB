@@ -1,32 +1,109 @@
-/* Phase 16 — RUN / 001 featured product */
-.ralen-run-featured{padding:88px 0 92px;background:#050607;border-top:1px solid rgba(255,255,255,.06)}
-.ralen-run-featured__head{display:grid;grid-template-columns:120px minmax(0,1fr);gap:28px;margin-bottom:42px}
-.ralen-run-featured__head>span{color:#7089a3;font-size:7px;letter-spacing:.22em}
-.ralen-run-featured__head p{margin:0 0 14px;color:#7e96ae;font-size:8px;letter-spacing:.22em}
-.ralen-run-featured__head h2{max-width:10ch;margin:0;color:#f1f4f5;font-size:clamp(48px,8vw,104px);line-height:.86;letter-spacing:-.07em}
-.ralen-run-featured__head div>div{max-width:42ch;margin-top:22px;color:#8b949c;font-size:12px;line-height:1.7}
-.ralen-run-featured__product{display:block;color:inherit;text-decoration:none}
-.ralen-run-featured__media{position:relative;overflow:hidden;aspect-ratio:16/10;border:1px solid rgba(255,255,255,.09);background:radial-gradient(circle at 50% 45%,#1c2024,#0b0d0f 68%,#060708)}
-.ralen-run-featured__media::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,5,8,.66),transparent 48%)}
-.ralen-run-featured__media img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.72) contrast(1.05) brightness(.9);transition:transform .8s cubic-bezier(.22,1,.36,1),filter .5s ease}
-.ralen-run-featured__media>span{position:absolute;z-index:2;left:18px;top:18px;color:rgba(239,244,248,.7);font-size:7px;letter-spacing:.2em}
-.ralen-run-featured__product:hover .ralen-run-featured__media img{transform:scale(1.025);filter:saturate(.8) contrast(1.06) brightness(.96)}
-.ralen-run-featured__info{display:flex;justify-content:space-between;gap:30px;align-items:center;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.09)}
-.ralen-run-featured__info>div:first-child span{color:#6e8194;font-size:7px;letter-spacing:.2em}
-.ralen-run-featured__info h3{margin:8px 0 0;color:#eef1f2;font-size:14px;letter-spacing:.04em}
-.ralen-run-featured__buy{display:flex;align-items:center;gap:24px}
-.ralen-run-featured__buy strong{color:#dfe7ee;font-size:12px;font-weight:500}
-.ralen-run-featured__buy span{display:inline-flex;align-items:center;gap:16px;min-height:46px;padding:0 17px;background:#5B7FA6;color:#05080b;font-size:8px;font-weight:700;letter-spacing:.16em}
-.ralen-run-featured__buy i{font-style:normal;font-size:14px}
-@media(max-width:699px){
-  .ralen-run-featured{padding:70px 0 74px}
-  .ralen-run-featured__head{display:block;margin-bottom:30px}
-  .ralen-run-featured__head>span{display:block;margin-bottom:26px}
-  .ralen-run-featured__head h2{font-size:clamp(46px,14vw,68px)}
-  .ralen-run-featured__head div>div{font-size:11px}
-  .ralen-run-featured__media{aspect-ratio:1/1.12}
-  .ralen-run-featured__info{display:block}
-  .ralen-run-featured__buy{justify-content:space-between;margin-top:18px}
-  .ralen-run-featured__buy span{flex:1;justify-content:space-between;min-height:50px}
+/* Phase 16 — RALEN mobile-first technology/editorial section */
+.ralen-tech-section{
+  position:relative;
+  overflow:hidden;
+  padding:86px 0 74px;
+  background:#07090b;
+  border-top:1px solid rgba(255,255,255,.06);
 }
-@media(prefers-reduced-motion:reduce){.ralen-run-featured__media img{transition:none}}
+.ralen-tech-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:linear-gradient(to bottom,#000,transparent 78%);
+}
+.ralen-tech-section__head,
+.ralen-tech-section__grid,
+.ralen-tech-section__note{position:relative;z-index:1}
+.ralen-tech-section__head{
+  display:grid;
+  grid-template-columns:120px minmax(0,1fr);
+  gap:28px;
+  padding-bottom:44px;
+}
+.ralen-tech-section__index{
+  color:#7089a3;
+  font-size:7px;
+  letter-spacing:.22em;
+}
+.ralen-tech-section__kicker{
+  margin:0 0 14px;
+  color:#7e96ae;
+  font-size:8px;
+  letter-spacing:.22em;
+}
+.ralen-tech-section h2{
+  max-width:10ch;
+  margin:0;
+  color:#f1f4f5;
+  font-size:clamp(48px,8vw,104px);
+  line-height:.86;
+  letter-spacing:-.07em;
+}
+.ralen-tech-section__copy{
+  max-width:42ch;
+  margin:22px 0 0;
+  color:#8b949c;
+  font-size:12px;
+  line-height:1.7;
+}
+.ralen-tech-section__grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  border-top:1px solid rgba(255,255,255,.09);
+  border-left:1px solid rgba(255,255,255,.09);
+}
+.ralen-tech-item{
+  position:relative;
+  min-height:310px;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  border-right:1px solid rgba(255,255,255,.09);
+  border-bottom:1px solid rgba(255,255,255,.09);
+  background:linear-gradient(145deg,rgba(255,255,255,.025),rgba(255,255,255,.005));
+  transition:background .3s ease,transform .3s ease;
+}
+.ralen-tech-item:hover{background:rgba(91,127,166,.055);transform:translateY(-3px)}
+.ralen-tech-item__number{color:#566574;font-size:8px;letter-spacing:.2em}
+.ralen-tech-item__tag{color:#71879c;font-size:7px;letter-spacing:.2em}
+.ralen-tech-item h3{
+  margin:12px 0 10px;
+  color:#edf0f1;
+  font-size:clamp(24px,3vw,38px);
+  line-height:.95;
+  letter-spacing:-.04em;
+}
+.ralen-tech-item p{max-width:28ch;margin:0;color:#7f898f;font-size:11px;line-height:1.65}
+.ralen-tech-item__line{
+  width:46px;
+  height:1px;
+  background:#5B7FA6;
+  box-shadow:0 0 16px rgba(91,127,166,.28);
+}
+.ralen-tech-section__note{
+  margin:28px 0 0;
+  color:#59636c;
+  font-size:7px;
+  letter-spacing:.2em;
+}
+@media(max-width:699px){
+  .ralen-tech-section{padding:72px 0 62px}
+  .ralen-tech-section__head{display:block;padding-bottom:34px}
+  .ralen-tech-section__index{display:block;margin-bottom:26px}
+  .ralen-tech-section h2{font-size:clamp(48px,15vw,72px)}
+  .ralen-tech-section__copy{font-size:11px}
+  .ralen-tech-section__grid{grid-template-columns:1fr}
+  .ralen-tech-item{min-height:230px;padding:20px}
+  .ralen-tech-item h3{font-size:30px}
+  .ralen-tech-item p{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){
+  .ralen-tech-item{transition:none}
+}
