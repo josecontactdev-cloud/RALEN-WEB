@@ -57,3 +57,6 @@
   .ralen-reviews__ugc{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
 }
 @media(prefers-reduced-motion:reduce){.ralen-reviews__link,.ralen-reviews__ugc img{transition:none}}
+
+.ralen-reviews__preview-note{margin:0 0 14px;color:#8eb5dd;font-size:7px;letter-spacing:.16em;text-transform:uppercase}
+@media(max-width:699px){.ralen-reviews__preview-note{line-height:1.5}}
