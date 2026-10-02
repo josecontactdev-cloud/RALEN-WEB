@@ -1,0 +1,109 @@
+/* Phase 16 — RALEN mobile-first technology/editorial section */
+.ralen-tech-section{
+  position:relative;
+  overflow:hidden;
+  padding:86px 0 74px;
+  background:#07090b;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.ralen-tech-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:linear-gradient(to bottom,#000,transparent 78%);
+}
+.ralen-tech-section__head,
+.ralen-tech-section__grid,
+.ralen-tech-section__note{position:relative;z-index:1}
+.ralen-tech-section__head{
+  display:grid;
+  grid-template-columns:120px minmax(0,1fr);
+  gap:28px;
+  padding-bottom:44px;
+}
+.ralen-tech-section__index{
+  color:#7089a3;
+  font-size:7px;
+  letter-spacing:.22em;
+}
+.ralen-tech-section__kicker{
+  margin:0 0 14px;
+  color:#7e96ae;
+  font-size:8px;
+  letter-spacing:.22em;
+}
+.ralen-tech-section h2{
+  max-width:10ch;
+  margin:0;
+  color:#f1f4f5;
+  font-size:clamp(48px,8vw,104px);
+  line-height:.86;
+  letter-spacing:-.07em;
+}
+.ralen-tech-section__copy{
+  max-width:42ch;
+  margin:22px 0 0;
+  color:#8b949c;
+  font-size:12px;
+  line-height:1.7;
+}
+.ralen-tech-section__grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  border-top:1px solid rgba(255,255,255,.09);
+  border-left:1px solid rgba(255,255,255,.09);
+}
+.ralen-tech-item{
+  position:relative;
+  min-height:310px;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  border-right:1px solid rgba(255,255,255,.09);
+  border-bottom:1px solid rgba(255,255,255,.09);
+  background:linear-gradient(145deg,rgba(255,255,255,.025),rgba(255,255,255,.005));
+  transition:background .3s ease,transform .3s ease;
+}
+.ralen-tech-item:hover{background:rgba(91,127,166,.055);transform:translateY(-3px)}
+.ralen-tech-item__number{color:#566574;font-size:8px;letter-spacing:.2em}
+.ralen-tech-item__tag{color:#71879c;font-size:7px;letter-spacing:.2em}
+.ralen-tech-item h3{
+  margin:12px 0 10px;
+  color:#edf0f1;
+  font-size:clamp(24px,3vw,38px);
+  line-height:.95;
+  letter-spacing:-.04em;
+}
+.ralen-tech-item p{max-width:28ch;margin:0;color:#7f898f;font-size:11px;line-height:1.65}
+.ralen-tech-item__line{
+  width:46px;
+  height:1px;
+  background:#5B7FA6;
+  box-shadow:0 0 16px rgba(91,127,166,.28);
+}
+.ralen-tech-section__note{
+  margin:28px 0 0;
+  color:#59636c;
+  font-size:7px;
+  letter-spacing:.2em;
+}
+@media(max-width:699px){
+  .ralen-tech-section{padding:72px 0 62px}
+  .ralen-tech-section__head{display:block;padding-bottom:34px}
+  .ralen-tech-section__index{display:block;margin-bottom:26px}
+  .ralen-tech-section h2{font-size:clamp(48px,15vw,72px)}
+  .ralen-tech-section__copy{font-size:11px}
+  .ralen-tech-section__grid{grid-template-columns:1fr}
+  .ralen-tech-item{min-height:230px;padding:20px}
+  .ralen-tech-item h3{font-size:30px}
+  .ralen-tech-item p{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){
+  .ralen-tech-item{transition:none}
+}
