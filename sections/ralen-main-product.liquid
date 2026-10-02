@@ -61,11 +61,11 @@
 
         <div class="ralen-product__price" data-ralen-product-price>
           {% if current_variant.compare_at_price > current_variant.price %}
-            <s data-ralen-product-compare>{{ current_variant.compare_at_price | money }}</s>
+            <s data-ralen-product-compare>{{ current_variant.compare_at_price | money }} MXN</s>
           {% else %}
             <s data-ralen-product-compare hidden></s>
           {% endif %}
-          <strong data-ralen-product-current-price>{{ current_variant.price | money }}</strong>
+          <strong data-ralen-product-current-price>{{ current_variant.price | money }} MXN</strong>
         </div>
 
         {% if product.description != blank %}
@@ -80,9 +80,9 @@
                 {% for variant in product.variants %}
                   <option
                     value="{{ variant.id }}"
-                    data-price="{{ variant.price | money | escape }}"
+                    data-price="{{ variant.price | money | append: ' MXN' | escape }}"
                     data-price-cents="{{ variant.price }}"
-                    data-compare="{% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money | escape }}{% endif %}"
+                    data-compare="{% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money | append: ' MXN' | escape }}{% endif %}"
                     data-available="{{ variant.available }}"
                     {% if variant == current_variant %}selected{% endif %}
                   >
