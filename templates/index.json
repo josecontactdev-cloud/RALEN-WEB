@@ -65,6 +65,7 @@
         "design",
         "origin"
       ],
+      "disabled": true,
       "settings": {
         "index_label": "02 / ENGINEERED",
         "kicker": "RALEN / RUN 001",
