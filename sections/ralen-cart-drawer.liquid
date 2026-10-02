@@ -25,7 +25,7 @@
         <div class="ralen-cart-drawer__empty" data-ralen-cart-empty>
           <span>00</span>
           <p>Nada aquí, todavía.</p>
-          <a href="{{ routes.all_products_collection_url }}">EXPLORAR OBJETOS →</a>
+          <a href="{{ routes.all_products_collection_url }}">EXPLORAR CATÁLOGO →</a>
         </div>
       {% else %}
         {% for item in cart.items %}
@@ -40,7 +40,7 @@
                 <h3><a href="{{ item.url }}">{{ item.product.title }}</a></h3>
                 {% unless item.product.has_only_default_variant %}<p>{{ item.variant.title }}</p>{% endunless %}
               </div>
-              <strong>{{ item.final_line_price | money }}</strong>
+              <strong>{{ item.final_line_price | money }} MXN</strong>
               <div class="ralen-drawer-item__controls">
                 <button type="button" data-cart-change="minus" aria-label="Reducir cantidad">−</button>
                 <span>{{ item.quantity }}</span>
