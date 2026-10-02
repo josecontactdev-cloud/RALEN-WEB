@@ -11,23 +11,17 @@
       </div>
     </div>
 
-    {% if section.settings.rating != blank or section.settings.review_count != blank %}
-      <div class="ralen-reviews__preview-note">VISTA PREVIA DE DISEÑO · SUSTITUIR POR DATOS REALES AL PUBLICAR</div>
-      <div class="ralen-reviews__summary">
-        <div class="ralen-reviews__score">
-          {% if section.settings.rating != blank %}
-            <strong>{{ section.settings.rating }}</strong>
-            <span class="ralen-reviews__stars" aria-label="{{ section.settings.rating }} de 5 estrellas">★★★★★</span>
-          {% endif %}
-        </div>
-        {% if section.settings.review_count != blank %}
-          <span class="ralen-reviews__count">{{ section.settings.review_count }}</span>
-        {% endif %}
-        {% if section.settings.review_link != blank %}
-          <a class="ralen-reviews__link" href="{{ section.settings.review_link }}">LEER OPINIONES <span aria-hidden="true">↗</span></a>
-        {% endif %}
+    <div class="ralen-reviews__preview-note">VISTA PREVIA DE DISEÑO · SUSTITUIR POR DATOS REALES AL PUBLICAR</div>
+    <div class="ralen-reviews__summary">
+      <div class="ralen-reviews__score">
+        <strong>{{ section.settings.rating | default: '5.0' }}</strong>
+        <span class="ralen-reviews__stars" aria-label="Cinco estrellas">★★★★★</span>
       </div>
-    {% endif %}
+      <span class="ralen-reviews__count">{{ section.settings.review_count | default: '3 OPINIONES · DEMO' }}</span>
+      {% if section.settings.review_link != blank %}
+        <a class="ralen-reviews__link" href="{{ section.settings.review_link }}">LEER OPINIONES <span aria-hidden="true">↗</span></a>
+      {% endif %}
+    </div>
 
     {% assign has_reviews = false %}
     {% for block in section.blocks %}
@@ -36,9 +30,9 @@
       {% endif %}
     {% endfor %}
 
-    {% if has_reviews %}
-      <div class="ralen-reviews__viewport">
-        <div class="ralen-reviews__grid">
+    <div class="ralen-reviews__viewport">
+      <div class="ralen-reviews__grid">
+        {% if has_reviews %}
           {% for block in section.blocks %}
             {% if block.type == 'review' and block.settings.quote != blank %}
               <article class="ralen-review-card" {{ block.shopify_attributes }}>
@@ -57,9 +51,29 @@
               </article>
             {% endif %}
           {% endfor %}
-        </div>
+        {% else %}
+          <article class="ralen-review-card ralen-review-card--demo">
+            <div class="ralen-review-card__top"><span>01</span><span class="ralen-review-card__stars">★★★★★</span></div>
+            <blockquote>“La estructura se siente limpia y la playera no roba atención al movimiento.”</blockquote>
+            <div class="ralen-review-card__meta"><strong>COMPRADOR / DEMO 01</strong><span>RUN / 001 · EJEMPLO DE DISEÑO</span></div>
+            <small class="ralen-review-card__verified">DEMO · NO ES UNA RESEÑA REAL</small>
+          </article>
+          <article class="ralen-review-card ralen-review-card--demo">
+            <div class="ralen-review-card__top"><span>02</span><span class="ralen-review-card__stars">★★★★★</span></div>
+            <blockquote>“Quería algo técnico sin que pareciera una playera deportiva genérica.”</blockquote>
+            <div class="ralen-review-card__meta"><strong>COMPRADOR / DEMO 02</strong><span>RUN / 001 · EJEMPLO DE DISEÑO</span></div>
+            <small class="ralen-review-card__verified">DEMO · NO ES UNA RESEÑA REAL</small>
+          </article>
+          <article class="ralen-review-card ralen-review-card--demo">
+            <div class="ralen-review-card__top"><span>03</span><span class="ralen-review-card__stars">★★★★★</span></div>
+            <blockquote>“El producto se entiende rápido. Justo lo que busco cuando quiero comprar ropa para correr.”</blockquote>
+            <div class="ralen-review-card__meta"><strong>COMPRADOR / DEMO 03</strong><span>RUN / 001 · EJEMPLO DE DISEÑO</span></div>
+            <small class="ralen-review-card__verified">DEMO · NO ES UNA RESEÑA REAL</small>
+          </article>
+        {% endif %}
       </div>
-    {% else %}
+    </div>
+    {% if false %}
       <div class="ralen-reviews__empty">
         <span class="ralen-reviews__empty-index">01 / PRIMERA SEÑAL</span>
         <div>
@@ -101,7 +115,7 @@
   "settings": [
     { "type": "text", "id": "index_label", "label": "Índice", "default": "04 / SOCIAL PROOF" },
     { "type": "text", "id": "kicker", "label": "Etiqueta", "default": "RALEN / RUN 001" },
-    { "type": "text", "id": "heading", "label": "Título", "default": "HECHO PARA MOVERSE. RESPALDADO POR QUIENES LO USAN." },
+    { "type": "text", "id": "heading", "label": "Título", "default": "LO QUE DICEN. EXPERIENCIAS REALES." },
     { "type": "textarea", "id": "description", "label": "Descripción", "default": "Opiniones reales, métricas reales y experiencias de quienes ya usan RALEN." },
     { "type": "text", "id": "rating", "label": "Promedio de estrellas", "default": "" },
     { "type": "text", "id": "review_count", "label": "Cantidad de opiniones", "default": "" },
