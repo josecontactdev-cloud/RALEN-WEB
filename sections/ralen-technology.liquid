@@ -1,0 +1,64 @@
+<section id="RalenSystems" class="ralen-tech-section" data-ralen-reveal>
+  <div class="ralen-shell">
+    <div class="ralen-tech-section__head">
+      <span class="ralen-tech-section__index">{{ section.settings.index_label }}</span>
+      <div>
+        <p class="ralen-tech-section__kicker">{{ section.settings.kicker }}</p>
+        <h2>{{ section.settings.heading }}</h2>
+        {% if section.settings.copy != blank %}<p class="ralen-tech-section__copy">{{ section.settings.copy }}</p>{% endif %}
+      </div>
+    </div>
+
+    <div class="ralen-tech-section__grid">
+      {% for block in section.blocks %}
+        <article class="ralen-tech-item" {{ block.shopify_attributes }}>
+          <span class="ralen-tech-item__number">{{ forloop.index | prepend: '0' }}</span>
+          <div class="ralen-tech-item__body">
+            <span class="ralen-tech-item__tag">{{ block.settings.tag }}</span>
+            <h3>{{ block.settings.heading }}</h3>
+            <p>{{ block.settings.copy }}</p>
+          </div>
+          <span class="ralen-tech-item__line" aria-hidden="true"></span>
+        </article>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.bottom_note != blank %}
+      <p class="ralen-tech-section__note">{{ section.settings.bottom_note }}</p>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RALEN Tecnología",
+  "settings": [
+    { "type": "text", "id": "index_label", "label": "Índice", "default": "02 / ENGINEERED" },
+    { "type": "text", "id": "kicker", "label": "Etiqueta", "default": "RALEN / RUN 001" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "BUILT FOR MOTION." },
+    { "type": "textarea", "id": "copy", "label": "Descripción", "default": "Menos piezas. Más criterio. RUN / 001 parte de lo esencial para moverte." },
+    { "type": "text", "id": "bottom_note", "label": "Nota inferior", "default": "NO VENDEMOS TODO. ELEGIMOS LO QUE VALE LA PENA." }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Característica",
+      "settings": [
+        { "type": "text", "id": "tag", "label": "Etiqueta", "default": "01 / FABRIC" },
+        { "type": "text", "id": "heading", "label": "Título", "default": "SECADO RÁPIDO" },
+        { "type": "textarea", "id": "copy", "label": "Descripción", "default": "Pensada para correr y moverte con una sensación más seca." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "RALEN Tecnología",
+      "blocks": [
+        { "type": "feature", "settings": { "tag": "01 / FABRIC", "heading": "SECADO RÁPIDO", "copy": "Pensada para correr y moverte con una sensación más seca." } },
+        { "type": "feature", "settings": { "tag": "02 / DESIGN", "heading": "MINIMALISTA", "copy": "Una silueta limpia, sin elementos que no necesitan estar ahí." } },
+        { "type": "feature", "settings": { "tag": "03 / ORIGIN", "heading": "HECHA EN MÉXICO", "copy": "Producción bajo demanda en México, evitando inventario innecesario." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
