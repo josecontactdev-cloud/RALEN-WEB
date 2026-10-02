@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "ralen_hero": {
@@ -19,38 +10,66 @@
         "eyebrow": "RALEN / PERFORMANCE",
         "heading": "BUILT TO MOVE.",
         "copy": "<p>Playera técnica de secado rápido para correr y moverte. Minimalista por diseño, producida bajo demanda en México.</p>",
-        "system_label": "DRY / LIGHTWEIGHT / PERFORMANCE / MX",
+        "system_label": "DRY / RUN 001 / MADE IN MX",
         "cta_label": "VER OPCIONES",
         "cta_link": "",
-        "secondary_cta_label": "VER CATÁLOGO",
-        "secondary_cta_link": "/collections/all",
+        "secondary_cta_label": "",
+        "secondary_cta_link": "",
         "image": "shopify://shop_images/Add_logo_and_fabric_type_2K_20260928205349.jpg",
         "featured_product": "ralen-run-001-performance-tee-1",
         "product_label": "RALEN / RUN 001",
-        "badge": "PERFORMANCE / MADE ON DEMAND",
+        "badge": "",
         "frame_label": "RUN / 001 — PERFORMANCE TEE",
         "footer_note": "NO VENDEMOS TODO. ELEGIMOS LO QUE VALE LA PENA."
       }
     },
-    "ralen_signal": {
-      "type": "ralen-signal-marquee",
+    "ralen_technology": {
+      "type": "ralen-technology",
+      "blocks": {
+        "fabric": {
+          "type": "feature",
+          "settings": {
+            "tag": "01 / FABRIC",
+            "heading": "SECADO RÁPIDO",
+            "copy": "Pensada para correr y moverte con una sensación más seca."
+          }
+        },
+        "design": {
+          "type": "feature",
+          "settings": {
+            "tag": "02 / DESIGN",
+            "heading": "MINIMALISTA",
+            "copy": "Una silueta limpia, sin elementos que no necesitan estar ahí."
+          }
+        },
+        "origin": {
+          "type": "feature",
+          "settings": {
+            "tag": "03 / ORIGIN",
+            "heading": "HECHA EN MÉXICO",
+            "copy": "Producción bajo demanda en México, evitando inventario innecesario."
+          }
+        }
+      },
+      "block_order": ["fabric", "design", "origin"],
       "settings": {
-        "review_label": "REVIEWS / RUN 001",
-        "review_cta": "LEER OPINIONES"
+        "index_label": "02 / ENGINEERED",
+        "kicker": "RALEN / RUN 001",
+        "heading": "BUILT FOR MOTION.",
+        "copy": "Menos piezas. Más criterio. RUN / 001 parte de lo esencial para moverte.",
+        "bottom_note": "NO VENDEMOS TODO. ELEGIMOS LO QUE VALE LA PENA."
       }
     },
-    "ralen_products": {
-      "type": "ralen-featured-collection",
+    "ralen_run_featured": {
+      "type": "ralen-run-featured",
       "settings": {
-        "index_label": "02 / DROP 001",
-        "kicker": "RALEN / RUN",
-        "heading": "Empieza con la / 001.",
-        "description": "Una primera pieza técnica para correr y moverte: secado rápido, diseño limpio y producción bajo demanda en México.",
-        "collection": "all",
-        "products_to_show": 4,
-        "show_vendor": false,
-        "show_quick_add": true,
-        "cta_label": "VER OPCIONES"
+        "index_label": "03 / THE PIECE",
+        "kicker": "RALEN / RUN 001",
+        "heading": "ONE PIECE. ENOUGH TO MOVE.",
+        "copy": "<p>La primera pieza de RALEN: técnica, minimalista y producida bajo demanda en México.</p>",
+        "product": "ralen-run-001-performance-tee-1",
+        "product_label": "PERFORMANCE TEE / MADE IN MX",
+        "cta": "VER OPCIONES"
       }
     },
     "ralen_assurance": {
@@ -78,18 +97,14 @@
           }
         }
       },
-      "block_order": [
-        "payment",
-        "shipping",
-        "support"
-      ],
+      "block_order": ["payment", "shipping", "support"],
       "settings": {}
     }
   },
   "order": [
     "ralen_hero",
-    "ralen_signal",
-    "ralen_products",
+    "ralen_technology",
+    "ralen_run_featured",
     "ralen_assurance"
   ]
 }
