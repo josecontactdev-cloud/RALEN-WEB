@@ -58,7 +58,7 @@
         <div class="ralen-cart-progress" data-ralen-shipping-progress data-threshold="{{ free_shipping_threshold_cents }}">
           <div class="ralen-cart-progress__meta">
             <span data-ralen-shipping-message>CALCULANDO ENVÍO…</span>
-            <span>{{ section.settings.free_shipping_threshold | times: 100 | money }}</span>
+            <span>{{ section.settings.free_shipping_threshold | times: 100 | money }} MXN</span>
           </div>
           <div class="ralen-cart-progress__track" aria-hidden="true"><i data-ralen-shipping-bar></i></div>
         </div>
@@ -66,7 +66,7 @@
 
       <div class="ralen-cart-drawer__subtotal">
         <span>SUBTOTAL</span>
-        <strong data-ralen-cart-drawer-subtotal>{{ cart.total_price | money }}</strong>
+        <strong data-ralen-cart-drawer-subtotal>{{ cart.total_price | money }} MXN</strong>
       </div>
       <p>Envío, descuentos e impuestos se calculan al finalizar la compra.</p>
       <form action="{{ routes.cart_url }}" method="post">
