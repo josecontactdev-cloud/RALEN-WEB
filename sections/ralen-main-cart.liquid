@@ -3,7 +3,7 @@
     <div class="ralen-cart__header">
       <span>04 / CARRITO</span>
       <h1>TU SELECCIÓN.</h1>
-      <p>{{ cart.item_count }} {% if cart.item_count == 1 %}OBJETO{% else %}OBJETOS{% endif %}</p>
+      <p>{{ cart.item_count }} {% if cart.item_count == 1 %}OBJETO{% else %}PRODUCTOS{% endif %}</p>
     </div>
 
     {% if cart.item_count > 0 %}
@@ -32,7 +32,7 @@
                   <a href="{{ item.url_to_remove }}">ELIMINAR</a>
                 </div>
 
-                <strong>{{ item.final_line_price | money }}</strong>
+                <strong>{{ item.final_line_price | money }} MXN</strong>
               </div>
             </article>
           {% endfor %}
