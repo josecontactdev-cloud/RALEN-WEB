@@ -7,11 +7,11 @@
         "trend_collection": "",
         "rotation_limit": 6,
         "slide_label": "01 / RUN 001",
-        "eyebrow": "RALEN / PERFORMANCE",
+        "eyebrow": "RALEN / RENDIMIENTO",
         "heading": "BUILT TO MOVE.",
         "copy": "<p>Playera técnica de secado rápido para correr y moverte. Minimalista por diseño, producida bajo demanda en México.</p>",
         "system_label": "DRY / RUN 001 / MADE IN MX",
-        "cta_label": "VER OPCIONES",
+        "cta_label": "VER RUN / 001",
         "cta_link": "",
         "secondary_cta_label": "",
         "secondary_cta_link": "",
@@ -57,9 +57,9 @@
         "origin"
       ],
       "settings": {
-        "index_label": "02 / ENGINEERED",
+        "index_label": "02 / DISEÑADO",
         "kicker": "RALEN / RUN 001",
-        "heading": "BUILT FOR MOTION.",
+        "heading": "DISEÑADO PARA MOVERTE.",
         "copy": "Menos piezas. Más criterio. RUN / 001 parte de lo esencial para moverte.",
         "bottom_note": "NO VENDEMOS TODO. ELEGIMOS LO QUE VALE LA PENA."
       }
@@ -67,13 +67,13 @@
     "ralen_run_featured": {
       "type": "ralen-run-featured",
       "settings": {
-        "index_label": "03 / THE PIECE",
+        "index_label": "03 / LA PIEZA",
         "kicker": "RALEN / RUN 001",
-        "heading": "ONE PIECE. ENOUGH TO MOVE.",
+        "heading": "UNA PIEZA. TODO LO NECESARIO PARA MOVERTE.",
         "copy": "<p>La primera pieza de RALEN: técnica, minimalista y producida bajo demanda en México.</p>",
         "product": "ralen-run-001-performance-tee-1",
-        "product_label": "PERFORMANCE TEE / MADE IN MX",
-        "cta": "VER OPCIONES"
+        "product_label": "PLAYERA TÉCNICA / HECHA EN MÉXICO",
+        "cta": "VER PRODUCTO"
       }
     },
     "ralen_assurance": {
@@ -111,9 +111,9 @@
     "ralen_reviews": {
       "type": "ralen-reviews",
       "settings": {
-        "index_label": "04 / SOCIAL PROOF",
+        "index_label": "04 / OPINIONES",
         "kicker": "RALEN / RUN 001",
-        "heading": "HECHO PARA MOVERSE. JUZGADO POR QUIENES LO USAN.",
+        "heading": "HECHO PARA MOVERSE. RESPALDADO POR QUIENES LO USAN.",
         "description": "Opiniones reales, métricas reales y experiencias de quienes ya usan RALEN.",
         "rating": "",
         "review_count": "",
