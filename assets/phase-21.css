@@ -1,0 +1,35 @@
+/* Phase 21 — RALEN product/catalog image interaction */
+.ralen-card__media[data-ralen-card-gallery] {
+  cursor: ew-resize;
+}
+.ralen-card__media[data-ralen-card-gallery] .ralen-card__media-link {
+  touch-action: pan-y;
+}
+.ralen-card__media[data-ralen-card-gallery]::after {
+  pointer-events: none;
+}
+
+.ralen-product__stage[data-ralen-product-stage] {
+  cursor: ew-resize;
+}
+.ralen-product__stage[data-ralen-product-stage] {
+  touch-action: pan-y;
+}
+.ralen-product__stage[data-ralen-product-stage] .ralen-product__main-image {
+  transition: opacity .28s ease, transform .5s cubic-bezier(.22,1,.36,1);
+}
+.ralen-product__stage[data-ralen-product-stage].is-changing .ralen-product__main-image {
+  opacity: .72;
+  transform: scale(1.012);
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .ralen-card__media[data-ralen-card-gallery]:hover .ralen-card__image {
+    transition: transform .35s ease, filter .35s ease;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ralen-product__stage[data-ralen-product-stage] .ralen-product__main-image {
+    transition: none;
+  }
+}
