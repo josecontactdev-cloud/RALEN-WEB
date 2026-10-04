@@ -54,6 +54,7 @@
     {{ 'phase-17.css' | asset_url | stylesheet_tag }}
     {{ 'phase-18.css' | asset_url | stylesheet_tag }}
     {{ 'phase-19.css' | asset_url | stylesheet_tag }}
+    {{ 'phase-21.css' | asset_url | stylesheet_tag }}
 
     <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
     {% if request.page_type == 'index' %}
@@ -64,7 +65,6 @@
       <script src="{{ 'phase-10.js' | asset_url }}" defer></script>
       <script src="{{ 'phase-13.js' | asset_url }}" defer></script>
       <script src="{{ 'phase-14.js' | asset_url }}" defer></script>
-      <script src="{{ 'phase-20.js' | asset_url }}" defer></script>
     {% endif %}
     {% if request.page_type == 'product' %}
       <script src="{{ 'phase-3.js' | asset_url }}" defer></script>
@@ -72,6 +72,7 @@
     <script src="{{ 'phase-4.js' | asset_url }}" defer></script>
     <script src="{{ 'phase-5.js' | asset_url }}" defer></script>
     <script src="{{ 'phase-6.js' | asset_url }}" defer></script>
+    <script src="{{ 'phase-21.js' | asset_url }}" defer></script>
   </head>
 
   <body class="ralen-theme">
