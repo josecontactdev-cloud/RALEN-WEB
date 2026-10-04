@@ -14,7 +14,7 @@
       const image = media.querySelector('.ralen-card__image--primary');
       if (!image) return;
 
-      const sources = [image.currentSrc || image.src];
+      const sources = [image.getAttribute('src') || image.currentSrc || image.src];
       for (let i = 1; i <= 4; i += 1) {
         const src = media.getAttribute('data-card-image-' + i);
         if (src) {
@@ -33,6 +33,7 @@
         if (next === current) return;
         image.src = sources[next];
         image.removeAttribute('srcset');
+        image.removeAttribute('sizes');
         current = next;
         media.dataset.imageIndex = String(next);
       };
