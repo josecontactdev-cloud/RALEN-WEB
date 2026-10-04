@@ -11,7 +11,7 @@
   overflow: hidden;
 }
 .ralen-card__media[data-ralen-card-gallery] .ralen-card__image {
-  transition: opacity .8s cubic-bezier(.22,1,.36,1), transform 1.05s cubic-bezier(.22,1,.36,1), filter .8s ease;
+  transition: opacity 1.15s cubic-bezier(.22,1,.36,1), transform 1.35s cubic-bezier(.22,1,.36,1);
   will-change: opacity, transform;
 }
 .ralen-card__media[data-ralen-card-gallery] .ralen-card__image--secondary {
@@ -25,11 +25,11 @@
 @media (hover:hover) and (pointer:fine) {
   .ralen-card__media[data-ralen-card-gallery]:hover .ralen-card__image--primary {
     opacity: 0;
-    transform: scale(1.025);
+    transform: scale(1.018);
   }
   .ralen-card__media[data-ralen-card-gallery]:hover .ralen-card__image--secondary {
     opacity: 1;
-    transform: scale(1.012);
+    transform: scale(1.008);
   }
 }
 .ralen-card__media[data-ralen-card-gallery]:not(:hover) .ralen-card__image--primary {
@@ -46,7 +46,7 @@
   touch-action: pan-y;
 }
 .ralen-product__stage[data-ralen-product-stage] .ralen-product__main-image {
-  transition: opacity .28s ease, transform .5s cubic-bezier(.22,1,.36,1);
+  transition: opacity .5s ease, transform .8s cubic-bezier(.22,1,.36,1);
 }
 .ralen-product__stage[data-ralen-product-stage].is-changing .ralen-product__main-image {
   opacity: .72;
