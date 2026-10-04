@@ -14,7 +14,10 @@
       <a class="ralen-run-featured__product" href="{{ product.url }}">
         <div class="ralen-run-featured__media">
           {% if product.featured_image %}
-            {{ product.featured_image | image_url: width: 1400 | image_tag: widths: '480, 720, 960, 1200, 1400', sizes: '100vw', loading: 'lazy', alt: product.title }}
+            {{ product.featured_image | image_url: width: 1400 | image_tag: widths: '480, 720, 960, 1200, 1400', sizes: '100vw', loading: 'lazy', class: 'ralen-run-featured__image ralen-run-featured__image--primary', alt: product.title }}
+            {% if product.images[1] != blank %}
+              {{ product.images[1] | image_url: width: 1400 | image_tag: widths: '480, 720, 960, 1200, 1400', sizes: '100vw', loading: 'lazy', class: 'ralen-run-featured__image ralen-run-featured__image--secondary', alt: product.title }}
+            {% endif %}
           {% endif %}
           <span>RUN / 001</span>
         </div>
