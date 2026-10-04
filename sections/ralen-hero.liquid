@@ -113,62 +113,18 @@
     </div>
 
     <div class="ralen-hero__visual">
-      <div class="ralen-hero__media" data-ralen-hero-media>
+      <div class="ralen-hero__media">
         {% if hero_image != blank %}
-          <div class="ralen-hero__frame-stack" aria-live="polite">
-            <div class="ralen-hero__frame-item is-active" data-hero-frame="0">
-              {{ hero_image
-                | image_url: width: 2200
-                | image_tag:
-                  widths: '640, 960, 1280, 1600, 2000, 2200',
-                  sizes: '100vw',
-                  loading: 'eager',
-                  fetchpriority: 'high',
-                  class: 'ralen-hero__image',
-                  alt: hero_alt
-              }}
-            </div>
-
-            {% assign sequence_count = 1 %}
-            {% if section.blocks.size > 0 %}
-              {% for block in section.blocks %}
-                {% if block.type == 'frame' and block.settings.image != blank %}
-                  <div class="ralen-hero__frame-item" data-hero-frame="{{ sequence_count }}">
-                    {% assign frame_alt = block.settings.alt | default: hero_alt %}
-                    {{ block.settings.image
-                      | image_url: width: 2200
-                      | image_tag:
-                        widths: '640, 960, 1280, 1600, 2000, 2200',
-                        sizes: '100vw',
-                        loading: 'lazy',
-                        class: 'ralen-hero__image',
-                        alt: frame_alt
-                    }}
-                  </div>
-                  {% assign sequence_count = sequence_count | plus: 1 %}
-                {% endif %}
-              {% endfor %}
-            {% elsif display_product != blank and display_product.images.size > 1 %}
-              {% for product_image in display_product.images limit: 5 %}
-                {% if product_image != hero_image %}
-                  <div class="ralen-hero__frame-item" data-hero-frame="{{ sequence_count }}">
-                    {% assign frame_alt = product_image.alt | default: display_product.title %}
-                    {{ product_image
-                      | image_url: width: 2200
-                      | image_tag:
-                        widths: '640, 960, 1280, 1600, 2000, 2200',
-                        sizes: '100vw',
-                        loading: 'lazy',
-                        class: 'ralen-hero__image',
-                        alt: frame_alt
-                    }}
-                  </div>
-                  {% assign sequence_count = sequence_count | plus: 1 %}
-                {% endif %}
-              {% endfor %}
-            {% endif %}
-          </div>
-          <span class="ralen-hero__frame-count" data-ralen-frame-count aria-hidden="true">01 / {{ sequence_count | prepend: '' | replace: '0', '' | plus: 0 | prepend: '0' }}</span>
+          {{ hero_image
+            | image_url: width: 1800
+            | image_tag:
+              widths: '640, 960, 1280, 1600, 1800',
+              sizes: '(min-width: 990px) 55vw, 100vw',
+              loading: 'eager',
+              fetchpriority: 'high',
+              class: 'ralen-hero__image',
+              alt: hero_alt
+          }}
         {% else %}
           <div class="ralen-hero__placeholder" aria-hidden="true">
             <div class="ralen-device-stage">
@@ -230,11 +186,7 @@
 {% schema %}
 {
   "name": "RALEN Hero",
-  "blocks": [
-    {
-      "type": "frame",
-      "name": "Frame de imagen",
-      "settings": [
+  "settings": [
         { "type": "image_picker", "id": "image", "label": "Imagen" },
         { "type": "text", "id": "alt", "label": "Texto alternativo", "default": "RALEN / RUN 001" }
       ]
