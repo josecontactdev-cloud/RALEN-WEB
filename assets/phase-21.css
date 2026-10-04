@@ -1,18 +1,48 @@
-/* Phase 21 — RALEN product/catalog image interaction */
+/* Phase 21 — RALEN product-card hover
+ * One clean transition: primary image -> next image + subtle zoom.
+ */
 .ralen-card__media[data-ralen-card-gallery] {
-  cursor: ew-resize;
+  overflow: hidden;
+  cursor: pointer;
 }
 .ralen-card__media[data-ralen-card-gallery] .ralen-card__media-link {
-  touch-action: pan-y;
+  position: relative;
+  display: block;
+  overflow: hidden;
 }
-.ralen-card__media[data-ralen-card-gallery]::after {
-  pointer-events: none;
+.ralen-card__media[data-ralen-card-gallery] .ralen-card__image {
+  transition: opacity .42s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1), filter .42s ease;
+  will-change: opacity, transform;
+}
+.ralen-card__media[data-ralen-card-gallery] .ralen-card__image--secondary {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  object-fit: cover;
+}
+@media (hover:hover) and (pointer:fine) {
+  .ralen-card__media[data-ralen-card-gallery]:hover .ralen-card__image--primary {
+    opacity: 0;
+    transform: scale(1.035);
+  }
+  .ralen-card__media[data-ralen-card-gallery]:hover .ralen-card__image--secondary {
+    opacity: 1;
+    transform: scale(1.018);
+  }
+}
+.ralen-card__media[data-ralen-card-gallery]:not(:hover) .ralen-card__image--primary {
+  opacity: 1;
+  transform: scale(1);
+}
+.ralen-card__media[data-ralen-card-gallery]:not(:hover) .ralen-card__image--secondary {
+  opacity: 0;
+  transform: scale(1.01);
 }
 
 .ralen-product__stage[data-ralen-product-stage] {
   cursor: ew-resize;
-}
-.ralen-product__stage[data-ralen-product-stage] {
   touch-action: pan-y;
 }
 .ralen-product__stage[data-ralen-product-stage] .ralen-product__main-image {
@@ -23,12 +53,8 @@
   transform: scale(1.012);
 }
 
-@media (hover:hover) and (pointer:fine) {
-  .ralen-card__media[data-ralen-card-gallery]:hover .ralen-card__image {
-    transition: transform .35s ease, filter .35s ease;
-  }
-}
 @media (prefers-reduced-motion: reduce) {
+  .ralen-card__media[data-ralen-card-gallery] .ralen-card__image,
   .ralen-product__stage[data-ralen-product-stage] .ralen-product__main-image {
     transition: none;
   }
