@@ -251,18 +251,22 @@ body.ralen-theme {
   inset: 0;
   overflow: hidden;
 }
-.ralen-hero--tech .ralen-hero__frame-stack .ralen-hero__image {
+.ralen-hero--tech .ralen-hero__frame-stack .ralen-hero__frame-item {
+  position: absolute;
+  inset: 0;
   opacity: 0;
   visibility: hidden;
-  animation: none;
   transform: scale(1.025);
   transition: opacity .55s cubic-bezier(.22,.61,.36,1), transform .9s cubic-bezier(.22,.61,.36,1);
   will-change: opacity, transform;
 }
-.ralen-hero--tech .ralen-hero__frame-stack .ralen-hero__image.is-active {
+.ralen-hero--tech .ralen-hero__frame-stack .ralen-hero__frame-item.is-active {
   opacity: 1;
   visibility: visible;
   transform: scale(1.015);
+}
+.ralen-hero--tech .ralen-hero__frame-stack .ralen-hero__image {
+  animation: none;
 }
 .ralen-hero__frame-count {
   position: absolute;
@@ -281,7 +285,7 @@ body.ralen-theme {
   .ralen-hero__frame-count { top: 14px; right: 14px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .ralen-hero--tech .ralen-hero__frame-stack .ralen-hero__image {
+  .ralen-hero--tech .ralen-hero__frame-stack .ralen-hero__frame-item {
     transition: none;
     transform: none;
   }
