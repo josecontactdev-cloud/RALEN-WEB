@@ -16,7 +16,7 @@
 
       const sources = [image.currentSrc || image.src];
       for (let i = 1; i <= 4; i += 1) {
-        const src = media.dataset['cardImage' + i];
+        const src = media.getAttribute('data-card-image-' + i);
         if (src) {
           sources.push(src);
           preload(src);
