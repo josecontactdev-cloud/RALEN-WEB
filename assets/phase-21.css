@@ -11,7 +11,7 @@
   overflow: hidden;
 }
 .ralen-card__media[data-ralen-card-gallery] .ralen-card__image {
-  transition: opacity .42s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1), filter .42s ease;
+  transition: opacity .8s cubic-bezier(.22,1,.36,1), transform 1.05s cubic-bezier(.22,1,.36,1), filter .8s ease;
   will-change: opacity, transform;
 }
 .ralen-card__media[data-ralen-card-gallery] .ralen-card__image--secondary {
@@ -25,11 +25,11 @@
 @media (hover:hover) and (pointer:fine) {
   .ralen-card__media[data-ralen-card-gallery]:hover .ralen-card__image--primary {
     opacity: 0;
-    transform: scale(1.035);
+    transform: scale(1.025);
   }
   .ralen-card__media[data-ralen-card-gallery]:hover .ralen-card__image--secondary {
     opacity: 1;
-    transform: scale(1.018);
+    transform: scale(1.012);
   }
 }
 .ralen-card__media[data-ralen-card-gallery]:not(:hover) .ralen-card__image--primary {
