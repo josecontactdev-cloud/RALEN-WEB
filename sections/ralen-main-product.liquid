@@ -13,7 +13,7 @@
 >
   <div class="ralen-shell ralen-product__layout">
     <div class="ralen-product__gallery">
-      <div class="ralen-product__stage">
+      <div class="ralen-product__stage" data-ralen-product-stage>
         {% if product.featured_image != blank %}
           {{ product.featured_image
             | image_url: width: 1800
