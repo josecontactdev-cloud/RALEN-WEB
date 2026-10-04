@@ -25,7 +25,7 @@
         "secondary_cta_label": "",
         "secondary_cta_link": "",
         "image": "shopify://shop_images/Modify_logo_and_shirt_2K_20261001211242.jpg",
-        "featured_product": "ralen-run-001-performance-tee-1",
+        "featured_product": "",
         "product_label": "RALEN / RUN 001",
         "badge": "",
         "frame_label": "RUN / 001 — PERFORMANCE TEE",
@@ -89,66 +89,11 @@
     "ralen_reviews": {
       "type": "ralen-reviews",
       "settings": {
-        "index_label": "04 / OPINIONES",
+        "index_label": "04 / SOCIAL PROOF",
         "kicker": "RALEN / RUN 001",
-        "heading": "LO QUE DICEN. EXPERIENCIAS REALES.",
-        "description": "Una vista del sistema de opiniones: valoración, experiencias y compradores verificados.",
-        "rating": "5.0",
-        "review_count": "3 OPINIONES · VISTA PREVIA",
-        "review_link": ""
-      },
-      "blocks": {
-        "demo_1": {
-          "type": "review",
-          "settings": {
-            "quote": "La estructura se siente limpia y la playera no roba atención al movimiento.",
-            "author": "COMPRADOR / DEMO 01",
-            "detail": "RUN / 001 · EJEMPLO DE DISEÑO",
-            "verified": true
-          }
-        },
-        "demo_2": {
-          "type": "review",
-          "settings": {
-            "quote": "Quería algo técnico sin que pareciera una playera deportiva genérica.",
-            "author": "COMPRADOR / DEMO 02",
-            "detail": "RUN / 001 · EJEMPLO DE DISEÑO",
-            "verified": true
-          }
-        },
-        "demo_3": {
-          "type": "review",
-          "settings": {
-            "quote": "El bloque de producto y la información se entienden rápido. Eso es justo lo que busco.",
-            "author": "COMPRADOR / DEMO 03",
-            "detail": "RUN / 001 · EJEMPLO DE DISEÑO",
-            "verified": false
-          }
-        },
-        "ugc_1": {
-          "type": "ugc",
-          "settings": {
-            "image": "",
-            "alt": "Espacio reservado para foto de cliente usando RALEN",
-            "caption": "UGC / PRÓXIMAMENTE"
-          }
-        },
-        "ugc_2": {
-          "type": "ugc",
-          "settings": {
-            "image": "",
-            "alt": "Espacio reservado para foto de cliente usando RALEN",
-            "caption": "UGC / PRÓXIMAMENTE"
-          }
-        }
-      },
-      "block_order": [
-        "demo_1",
-        "demo_2",
-        "demo_3",
-        "ugc_1",
-        "ugc_2"
-      ]
+        "heading": "HECHO PARA MOVERSE. JUZGADO POR QUIENES LO USAN.",
+        "description": "Opiniones reales, métricas reales y experiencias de quienes ya usan RALEN."
+      }
     },
     "ralen_assurance": {
       "type": "ralen-assurance",
@@ -181,52 +126,12 @@
         "support"
       ],
       "settings": {}
-    },
-    "ralen_product_slots": {
-      "type": "ralen-product-slots",
-      "blocks": {
-        "slot_1": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "label": "RALEN / PRÓXIMA PIEZA",
-            "placeholder": "EN DESARROLLO"
-          }
-        },
-        "slot_2": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "label": "RALEN / PRÓXIMA PIEZA",
-            "placeholder": "EN DESARROLLO"
-          }
-        },
-        "slot_3": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "label": "RALEN / PRÓXIMA PIEZA",
-            "placeholder": "EN DESARROLLO"
-          }
-        }
-      },
-      "block_order": [
-        "slot_1",
-        "slot_2",
-        "slot_3"
-      ],
-      "settings": {
-        "index_label": "03 / COLECCIÓN",
-        "kicker": "RALEN / PRÓXIMAMENTE",
-        "heading": "LO QUE SIGUE.",
-        "copy": "Espacios preparados para las próximas piezas de RALEN. Sin llenar la colección por llenar."
-      }
     }
   },
   "order": [
     "ralen_hero",
     "ralen_technology",
-    "ralen_product_slots",
+    "ralen_run_featured",
     "ralen_reviews",
     "ralen_assurance"
   ]
