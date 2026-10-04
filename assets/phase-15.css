@@ -16,8 +16,8 @@ body.ralen-theme {
 .ralen-nav__link::after { background: var(--ralen-signal); }
 .ralen-hero.ralen-hero--tech {
   position: relative;
-  min-height: 100svh;
-  min-height: 100dvh;
+  min-height: 155svh;
+  min-height: 155dvh;
   overflow: clip;
   display: flex;
   flex-direction: column;
@@ -25,12 +25,14 @@ body.ralen-theme {
   background: #050607;
 }
 .ralen-hero--tech .ralen-hero__grid {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 1;
   width: 100%;
   max-width: none;
-  min-height: 100svh;
-  min-height: 100dvh;
+  height: 100svh;
+  height: 100dvh;
+  min-height: 0;
   display: block;
   padding: 0;
 }
