@@ -237,3 +237,50 @@ body.ralen-theme {
 @media (prefers-reduced-motion: reduce) {
   .ralen-hero--tech .ralen-hero__image { animation: none; transform: none; }
 }
+
+
+/* Phase 20 — interactive hero image sequence */
+.ralen-hero--tech .ralen-hero__media {
+  isolation: isolate;
+  cursor: crosshair;
+}
+.ralen-hero--tech .ralen-hero__frame-stack {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.ralen-hero--tech .ralen-hero__frame-stack .ralen-hero__image {
+  opacity: 0;
+  visibility: hidden;
+  animation: none;
+  transform: scale(1.025);
+  transition: opacity .55s cubic-bezier(.22,.61,.36,1), transform .9s cubic-bezier(.22,.61,.36,1);
+  will-change: opacity, transform;
+}
+.ralen-hero--tech .ralen-hero__frame-stack .ralen-hero__image.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.015);
+}
+.ralen-hero__frame-count {
+  position: absolute;
+  z-index: 7;
+  top: 16px;
+  right: 18px;
+  color: rgba(238,244,248,.62);
+  font-size: 7px;
+  letter-spacing: .2em;
+  pointer-events: none;
+}
+@media (hover:hover) and (pointer:fine) {
+  .ralen-hero--tech .ralen-hero__media { cursor: ew-resize; }
+}
+@media (max-width:699px) {
+  .ralen-hero__frame-count { top: 14px; right: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ralen-hero--tech .ralen-hero__frame-stack .ralen-hero__image {
+    transition: none;
+    transform: none;
+  }
+}
