@@ -12,7 +12,12 @@
 %}
 
 <article class="ralen-card" data-ralen-card>
-  <div class="ralen-card__media">
+  <div class="ralen-card__media"
+  data-ralen-card-gallery
+  data-card-image-1="{% if product.images[1] != blank %}{{ product.images[1] | image_url: width: 1200 }}{% endif %}"
+  data-card-image-2="{% if product.images[2] != blank %}{{ product.images[2] | image_url: width: 1200 }}{% endif %}"
+  data-card-image-3="{% if product.images[3] != blank %}{{ product.images[3] | image_url: width: 1200 }}{% endif %}"
+  data-card-image-4="{% if product.images[4] != blank %}{{ product.images[4] | image_url: width: 1200 }}{% endif %}">
     <a class="ralen-card__media-link" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
       {% if product.featured_image != blank %}
         {{ product.featured_image
